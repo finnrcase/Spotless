@@ -1,0 +1,10 @@
+requests>=2.31,<3
+pandas
+numpy
+matplotlib
+scipy
+statsmodels
+scikit-learn
+geopandas
+jupyterlab
+ipykernel

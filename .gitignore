@@ -1,0 +1,31 @@
+# Python caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+.env/
+
+# Jupyter transient files
+.ipynb_checkpoints/
+.jupyter_cache/
+
+# Operating system files
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# Large/raw data
+*.csv
+*.parquet
+*.zip
+*.gz
+
+data/
+Spotless/
+.DS_Store
+*.csv
+*.parquet
+*.zip
+*.gz
