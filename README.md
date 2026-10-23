@@ -1,6 +1,6 @@
 # Spotless — ECON 430 Parking Occupancy Project
 
-UCLA ECON 430 Applied Econometric Analysis. **Current stage:** Notebooks 01–03 are completed. The saved candidate cross-section has **4,139 parking spaces and 36 columns**, including meter, Census, and business measures. Zoning coverage is weak (49 source-code matches); EDA, variable selection, OLS, and diagnostics have not begun.
+UCLA ECON 430 Applied Econometric Analysis. **Current stage:** Notebooks 01–03 are completed, and Notebook 04 completes the initial EDA and approved sample preparation. The original saved cross-section remains **4,139 parking spaces and 36 columns**. Notebook 04 retains **4,060 FLAT + TOD spaces**, with **4,016 complete cases for the outcome and primary candidate list**. Variable selection, OLS, diagnostics, and sensor robustness checks remain planned.
 
 This README records the current design and workflow. Implemented details come from the notebook code, saved outputs, and local processed files; hypotheses and future work are labeled separately. The earlier [raw-data audit](docs/design_validation_audit.md) and [acquisition catalog](docs/data_sources.md) describe earlier phases, so statements there that no cleaning has occurred are historical, not the project's current status.
 
@@ -112,10 +112,22 @@ An in-memory left-merge check finds **4,139 matches (98.90%)** and **46 unmatche
 | `housing_density` | COMPLETED | ACS housing / Gazetteer ALAND_SQMI | Housing units per square mile of land; potentially positive |
 | `median_income` | COMPLETED; 44 missing | ACS B19013 | Socioeconomic control in 2024 dollars; sign ambiguous |
 | `drive_alone_share`, `transit_share`, `walk_share` | COMPLETED | ACS B08301 | Resident transportation behavior; denominator includes workers who work from home |
-| `nearby_business_count` | COMPLETED | LA business registry | Located registered businesses within 0.25 miles; potentially positive |
-| `nearby_restaurant_retail_count` | COMPLETED | Registry / NAICS 722, 44–45 | Located food-service/drinking-place and retail records within 0.25 miles |
-| `zoning_code`, `zoning_class`, `zoning_description` | CONSTRUCTED; coverage UNRESOLVED | LA generalized zoning | Source labels only; 49 codes matched, unsuitable as a broadly available control yet |
+| `nearby_business_count` | COMPLETED; comparison candidate | LA business registry | Located registered accounts within 0.25 miles; retained for comparison, not automatically included with the primary count |
+| `nearby_restaurant_retail_count` | COMPLETED; primary commercial candidate | Registry / NAICS 722, 44–45 | Located food-service/drinking-place and retail registrations within 0.25 miles, not necessarily unique storefronts |
+| `zoning_code`, `zoning_class`, `zoning_description` | CONSTRUCTED; EXCLUDED from primary analysis | LA generalized zoning | Source labels retained in the original file; only 49 codes matched, so missing zoning does not define the analysis sample |
 | Location controls | PLANNED/CANDIDATE | Derived from spatial information | Systematic geographic differences; specification undecided |
+
+### Approved analysis choices implemented in Notebook 04
+
+The original `data/processed/parking_cross_section.csv` is unchanged. Notebook 04 loads it as `parking_full`, then uses simple pandas filtering to create `parking` with **737 FLAT and 3,323 TOD spaces (4,060 total)**. The **79 JUMP spaces** are excluded from the main numeric-price analysis because their midpoint mixes hourly and multi-hour maximum charges. For retained spaces, `price_midpoint` is a stated hourly price for FLAT and a minimum/maximum hourly-rate midpoint for TOD, not an observed average payment. These October 2026 prices remain proxies for the August 2025 outcome; no historical reconstruction is attempted.
+
+The primary candidates are `price_midpoint`, `time_limit_hours`, `population_density`, `median_income`, `nearby_restaurant_retail_count`, `drive_alone_share`, and `RateType`. Additional exploration covers `MeterType`, `housing_density`, `transit_share`, `walk_share`, and `nearby_business_count`. Final regression predictors, categorical encoding, and transformations have not been selected.
+
+Zoning is excluded from the analysis lists because its coverage is too incomplete; its missing values do not remove rows. The primary commercial measure is the quarter-mile food-service/retail registration count. The all-business measure stays available for comparison, and the two are not automatically included together. Buffers, zoning assignments, and the outcome are not rebuilt.
+
+Income remains missing for **44/4,060 spaces (1.08%)** in the EDA sample, concentrated in two tracts: `06037207307` (15 spaces) and `06037265301` (29). Notebook 04 keeps them in `parking` and prepares a separate `income_sample` using complete cases only for the outcome and primary candidate list: **4,016 spaces**, including 737 FLAT and 3,279 TOD. This is a potential-specification comparison, not final predictor selection; each later model must define complete cases using its own included variables. No income is imputed and unrelated missing columns are not used to exclude rows.
+
+All three notebook DataFrames stay in memory. Notebook 04 does not export a replacement dataset or overwrite the original cross-section.
 
 Notebook 03 also retains the source commuting counts (`commuters`, `drive_alone`, `public_transit`, `walked`) and `ALAND_SQMI` as traceable components. Neither the counts nor the density/share alternatives have been selected for a model. Location controls beyond the coordinates remain planned.
 
@@ -239,7 +251,11 @@ These sources are not all intended for the primary regression. Monthly aggregati
 | ACS worker denominator and land-area units | Shares use total workers including home workers; densities use square miles of land | Resident proxies and rounded Gazetteer areas, not direct local parking demand |
 | Food-service/retail subset | Use transparent NAICS prefixes 722 and 44–45 | Broader than restaurants alone; unclassified records cannot enter the subset |
 | Original zoning labels and overlap handling | Preserve source code/class/description; conflicting assignments would stay missing | No broad-category interpretation or nearest-parcel fallback |
-| Preserve missing predictors | Allow later transparent missingness decisions | Model-specific sample size remains undecided |
+| FLAT + TOD main analysis | Exclude the 79 JUMP prices with mixed units in Notebook 04 | Main N = 4,060; original 4,139-space file remains available |
+| Primary food-service/retail measure | Use `nearby_restaurant_retail_count`; keep all-business count for comparison | Registrations are not necessarily unique storefronts; October 2026 vintage remains |
+| Exclude zoning from primary models | Only 49 original spaces have matched codes | Keep the fields for provenance without deleting zoning-missing spaces |
+| Preserve missing predictors | Keep 44 missing incomes in EDA; prepare complete cases only for specified variables | Primary-list comparison N = 4,016; later model samples depend on included variables |
+| Preserve current sensor rules | Keep the 24-hour cutoff and 25-active-day requirement | Comparisons of 12/24/48 hours, 20/25/28 days, and Sunday reporting remain planned |
 | Zoning source recovery and geometry | Two separately saved current pages; original ID coverage, no exact-feature duplicates, 15 empty areas omitted | Mixed vintage and incomplete point coverage; no broad category inferred |
 
 These are implemented assumptions or identified concerns, not completed robustness findings. The raw audit's **YELLOW** outcome-validity assessment remains relevant: the current cleaning rules operationalize a measure, but do not establish flawless sensor reporting.
@@ -256,7 +272,10 @@ These are implemented assumptions or identified concerns, not completed robustne
 → zoning source code: 49 assigned (1.18%); 4,090 unmatched retained
 → saved cross-section: 4,139 rows × 36 columns                   [COMPLETED]
   4,139 unique SpaceIDs; 0 duplicate SpaceIDs
-→ EDA → variable selection → OLS → diagnostics → results        [PLANNED]
+→ Notebook 04: exclude 79 JUMP spaces → 4,060 FLAT + TOD         [COMPLETED]
+→ initial EDA keeps 44 missing incomes; zoning is not a row filter
+→ separate primary-list complete cases: 4,016 spaces             [COMPLETED]
+→ variable selection → OLS → diagnostics → results               [PLANNED]
 ```
 
 ### Current regression dataset
@@ -267,18 +286,18 @@ These are implemented assumptions or identified concerns, not completed robustne
 - **Saved output:** [`data/processed/parking_cross_section.csv`](data/processed/parking_cross_section.csv).
 - **Support:** original duration totals, active days, rate/time-limit labels, Census components, and match-status fields remain available for traceability.
 
-This is the completed Notebook 03 construction output. A later regression's estimation sample may differ because predictor selection and missing-data decisions remain open; the notebook does not impose a complete-case sample.
+This is the completed Notebook 03 construction output and remains unchanged. Notebook 04 defines the 4,060-space main EDA sample and a separate 4,016-space complete-case comparison for the primary candidates. A later regression's estimation sample may differ with its included predictors; neither file construction nor initial EDA chooses the final specification.
 
 ## 10. Notebook workflow
 
-Run notebooks in numerical order. Relative data paths assume a notebook working directory of `notebooks/`. Notebooks 01–03 have executed code and saved validation outputs. Notebooks 04–08 remain shells with no analysis code.
+Run notebooks in numerical order. Relative data paths assume a notebook working directory of `notebooks/`. Notebooks 01–04 have executed code and saved outputs. Notebook 04 contains initial EDA; Notebooks 05–08 remain shells with no analysis code.
 
 | Notebook | Status | Purpose / planned course methods |
 |---|---|---|
 | [01 Clean Occupancy](notebooks/01_clean_occupancy.ipynb) | COMPLETED | Construct and clean the dependent variable |
 | [02 Clean Meter Inventory](notebooks/02_clean_meter_inventory.ipynb) | COMPLETED; coordinate issue UNRESOLVED | Prepare meter characteristics and initial predictors; check occupancy linkage |
 | [03 Build Cross-Section](notebooks/03_build_cross_section.ipynb) | COMPLETED; zoning coverage unresolved | Combine Y/meters; assign tracts; attach ACS counts, densities and shares; construct business counts and partial zoning labels; validate one row per SpaceID; save `parking_cross_section.csv` |
-| [04 EDA](notebooks/04_eda.ipynb) | PLANNED | Descriptive statistics, distributions, correlations, scatterplots, missingness, and consideration of transformations/outliers |
+| [04 EDA](notebooks/04_eda.ipynb) | Initial EDA COMPLETED | Implement approved sample/candidate decisions; summarize distributions and missingness; show histograms, boxplots, scatterplots, correlations, and IQR flags; preserve original data and defer transformations/models |
 | [05 Variable Selection](notebooks/05_variable_selection.ipynb) | PLANNED | ECON 430 tools including Boruta, Mallows Cp, and VIF |
 | [06 Regression Models](notebooks/06_regression_models.ipynb) | PLANNED | Simple OLS, a 2–3 predictor model, and a broader supported model; compare adjusted R², AIC/BIC, and cross-validation |
 | [07 Diagnostics](notebooks/07_diagnostics.ipynb) | PLANNED | Residual plots, RESET, Breusch–Pagan, White, QQ/Jarque–Bera, Cook's distance, leverage, DFBETAS, bootstrap, and cross-validation |
@@ -301,14 +320,19 @@ Prioritize methods taught in ECON 430 and explicitly required by the assignment.
 - [x] Add fixed quarter-mile business and food-service/retail counts.
 - [x] Implement zoning matching and preserve original source labels; 49 code assignments, no arbitrary fallback.
 - [ ] Resolve broad zoning/land-use coverage; 4,090 spaces remain unmatched.
-- [ ] EDA on the final analysis dataset.
+- [x] Implement approved Notebook 04 decisions: 4,060 FLAT + TOD spaces, primary food-service/retail measure, zoning excluded from analysis lists.
+- [x] Preserve missing income in EDA; verify 4,016 complete cases for the primary candidate list.
+- [x] Initial EDA: descriptive statistics, missingness, distributions, scatterplots, correlations, and outlier inspection.
+- [ ] Sensor robustness comparisons: 12/24/48-hour intervals, 20/25/28 active days, and Sunday-reporting differences.
 - [ ] Variable selection.
 - [ ] OLS model estimation and comparison.
 - [ ] Diagnostics, robustness, and out-of-sample validation.
 - [ ] Final interpretation, tables, and figures.
 - [ ] Final ECON 430 report.
 
-Early distribution and missingness checks in the cleaning notebooks do not mean Notebook 04's EDA is complete. `docs/cleaning_decisions.md` remains a headings-only template; implemented choices are currently documented in the notebooks and this README. No final report figures or tables have been generated.
+Notebook 04's initial EDA is now executed, separate from the earlier cleaning checks. Mean occupancy is **0.539** in the 4,060-space main sample. Price, density, income, and registration counts have right tails. Population/housing densities correlate at **0.925**, the two business counts at **0.898**, and price/food-service-retail count at **0.545**. These are descriptive associations, not causal effects or final variable-selection results. IQR flags do not remove observations; no transformations are implemented.
+
+No assignment handout or lecture notebooks were found in the local project during this update. Notebook 04 uses the requested introductory pandas summaries and matplotlib plots, without assuming optional QQ plots or advanced methods are course requirements. `docs/cleaning_decisions.md` remains a headings-only template; implemented choices are documented in the notebooks and this README. EDA plots and tables are embedded in Notebook 04; final regression report figures and tables remain unfinished.
 
 ## 12. Reproducibility and repository notes
 
@@ -332,7 +356,7 @@ python3 -m pip install -r requirements.txt
 python3 -m jupyterlab
 ```
 
-To reproduce the dataset from its inputs, run Notebooks 01–03 in numerical order, with the kernel working directory set to `notebooks/`. **For new analysis, start Notebook 04 from `../data/processed/parking_cross_section.csv`; do not rebuild the merges there.** Read `SpaceID` and `GEOID` as strings. Notebook 03 is the authoritative construction pipeline for this saved cross-section. Keep the named source files and retrieval directories consistent with the notebook paths. Dependencies for some planned course tools, including Boruta, are not yet declared; address them when those stages are implemented. No random procedures have been implemented; later random procedures should use explicit seeds consistent with the assignment's reproducibility requirement.
+To reproduce the dataset from its inputs, run Notebooks 01–03 in numerical order, with the kernel working directory set to `notebooks/`. **Notebook 04 starts from `../data/processed/parking_cross_section.csv`; it does not rebuild merges or save over this file.** Its full, FLAT + TOD, and income-complete DataFrames are held in memory. To reproduce the EDA, run Notebook 04 after the saved cross-section is available; no raw-data acquisition is needed. Notebook 05 should continue from this source and the documented sample rules, applying complete-case filtering only to its actual model variables. Read `SpaceID` and `GEOID` as strings. Notebook 03 is the authoritative construction pipeline for this saved cross-section. Keep the named source files and retrieval directories consistent with the notebook paths. Dependencies for some planned course tools, including Boruta, are not yet declared; address them when those stages are implemented. No random procedures have been implemented; later random procedures should use explicit seeds consistent with the assignment's reproducibility requirement.
 
 Acquisition scripts can obtain new snapshots, but they are not prerequisites for continuing with the existing sources. `collect.py --month 2025_08` uses a rolling LADOT archive, full exports, and separate retrieval directories. The original month may eventually disappear, and current inventory/business snapshots change. Preserve original files and manifests rather than silently replacing them with a new vintage. Direct Census API and Ticketmaster expansion require personal keys; collected data used public endpoints including Census Reporter.
 
@@ -340,7 +364,7 @@ The source catalog and raw dictionary preserve acquisition-era context, not an u
 
 ## 13. Guidance for future work
 
-**Handoff:** Notebook 03 is now the authoritative data-construction pipeline. Continue in Notebook 04 using the saved `data/processed/parking_cross_section.csv`. Do not silently reconstruct Y, change the 24-hour or 25-day rules, alter the quarter-mile business radius, switch geographic matching, or redefine variables. Document any intentional change and its effect on the sample in the relevant notebook and this README.
+**Handoff:** Notebook 03 remains the authoritative construction pipeline for the original 4,139-space file. Notebook 04 implements the approved 4,060-space FLAT + TOD EDA and verifies the 4,016-space primary-list complete-case comparison. Continue with variable selection in Notebook 05, preserving those distinctions and the original CSV. Do not silently reconstruct Y, change the 24-hour or 25-day rules, alter the quarter-mile business radius, switch geographic matching, or redefine variables. Sensor sensitivity comparisons remain planned; document any intentional change and its effect on the sample.
 
 - Preserve the one-row-per-parking-space cross-sectional design unless the research question is intentionally changed.
 - Preserve time-weighted occupancy; do not substitute the percentage of OCCUPIED transaction rows.
