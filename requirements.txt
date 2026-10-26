@@ -8,3 +8,5 @@ scikit-learn
 geopandas
 jupyterlab
 ipykernel
+boruta==0.4.3
+ydata-profiling==4.18.4
