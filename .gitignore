@@ -22,10 +22,17 @@ Desktop.ini
 *.zip
 *.gz
 
-data/
+data/*
 Spotless/
 .DS_Store
 *.csv
 *.parquet
 *.zip
 *.gz
+
+# Share the fixed processed inputs needed by the group; keep raw data ignored.
+!data/processed/
+data/processed/*
+!data/processed/parking_cross_section.csv
+!data/processed/space_occupancy_aug2025.csv
+!data/processed/meter_inventory_clean.csv
