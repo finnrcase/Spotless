@@ -1,3 +1,5 @@
+> **Current execution update:** current code, including Profiling, passes fresh kernels. The user cancelled DFBETAS, so that required diagnostic remains Missing and 4(d) is Partial. Current results intentionally use a new significance-based Model 3; see [changes](rubric_completion_changes.md), [execution](current_execution_results.json), and [verification](current_readiness.json). The summary below is the preserved pre-completion migration record. Raw reconstruction remains unverified.
+
 # Notebook migration validation
 
 Baseline commit: `1a6ef43cc32cd4e51d72e928ca2d9edfcfbcbc30` (`Kerem_Vis`). Migration branch: `refactor/430-rubric-alignment`. The recorded `main` reference is `e480f468a9366603f908f4a7c72ab6c4b5999925` and remains unchanged. Validation was performed October 27, 2026.

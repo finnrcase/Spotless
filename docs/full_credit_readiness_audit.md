@@ -1,3 +1,5 @@
+> **Historical estimate assessed the pre-completion version.** See [current coverage](rubric_compliance_audit.md), [changes](rubric_completion_changes.md), and [verified current execution](current_execution_results.json). Other analytical gaps have current evidence, but DFBETAS remains required and Missing because the user cancelled its addition. Group names and syllabus review remain deferred. No guaranteed full-credit grade is asserted.
+
 # ECON 430 full-credit readiness audit and estimated grade
 
 Reviewed October 27, 2026 against commit `3507f1c6507c975c55ef04994acd73ca62e0a928`, the six main notebooks, three cleaning notebooks, processed CSVs, saved outputs and recorded execution evidence. Authority: [the professor’s four-page assignment PDF](../project1-1%20%281%29.pdf), SHA-256 `925f6c47394ebaf43430faad04166c1719082a0ff2b35b8e9e4f4e31539bd679`. Its sections total **130 points**; the PDF does not allocate points within subsections or specify letter-grade cutoffs.

@@ -1,0 +1,184 @@
+{
+  "n": 4016,
+  "predictors": [
+    "price_midpoint",
+    "population_density",
+    "nearby_restaurant_retail_count",
+    "transit_share",
+    "walk_share",
+    "nearby_business_count",
+    "RateType_TOD"
+  ],
+  "selection_rule": "all conventional p<.05 slopes in original 12-candidate full OLS",
+  "coefficients": {
+    "const": {
+      "OLS coefficient": 0.3195173853,
+      "Conventional SE": 0.0093856604,
+      "HC1 SE": 0.0105497077,
+      "Conventional p": 2.359190022e-223,
+      "HC1 p": 1.708227657e-201,
+      "HC1 95% lower": 0.2988403381,
+      "HC1 95% upper": 0.3401944325
+    },
+    "price_midpoint": {
+      "OLS coefficient": 0.0515431942,
+      "Conventional SE": 0.0023150929,
+      "HC1 SE": 0.002249493,
+      "Conventional p": 1.246231449e-103,
+      "HC1 p": 3.427945686e-116,
+      "HC1 95% lower": 0.047134269,
+      "HC1 95% upper": 0.0559521194
+    },
+    "population_density": {
+      "OLS coefficient": 3.9611e-06,
+      "Conventional SE": 2.161e-07,
+      "HC1 SE": 2.273e-07,
+      "Conventional p": 3.645246997e-72,
+      "HC1 p": 5.18242141e-68,
+      "HC1 95% lower": 3.5156e-06,
+      "HC1 95% upper": 4.4067e-06
+    },
+    "nearby_restaurant_retail_count": {
+      "OLS coefficient": -0.0005343657,
+      "Conventional SE": 4.21681e-05,
+      "HC1 SE": 3.8711e-05,
+      "Conventional p": 4.11595595e-36,
+      "HC1 p": 2.411569984e-43,
+      "HC1 95% lower": -0.0006102378,
+      "HC1 95% upper": -0.0004584936
+    },
+    "transit_share": {
+      "OLS coefficient": 0.1004612463,
+      "Conventional SE": 0.0449134094,
+      "HC1 SE": 0.0459653097,
+      "Conventional p": 0.0253557541,
+      "HC1 p": 0.0288457342,
+      "HC1 95% lower": 0.0103708948,
+      "HC1 95% upper": 0.1905515977
+    },
+    "walk_share": {
+      "OLS coefficient": 0.2823329843,
+      "Conventional SE": 0.0286379071,
+      "HC1 SE": 0.026737245,
+      "Conventional p": 1.135824783e-22,
+      "HC1 p": 4.589094246e-26,
+      "HC1 95% lower": 0.2299289471,
+      "HC1 95% upper": 0.3347370215
+    },
+    "nearby_business_count": {
+      "OLS coefficient": 6.66312e-05,
+      "Conventional SE": 9.2718e-06,
+      "HC1 SE": 8.8858e-06,
+      "Conventional p": 0.0,
+      "HC1 p": 0.0,
+      "HC1 95% lower": 4.92153e-05,
+      "HC1 95% upper": 8.40471e-05
+    },
+    "RateType_TOD": {
+      "OLS coefficient": 0.0435671151,
+      "Conventional SE": 0.0070520405,
+      "HC1 SE": 0.0080994654,
+      "Conventional p": 7e-10,
+      "HC1 p": 7.49e-08,
+      "HC1 95% lower": 0.0276924546,
+      "HC1 95% upper": 0.0594417756
+    }
+  },
+  "economic_effects": {
+    "price_midpoint": {
+      "Comparison": "$1 higher stated hourly proxy",
+      "Occupancy difference (pp)": 5.1543194154,
+      "HC1 lower (pp)": 4.7134268957,
+      "HC1 upper (pp)": 5.595211935,
+      "HC1 p": 3.427945686e-116
+    },
+    "population_density": {
+      "Comparison": "1,000 more people per sq mile",
+      "Occupancy difference (pp)": 0.3961146118,
+      "HC1 lower (pp)": 0.3515637701,
+      "HC1 upper (pp)": 0.4406654535,
+      "HC1 p": 5.18242141e-68
+    },
+    "nearby_restaurant_retail_count": {
+      "Comparison": "100 more food/retail registrations, total fixed",
+      "Occupancy difference (pp)": -5.3436568781,
+      "HC1 lower (pp)": -6.1023781988,
+      "HC1 upper (pp)": -4.5849355575,
+      "HC1 p": 2.411569984e-43
+    },
+    "transit_share": {
+      "Comparison": "10-pp higher resident transit share",
+      "Occupancy difference (pp)": 1.0046124627,
+      "HC1 lower (pp)": 0.103708948,
+      "HC1 upper (pp)": 1.9055159774,
+      "HC1 p": 0.0288457342
+    },
+    "walk_share": {
+      "Comparison": "10-pp higher resident walk share",
+      "Occupancy difference (pp)": 2.8233298428,
+      "HC1 lower (pp)": 2.2992894706,
+      "HC1 upper (pp)": 3.3473702149,
+      "HC1 p": 4.589094246e-26
+    },
+    "nearby_business_count": {
+      "Comparison": "100 more total registrations, food/retail fixed",
+      "Occupancy difference (pp)": 0.6663117103,
+      "HC1 lower (pp)": 0.4921528027,
+      "HC1 upper (pp)": 0.840470618,
+      "HC1 p": 0.0
+    },
+    "RateType_TOD": {
+      "Comparison": "TOD versus FLAT",
+      "Occupancy difference (pp)": 4.3567115124,
+      "HC1 lower (pp)": 2.7692454645,
+      "HC1 upper (pp)": 5.9441775603,
+      "HC1 p": 7.49e-08
+    }
+  },
+  "model_comparison": {
+    "Model 1": {
+      "Slopes": 1.0,
+      "N": 4016.0,
+      "R2": 0.1567753867,
+      "Adjusted R2": 0.1565653158,
+      "AIC": -2483.6705134405,
+      "BIC": -2471.0744301178,
+      "In-sample RMSE": 0.1775224023,
+      "Mean 5-fold RMSE": 0.1775636802,
+      "SD across folds": 0.0018068365
+    },
+    "Model 2": {
+      "Slopes": 3.0,
+      "N": 4016.0,
+      "R2": 0.243497535,
+      "Adjusted R2": 0.2429318552,
+      "AIC": -2915.5172588423,
+      "BIC": -2890.3250921968,
+      "In-sample RMSE": 0.1681460628,
+      "Mean 5-fold RMSE": 0.1682078252,
+      "SD across folds": 0.0026258924
+    },
+    "Model 3 (rubric)": {
+      "Slopes": 7.0,
+      "N": 4016.0,
+      "R2": 0.2941379992,
+      "Adjusted R2": 0.2929052063,
+      "AIC": -3185.769993805,
+      "BIC": -3135.3856605141,
+      "In-sample RMSE": 0.1624207196,
+      "Mean 5-fold RMSE": 0.1627955747,
+      "SD across folds": 0.0013485398
+    },
+    "Prior seven (supporting)": {
+      "Slopes": 7.0,
+      "N": 4016.0,
+      "R2": 0.2736227204,
+      "Adjusted R2": 0.2723540974,
+      "AIC": -3070.712410426,
+      "BIC": -3020.328077135,
+      "In-sample RMSE": 0.1647641244,
+      "Mean 5-fold RMSE": 0.1653151741,
+      "SD across folds": 0.0017323366
+    }
+  }
+}
