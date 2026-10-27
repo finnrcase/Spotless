@@ -1,0 +1,5 @@
+-r requirements.txt
+Boruta>=0.4
+ydata-profiling>=4.12
+nbclient
+nbformat
