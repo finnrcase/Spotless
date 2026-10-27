@@ -1,8 +1,29 @@
 # Spotless — ECON 430 Parking Occupancy Project
 
-UCLA ECON 430 Applied Econometric Analysis. **Current stage:** Notebooks 01–08 contain executed analysis, including the final results notebook. The original saved cross-section remains **4,139 parking spaces and 36 columns**. Notebook 04 retains **4,060 FLAT + TOD spaces**, with **4,016 complete cases for the outcome and primary candidate list**. The primary seven-variable model uses 4,016 spaces in 45 tracts; HC1 inference, a log-density check and feasible sample sensitivities are complete. DFBETAS, remaining raw-sensor sensitivities and final submission packaging are outstanding. See the [final audit](docs/final_audit.md).
+UCLA ECON 430 Applied Econometric Analysis. **Current stage:** The existing executed analysis is preserved in six rubric-aligned main notebooks and three cleaning notebooks. Current execution evidence and outstanding requirements are documented in the linked audits. The original saved cross-section remains **4,139 parking spaces and 36 columns**. Notebook 04 retains **4,060 FLAT + TOD spaces**, with **4,016 complete cases for the outcome and primary candidate list**. The primary seven-variable model uses 4,016 spaces in 45 tracts; HC1 inference, a log-density check and feasible sample sensitivities are complete. DFBETAS, remaining raw-sensor sensitivities and final submission packaging are outstanding. See the [final audit](docs/final_audit.md).
 
 This README records the current design and workflow. Implemented details come from the notebook code, saved outputs, and local processed files; hypotheses and future work are labeled separately. The earlier [raw-data audit](docs/design_validation_audit.md) and [acquisition catalog](docs/data_sources.md) describe earlier phases, so statements there that no cleaning has occurred are historical, not the project's current status.
+
+## Rubric-aligned navigation — October 27, 2026
+
+The six main notebooks follow the professor’s [130-point assignment PDF](project1-1%20%281%29.pdf). The original eight notebooks were reorganized losslessly on `refactor/430-rubric-alignment` from commit `1a6ef43`. All **263 original cells**, saved outputs, plots, metadata, model specifications and data definitions are accounted for. Detailed project documentation below is retained. **Notebook numbers in the inherited detailed discussion refer to the original eight-notebook workflow**; the table below and migration audit supply the current locations. Historical completion claims are superseded by the current rubric audit.
+
+| Current notebook | Purpose | Original material |
+|---|---|---|
+| [01 Economic Theory](notebooks/01_economic_theory.ipynb) | 1(a)–1(d): question, literature, hypothesis and expectations | Original results introduction; README theory retained |
+| [02 Data Description and EDA](notebooks/02_data_description_eda.ipynb) | 2(a)–2(h): sources, descriptives, all existing EDA figures, missingness and Profiling | Original 04 plus EDA additions from 08 |
+| [03 Variable Selection and Models](notebooks/03_variable_selection_models.ipynb) | 3(a)–3(f): Boruta, Cp, VIF, unchanged 1/3/7-predictor models and five-fold comparison | Original 05 and 06, selection summary from 08 |
+| [04 Diagnostics and Robustness](notebooks/04_diagnostics_robustness.ipynb) | Organizational 4(a)–4(g): residuals, formal tests, HC1, influence, bootstrap, validation references and sensitivities | Original 07, all calculations retained |
+| [05 Results and Interpretation](notebooks/05_results_interpretation.ipynb) | 5(a)–5(e): final HC1 table, every coefficient including intercept, significance, CIs, fit and conclusion | Original 08 results, duplicate complete coefficient narrative from 06 |
+| [06 Limitations and Extensions](notebooks/06_limitations_extensions.ipynb) | 6(a)–6(e): limitations, bias, policy, future work and external validity | Original limitations plus duplicated conclusion/sensor plan; detailed documentation linked |
+
+The separate `notebooks/cleaning/` directory holds [01 occupancy](notebooks/cleaning/01_clean_occupancy.ipynb), [02 inventory](notebooks/cleaning/02_clean_meter_inventory.ipynb), and [03 cross-section construction](notebooks/cleaning/03_build_cross_section.ipynb). Their cell order, methods and saved outputs are unchanged; relative paths gain one parent directory. Section 7 (code quality/reproducibility) is assessed throughout the project.
+
+**Execution:** With the three tracked processed CSVs available and `requirements.txt` installed, run main notebooks 01–06 in order, each in a fresh kernel with working directory `notebooks/`; 01 and 06 contain narrative only. The combined selection/models notebook initializes selection first, then reloads its independent regression setup. Bootstrap seed 90095 and selection/CV seed 10 are unchanged. Saved CV/bootstrap references are identified explicitly. Rebuilding the data requires the original raw inputs and running the three cleaning notebooks in order with working directory `notebooks/cleaning/`. Their inherited export cells write processed CSVs; validation must execute copies in a separate workspace if those files must remain untouched.
+
+**Audits:** [Rubric compliance](docs/rubric_compliance_audit.md) · [Every-cell migration](docs/notebook_restructure_audit.md) · [Validation summary](docs/notebook_validation_summary.md) · [Machine-readable execution results](docs/notebook_validation_results.json).
+
+**Outstanding:** theory-based expected magnitudes; Q-Q/density coverage for remaining continuous EDA candidates; Model 3’s all-significant-predictors requirement (original seven retained); DFBETAS; developed results-to-literature comparison; full environment/raw-data reproducibility; one final group PDF/HTML report with all names, code and consolidated references; syllabus policy review. Existing 12/48-hour, 20-day and Sunday sensor-check plans are additional unfinished extensions. See the audit for precise evidence and status rather than treating old checklists as authoritative.
 
 ## 1. Project overview
 
@@ -30,7 +51,7 @@ The resulting sample represents retained sensor-equipped metered spaces, not all
 
 ## 4. Dependent variable — COMPLETED
 
-[`01_clean_occupancy.ipynb`](notebooks/01_clean_occupancy.ipynb) constructs **`occupancy_rate`**, August 2025 time-weighted occupancy during retained valid observation time:
+[`01_clean_occupancy.ipynb`](notebooks/cleaning/01_clean_occupancy.ipynb) constructs **`occupancy_rate`**, August 2025 time-weighted occupancy during retained valid observation time:
 
 ```text
 occupancy_rate = occupied valid minutes / total valid minutes
@@ -58,7 +79,7 @@ The saved notebook reports mean occupancy **0.536**, median **0.537**, 25th perc
 
 ## 5. Meter inventory variables — COMPLETED, with unresolved validation
 
-[`02_clean_meter_inventory.ipynb`](notebooks/02_clean_meter_inventory.ipynb) prepares the LADOT inventory from `data/raw/ladot_meters/20261017T052111914317Z/inventory.csv`.
+[`02_clean_meter_inventory.ipynb`](notebooks/cleaning/02_clean_meter_inventory.ipynb) prepares the LADOT inventory from `data/raw/ladot_meters/20261017T052111914317Z/inventory.csv`.
 
 The raw inventory has **35,022 rows**, **35,015 unique SpaceIDs**, and seven extra records associated with repeated IDs. The notebook inspects the paired records, confirms identical exported attributes, and removes exact duplicate rows with `drop_duplicates()`. The saved inventory has **35,015 rows and no repeated SpaceIDs**.
 
@@ -159,7 +180,7 @@ housing_density    = housing_units / ALAND_SQMI
 
 ### Notebook 03 construction and missingness — COMPLETED
 
-[`03_build_cross_section.ipynb`](notebooks/03_build_cross_section.ipynb) saves [`data/processed/parking_cross_section.csv`](data/processed/parking_cross_section.csv): **4,139 rows, 36 columns, 4,139 unique SpaceIDs, no duplicates**. The 46 inventory-unmatched occupancy spaces are excluded explicitly; no additional parking spaces are removed for missing predictors.
+[`03_build_cross_section.ipynb`](notebooks/cleaning/03_build_cross_section.ipynb) saves [`data/processed/parking_cross_section.csv`](data/processed/parking_cross_section.csv): **4,139 rows, 36 columns, 4,139 unique SpaceIDs, no duplicates**. The 46 inventory-unmatched occupancy spaces are excluded explicitly; no additional parking spaces are removed for missing predictors.
 
 - **Census:** load 9,129 California TIGER/Line tracts and retain 2,498 LA County tracts (`STATEFP="06"`, `COUNTYFP="037"`). WGS84 meter points (EPSG:4326) are matched with `within` to tract polygons reprojected from NAD83 (EPSG:4269). All **4,139** spaces receive a tract and ACS record (**100%**, zero unmatched); no centroid/nearest fallback or multiple assignments occur. A geographically unmatched space would remain in the base with missing geographic predictors, rather than be silently dropped.
 - **ACS:** population (B01003), housing units (B25001), median income (B19013), and commuting counts (B08301). Shares divide mode counts by B08301 total workers age 16+, including home workers; zero totals remain missing. All 2,498 ACS tracts match Gazetteer area. Density is count / `ALAND_SQMI`; three nonpositive-area tracts remain missing, giving 2,495 tract densities. None of the retained spaces falls in those three tracts.
@@ -290,20 +311,11 @@ This is the completed Notebook 03 construction output and remains unchanged. Not
 
 ## 10. Notebook workflow
 
-Run notebooks in numerical order. Relative data paths assume a notebook working directory of `notebooks/`. Notebooks 01–08 contain code and saved outputs. Notebooks 05–08 were executed from fresh kernels during the final audit; 01–04 were reviewed without rebuilding data.
+Use the current nine-notebook navigation and execution instructions above. The cleaning folder separates construction from the six professor-facing rubric sections; all original selection, regression, diagnostic, bootstrap and sensitivity work remains. Run each main notebook in its own clean kernel. Read [the validation summary](docs/notebook_validation_summary.md) before claiming current reproducibility: preservation of saved results and successful fresh execution are distinct checks.
 
-| Notebook | Status | Purpose / course methods |
-|---|---|---|
-| [01 Clean Occupancy](notebooks/01_clean_occupancy.ipynb) | COMPLETED | Construct and clean the dependent variable |
-| [02 Clean Meter Inventory](notebooks/02_clean_meter_inventory.ipynb) | COMPLETED; coordinate issue UNRESOLVED | Prepare meter characteristics and initial predictors; check occupancy linkage |
-| [03 Build Cross-Section](notebooks/03_build_cross_section.ipynb) | COMPLETED; zoning coverage unresolved | Combine Y/meters; assign tracts; attach ACS counts, densities and shares; construct business counts and partial zoning labels; validate one row per SpaceID; save `parking_cross_section.csv` |
-| [04 EDA](notebooks/04_eda.ipynb) | Initial EDA COMPLETED | Implement approved sample/candidate decisions; summarize distributions and missingness; show histograms, boxplots, scatterplots, correlations, and IQR flags; preserve original data and defer transformations/models |
-| [05 Variable Selection](notebooks/05_variable_selection.ipynb) | COMPLETED | Boruta, Mallows Cp and VIF; redundant best-eight display removed |
-| [06 Regression Models](notebooks/06_regression_models.ipynb) | COMPLETED | Models with 1, 3 and 7 predictors; adjusted R², AIC/BIC and five-fold prediction |
-| [07 Diagnostics](notebooks/07_diagnostics.ipynb) | COMPLETED WITH GAPS | Residuals, RESET, variance/normality tests, HC1, influence, 1,000 bootstrap draws and log-density/sample sensitivity; DFBETAS and remaining sensor rebuild outstanding |
-| [08 Results](notebooks/08_results.ipynb) | COMPLETED WITH SUBMISSION GAPS | Final HC1 table, EDA additions, literature, results/robustness, limitations and requirement checklist; PDF/HTML packaging pending |
+Original workflow crosswalk: old 01–03 → `cleaning/01–03`; old 04 → current 02; old 05–06 → current 03; old 07 → current 04; old 08 → current 01/02/03/05/06 according to subject. Current 06 additionally links the detailed assumptions retained below and in the source reports. [Every original cell has a destination](docs/notebook_restructure_audit.md).
 
-Prioritize methods taught in ECON 430 and explicitly required by the assignment. DFBETAS is required but no example was found in the available lectures. Shared-tract dependence remains a limitation; no tract-clustered estimator was demonstrated or added.
+Prioritize ECON 430 methods and assignment requirements. DFBETAS is required but absent; shared-tract dependence remains a limitation, and clustered inference is not a separately named PDF diagnostic. The existing seven-predictor model is preserved, not redesigned to satisfy significance wording.
 
 ## 11. Current project status
 
@@ -342,7 +354,8 @@ Remaining rubric issues are the lecture-only DFBETAS gap and clarification of Mo
 ## 12. Reproducibility and repository notes
 
 ```text
-notebooks/              Student-written cleaning and econometric workflow
+notebooks/              Six main notebooks in assignment order
+notebooks/cleaning/     Three original data-construction notebooks (paths corrected)
 data/raw/              Original source files and provider metadata; do not edit
 data/interim/          Intermediate outputs; currently empty
 data/processed/        Notebook-generated outputs; three CSVs, including the Notebook 03 candidate cross-section
@@ -352,7 +365,7 @@ reports/{figures,tables}/         Final report outputs; currently empty
 docs/                  Sources, retrieval records, raw audit, and decisions template
 ```
 
-Notebooks, code, documentation and the three fixed processed CSVs below are tracked in Git. **A fresh clone includes everything needed to run Notebooks 04–08 and reproduce the models without downloading raw data.** Raw data remain excluded because of their size; rebuilding the cleaning and geographic construction in Notebooks 01–03 still requires the original files at the documented paths, including Notebook 03's supplemental zoning pages. Read `SpaceID` and Census `GEOID` as strings so identifiers retain leading zeros.
+Notebooks, code, documentation and the three fixed processed CSVs below are tracked in Git. **A fresh clone includes the processed data required by the current main notebooks 02–05; execution also requires installing the declared environment dependencies. A full raw-data rebuild has not been tested in this migration.** Raw data remain excluded because of their size; rebuilding the cleaning and geographic construction in Notebooks 01–03 still requires the original files at the documented paths, including Notebook 03's supplemental zoning pages. Read `SpaceID` and Census `GEOID` as strings so identifiers retain leading zeros.
 
 | Included dataset | Rows | Purpose |
 |---|---:|---|
@@ -376,7 +389,7 @@ cd notebooks
 python -m jupyterlab
 ```
 
-Select the environment's Python kernel and run Notebooks **04, 05, 06, 07 and 08** in order. To reproduce the regression estimates and diagnostics directly, start with **06**, then **07** and **08**; the saved selection discussion is already included. No API key or raw-data download is needed for these notebooks. Notebook 08 references the saved selection, CV and bootstrap results, so rerun the earlier notebooks first if intentionally changing the data or specifications.
+Select the environment's Python kernel and run the current main notebooks **01–06** in assignment order, each in a fresh kernel. Main **03** contains selection and model comparisons, **04** diagnostics, and **05** final results; **01** and **06** are narrative. No API key or raw-data download is needed for these notebooks. Notebook 08 references the saved selection, CV and bootstrap results, so rerun the earlier notebooks first if intentionally changing the data or specifications.
 
 From the project root, a local environment can use:
 
@@ -385,7 +398,7 @@ python3 -m pip install -r requirements.txt
 python3 -m jupyterlab
 ```
 
-To reproduce the dataset from its inputs, run Notebooks 01–03 in numerical order, with the kernel working directory set to `notebooks/`. **Notebook 04 starts from `../data/processed/parking_cross_section.csv`; it does not rebuild merges or save over this file.** Its full, FLAT + TOD, and income-complete DataFrames are held in memory. To reproduce the EDA, run Notebook 04 after the saved cross-section is available; no raw-data acquisition is needed. Notebooks 05–08 start from this source and use the documented 4,016-space common sample; their robustness samples are kept separate in memory. Read `SpaceID` and `GEOID` as strings. Notebook 03 is the authoritative construction pipeline for this saved cross-section. Keep the named source files and retrieval directories consistent with the notebook paths. Boruta 0.4.3 and ydata-profiling 4.18.4 are declared in `requirements.txt`. Boruta and five-fold validation use seed 10; the 1,000-draw bootstrap uses seed 90095. Notebook 08 references the executed selection, bootstrap and validation results instead of repeating the expensive calculations.
+To reproduce the dataset from its inputs, run the three `cleaning/` notebooks in order, with the kernel working directory set to `notebooks/cleaning/` and their relative input paths starting `../../data/`. Raw inputs are not present in this checkout. **Notebook 04 starts from `../data/processed/parking_cross_section.csv`; it does not rebuild merges or save over this file.** Its full, FLAT + TOD, and income-complete DataFrames are held in memory. To reproduce the EDA, run Notebook 04 after the saved cross-section is available; no raw-data acquisition is needed. Notebooks 05–08 start from this source and use the documented 4,016-space common sample; their robustness samples are kept separate in memory. Read `SpaceID` and `GEOID` as strings. Notebook 03 is the authoritative construction pipeline for this saved cross-section. Keep the named source files and retrieval directories consistent with the notebook paths. Boruta 0.4.3 and ydata-profiling 4.18.4 are declared in `requirements.txt`. Boruta and five-fold validation use seed 10; the 1,000-draw bootstrap uses seed 90095. Notebook 08 references the executed selection, bootstrap and validation results instead of repeating the expensive calculations.
 
 Acquisition scripts can obtain new snapshots, but they are not prerequisites for continuing with the existing sources. `collect.py --month 2025_08` uses a rolling LADOT archive, full exports, and separate retrieval directories. The original month may eventually disappear, and current inventory/business snapshots change. Preserve original files and manifests rather than silently replacing them with a new vintage. Direct Census API and Ticketmaster expansion require personal keys; collected data used public endpoints including Census Reporter.
 

@@ -1,0 +1,459 @@
+{
+  "baseline": "1a6ef43cc32cd4e51d72e928ca2d9edfcfbcbc30",
+  "original_cells": 263,
+  "destinations": 268,
+  "samples": {
+    "cleaned_occupancy": 4185,
+    "meter_inventory": 35015,
+    "cross_section": 4139,
+    "eda": 4060,
+    "common": 4016,
+    "tracts_common": 45
+  },
+  "preservation": "PASS: all original outputs, execution counts and cell metadata unchanged",
+  "immutable_files": "PASS: preexisting documentation, source, visualization and data unchanged (Git CRLF normalization allowed)",
+  "main": "unchanged",
+  "schema": "PASS for six analysis notebooks; cleaning copies valid under 4.5, original 4.4 declaration/ID mismatch retained",
+  "paths": "PASS: moved cleaning paths resolve identically",
+  "execution": [
+    {
+      "notebook": "01_economic_theory.ipynb",
+      "status": "Narrative only; schema/navigation validated"
+    },
+    {
+      "notebook": "02_data_description_eda.ipynb",
+      "status": "PARTIAL: execution errors",
+      "seconds": 27.7,
+      "errors": [
+        {
+          "cell": 52,
+          "error": "ImportError",
+          "message": "cannot import name 'ProfileReport' from 'ydata_profiling' (unknown location)"
+        }
+      ],
+      "numeric_text_comparisons": [
+        {
+          "source": "04_eda.ipynb:2",
+          "destination_cell": 4,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:3",
+          "destination_cell": 5,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:6",
+          "destination_cell": 8,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:9",
+          "destination_cell": 11,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:12",
+          "destination_cell": 15,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:21",
+          "destination_cell": 19,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:24",
+          "destination_cell": 22,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:27",
+          "destination_cell": 25,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:28",
+          "destination_cell": 26,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:1",
+          "destination_cell": 29,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:4",
+          "destination_cell": 31,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:6",
+          "destination_cell": 33,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:31",
+          "destination_cell": 39,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:33",
+          "destination_cell": 41,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:34",
+          "destination_cell": 42,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:15",
+          "destination_cell": 45,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:16",
+          "destination_cell": 46,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:18",
+          "destination_cell": 48,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:9",
+          "destination_cell": 50,
+          "numeric_text_match": true
+        },
+        {
+          "source": "04_eda.ipynb:37",
+          "destination_cell": 56,
+          "numeric_text_match": true
+        }
+      ]
+    },
+    {
+      "notebook": "03_variable_selection_models.ipynb",
+      "status": "PASS",
+      "seconds": 83.3,
+      "errors": [],
+      "numeric_text_comparisons": [
+        {
+          "source": "05_variable_selection.ipynb:1",
+          "destination_cell": 3,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:2",
+          "destination_cell": 4,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:3",
+          "destination_cell": 5,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:7",
+          "destination_cell": 8,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:8",
+          "destination_cell": 9,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:9",
+          "destination_cell": 11,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:10",
+          "destination_cell": 12,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:11",
+          "destination_cell": 13,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:12",
+          "destination_cell": 14,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:13",
+          "destination_cell": 15,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:4",
+          "destination_cell": 17,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:5",
+          "destination_cell": 18,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:14",
+          "destination_cell": 19,
+          "numeric_text_match": true
+        },
+        {
+          "source": "05_variable_selection.ipynb:15",
+          "destination_cell": 20,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:2",
+          "destination_cell": 25,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:5",
+          "destination_cell": 29,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:8",
+          "destination_cell": 33,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:11",
+          "destination_cell": 37,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:15",
+          "destination_cell": 42,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:18",
+          "destination_cell": 45,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:25",
+          "destination_cell": 48,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:26",
+          "destination_cell": 49,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:27",
+          "destination_cell": 50,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:30",
+          "destination_cell": 54,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:31",
+          "destination_cell": 55,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:12",
+          "destination_cell": 61,
+          "numeric_text_match": true
+        },
+        {
+          "source": "06_regression_models.ipynb:21",
+          "destination_cell": 64,
+          "numeric_text_match": true
+        }
+      ]
+    },
+    {
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "status": "PASS",
+      "seconds": 33.7,
+      "errors": [],
+      "numeric_text_comparisons": [
+        {
+          "source": "07_diagnostics.ipynb:2",
+          "destination_cell": 4,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:3",
+          "destination_cell": 5,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:5",
+          "destination_cell": 7,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:6",
+          "destination_cell": 8,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:9",
+          "destination_cell": 12,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:10",
+          "destination_cell": 13,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:21",
+          "destination_cell": 16,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:16",
+          "destination_cell": 20,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:18",
+          "destination_cell": 22,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:24",
+          "destination_cell": 26,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:13",
+          "destination_cell": 30,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:27",
+          "destination_cell": 34,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:28",
+          "destination_cell": 35,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:29",
+          "destination_cell": 36,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:32",
+          "destination_cell": 39,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:33",
+          "destination_cell": 40,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:36",
+          "destination_cell": 44,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:37",
+          "destination_cell": 45,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:40",
+          "destination_cell": 49,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:43",
+          "destination_cell": 53,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:45",
+          "destination_cell": 55,
+          "numeric_text_match": true
+        },
+        {
+          "source": "07_diagnostics.ipynb:49",
+          "destination_cell": 59,
+          "numeric_text_match": true
+        }
+      ]
+    },
+    {
+      "notebook": "05_results_interpretation.ipynb",
+      "status": "PASS",
+      "seconds": 11.4,
+      "errors": [],
+      "numeric_text_comparisons": [
+        {
+          "source": "08_results.ipynb:1",
+          "destination_cell": 2,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:14",
+          "destination_cell": 6,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:16",
+          "destination_cell": 9,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:18",
+          "destination_cell": 16,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:21",
+          "destination_cell": 20,
+          "numeric_text_match": true
+        },
+        {
+          "source": "08_results.ipynb:24",
+          "destination_cell": 23,
+          "numeric_text_match": true
+        }
+      ]
+    },
+    {
+      "notebook": "06_limitations_extensions.ipynb",
+      "status": "Narrative only; schema/navigation validated"
+    }
+  ],
+  "comparison_method": "Textual numerical tokens, including visible HTML Styler table cells, compared with rtol=1e-5/atol=5e-6 at saved display precision; timestamps, object addresses and progress messages ignored. Saved PNG/HTML outputs are separately preserved exactly, not pixel-compared after rendering.",
+  "runtime": {
+    "python": "3.12.12",
+    "executable": "C:\\Users\\Finn Case\\miniconda3\\envs\\qecon\\python.exe",
+    "pandas": "2.3.3",
+    "numpy": "2.4.1",
+    "scipy": "1.16.3",
+    "statsmodels": "0.14.6",
+    "scikit-learn": "1.7.1",
+    "matplotlib": "3.10.8",
+    "nbclient": "0.10.2",
+    "nbformat": "5.10.4",
+    "ipykernel": "6.31.0",
+    "boruta": "0.4.3 in isolated .validation/packages, executed with package access",
+    "profiling": "4.18.4 downloaded in isolation; unusable without transitive dependencies and compatible numpy/matplotlib versions"
+  },
+  "cleaning_execution": "Not executed: data/raw is absent; geopandas/shapely missing from current qecon environment. No processed export cell was run.",
+  "preserved_figures": 11
+}
