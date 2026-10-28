@@ -4,60 +4,42 @@ Each section reinitializes its own inputs, so source may also be run sectionwise
 """
 
 # 02_data_description_eda
-from pathlib import Path
-import json
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
-from IPython.display import display, Markdown
 
-
-
-root = Path.cwd().parent
-parking_full = pd.read_csv(root / "data/processed/parking_cross_section.csv",
-                          dtype={"SpaceID": str, "GEOID": str})
-parking = parking_full.loc[parking_full["RateType"].isin(["FLAT", "TOD"])].copy()
+parking_full = pd.read_csv(
+    "../data/processed/parking_cross_section.csv",
+    dtype={"SpaceID": str, "GEOID": str}
+)
+parking = parking_full[parking_full["RateType"].isin(["FLAT", "TOD"])].copy()
 dependent_variable = "occupancy_rate"
+
 candidate_variables = [
     "price_midpoint", "time_limit_hours", "population_density", "median_income",
     "nearby_restaurant_retail_count", "drive_alone_share", "RateType", "MeterType",
     "housing_density", "transit_share", "walk_share", "nearby_business_count"
 ]
-encoded = pd.get_dummies(parking[candidate_variables], drop_first=True, dtype=int)
-data = pd.concat([parking[["occupancy_rate"]], encoded], axis=1).dropna().copy()
-y = data["occupancy_rate"]
-X = data.drop(columns="occupancy_rate")
-assert parking_full["SpaceID"].is_unique
-assert parking.loc[data.index, "SpaceID"].is_unique
-print("Original / FLAT+TOD / common:", len(parking_full), len(parking), len(data))
-print("Candidates / common-sample tracts:", X.shape[1], parking.loc[data.index, "GEOID"].nunique())
+
+print("Original spaces:", len(parking_full))
+print("FLAT and TOD spaces:", len(parking))
+print("Spaces with observed income:", parking["median_income"].notna().sum())
+parking["RateType"].value_counts()
 
 
 # 02_data_description_eda
-definitions = pd.DataFrame([
- ["occupancy_rate", "Occupied valid minutes / all retained valid minutes", "fraction 0–1"],
- ["price_midpoint", "FLAT hourly amount / TOD hourly-endpoint midpoint", "dollars/hour proxy"],
- ["time_limit_hours", "Mapped source parking-duration label", "hours"],
- ["population_density / housing_density", "ACS count / Gazetteer land area", "people / units per sq mile"],
- ["median_income", "ACS median household income", "2024 dollars"],
- ["drive_alone_share / transit_share / walk_share", "Mode workers / total workers incl. home workers", "fractions"],
- ["nearby_restaurant_retail_count", "NAICS 722, 44–45 located registrations within 0.25 miles", "registry accounts"],
- ["nearby_business_count", "All located registrations within 0.25 miles", "registry accounts"],
- ["RateType_TOD", "TOD=1, FLAT=0", "indicator"],
- ["MeterType_Single-Space", "Single-space=1, multi-space=0", "indicator"]
-], columns=["Variable", "Definition", "Units"])
-display(definitions)
-display(parking.groupby("RateType").size().rename("Spaces"))
+numeric_variables = [
+    "occupancy_rate", "price_midpoint", "time_limit_hours", "population_density",
+    "median_income", "nearby_restaurant_retail_count", "drive_alone_share",
+    "housing_density", "transit_share", "walk_share", "nearby_business_count"
+]
 
-
-# 02_data_description_eda
-numeric_variables = [v for v in candidate_variables if v not in ["RateType", "MeterType"]]
-numeric_variables = ["occupancy_rate", *numeric_variables]
-descriptive = parking[numeric_variables].describe().T[["count","mean","50%","std","min","max"]].rename(columns={"50%":"median"})
+descriptive = parking[numeric_variables].describe().T[
+    ["count", "mean", "50%", "std", "min", "max"]
+].rename(columns={"50%": "median"})
 descriptive["skewness"] = parking[numeric_variables].skew()
-descriptive["excess kurtosis"] = parking[numeric_variables].kurt()
-display(descriptive.round(4))
+descriptive["excess_kurtosis"] = parking[numeric_variables].kurt()
+descriptive.round(3)
 
 
 # 02_data_description_eda
@@ -117,27 +99,36 @@ plt.show()
 
 # 02_data_description_eda
 correlations = parking[numeric_variables].corr()
-fig, ax = plt.subplots(figsize=(12,10))
-im = ax.imshow(correlations, cmap="coolwarm", vmin=-1, vmax=1)
-ax.set_xticks(range(len(correlations)), correlations.columns, rotation=90)
-ax.set_yticks(range(len(correlations)), correlations.index)
-fig.colorbar(im, ax=ax, label="Pearson correlation")
-ax.set_title("FLAT/TOD outcome and numeric candidates; available-pair correlations")
-fig.tight_layout(); plt.show()
-display(correlations.round(3))
+labels = [
+    "Occupancy", "Price", "Time limit", "Population density", "Income",
+    "Food/retail count", "Drive-alone share", "Housing density",
+    "Transit share", "Walk share", "All-business count"
+]
+
+fig, ax = plt.subplots(figsize=(12, 10))
+heatmap = ax.imshow(correlations, cmap="coolwarm", vmin=-1, vmax=1)
+ax.set_xticks(range(len(labels)), labels, rotation=45, ha="right")
+ax.set_yticks(range(len(labels)), labels)
+fig.colorbar(heatmap, ax=ax, label="Pearson correlation")
+ax.set_title("Correlations in the FLAT and TOD sample")
+fig.tight_layout()
+plt.show()
 
 
 # 02_data_description_eda
-# Include all numeric candidates, even counts and discrete time limits, so
-# no analysis variable is silently omitted. Discrete panels are descriptive.
-fig, axes = plt.subplots(len(numeric_variables), 2, figsize=(12,3*len(numeric_variables)))
-for row, variable in enumerate(numeric_variables):
+continuous_variables = [v for v in numeric_variables if v != "time_limit_hours"]
+fig, axes = plt.subplots(len(continuous_variables), 2,
+                         figsize=(12, 3 * len(continuous_variables)))
+
+for i, variable in enumerate(continuous_variables):
     values = parking[variable].dropna()
-    values.plot.density(ax=axes[row,0])
-    axes[row,0].set_title(variable + " — density (descriptive for discrete values)")
-    sm.qqplot(values, line="s", ax=axes[row,1])
-    axes[row,1].set_title(variable + " — normal Q-Q")
-fig.tight_layout(); plt.show()
+    values.plot.density(ax=axes[i, 0])
+    axes[i, 0].set_title(variable + ": density")
+    sm.qqplot(values, line="s", ax=axes[i, 1])
+    axes[i, 1].set_title(variable + ": normal Q-Q")
+
+fig.tight_layout()
+plt.show()
 
 
 # 02_data_description_eda
@@ -179,22 +170,41 @@ parking.nlargest(5, "nearby_restaurant_retail_count")[[
 ]]
 
 # 02_data_description_eda
-missingness = pd.DataFrame({"Missing":parking[candidate_variables].isna().sum(),
-                            "Percent":100*parking[candidate_variables].isna().mean()})
-display(missingness)
-display(parking.loc[parking["median_income"].isna()].groupby("GEOID").agg(Spaces=("SpaceID","size"), Mean_occupancy=("occupancy_rate","mean")))
-display(parking.groupby(parking["median_income"].isna())["occupancy_rate"].agg(["count","mean","median"]))
+eda_variables = ["occupancy_rate"] + candidate_variables
+missingness = pd.DataFrame({
+    "Missing": parking[eda_variables].isna().sum(),
+    "Percent": parking[eda_variables].isna().mean() * 100
+})
+display(missingness.round(2))
+
+missing_income = parking["median_income"].isna()
+display(parking[missing_income].groupby("GEOID").agg(
+    spaces=("SpaceID", "size"),
+    mean_occupancy=("occupancy_rate", "mean")
+))
+parking.groupby(missing_income)["occupancy_rate"].agg(
+    ["count", "mean", "median"]
+).rename_axis("Income missing")
 
 
 # 02_data_description_eda
-from ydata_profiling import ProfileReport
-profile_columns = ["occupancy_rate", *X.columns]
-profile_data = pd.concat([parking[["occupancy_rate"]], encoded], axis=1)
-profile = ProfileReport(profile_data[profile_columns], minimal=True, progress_bar=False)
-profile_summary = profile.description_set
-print("Profiled rows:", profile_summary.table["n"])
-print("Missing cells / variables:", profile_summary.table["n_cells_missing"], profile_summary.table["n_vars_with_missing"])
-display(pd.DataFrame({"Profiling alert":[str(a) for a in profile_summary.alerts]}))
+import warnings
+
+with warnings.catch_warnings():
+    warnings.filterwarnings("ignore", category=DeprecationWarning,
+                            message=r"(?s).*import ydata_profiling.*deprecated.*")
+    warnings.filterwarnings("ignore", message="IProgress not found.*")
+    from ydata_profiling import ProfileReport
+
+profile_data = pd.get_dummies(
+    parking[["occupancy_rate"] + candidate_variables], drop_first=True, dtype=int
+)
+profile = ProfileReport(profile_data, minimal=True, progress_bar=False)
+summary = profile.description_set
+
+print("Observations:", summary.table["n"])
+print("Missing cells:", summary.table["n_cells_missing"])
+pd.DataFrame({"Profiling alert": [str(alert) for alert in summary.alerts]})
 
 
 # 03_variable_selection_models

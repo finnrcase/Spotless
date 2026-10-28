@@ -31,7 +31,7 @@ The current price estimate is **5.154 occupancy pp per $1**, HC1 95% interval **
 
 ## Execution and preservation
 
-All four current computational notebooks pass fresh separate kernels: EDA (12 code cells), selection/models (17), diagnostics (8), results (6): **43 current code cells, zero cell errors**. Theory/limitations are substantive narrative sections. Runtime versions and timings are in [the current execution record](current_execution_results.json). New tables are generated in `reports/tables/`; old validation logs remain historical evidence.
+All four current computational notebooks pass fresh separate kernels: EDA (11 code cells), selection/models (17), diagnostics (8), results (6): **42 current code cells, zero cell errors**. Theory/limitations are substantive narrative sections. Runtime versions and timings are in [the current execution record](current_execution_results.json). New tables are generated in `reports/tables/`; old validation logs remain historical evidence.
 
 The [completion manifest](rubric_completion_manifest.json) records every earlier notebook-cell hash and all three input CSV hashes. The [current verifier](../src/verify_current_report.py) checks archival equality, dataset equality, fresh execution counts, Model 3/diagnostic consistency, bootstrap count, absence of the cancelled DFBETAS implementation/results, actual CV consistency, reproduced prior-model metrics, report image embedding and source syntax. The original 263-cell provenance is still available in [the updated migration map](notebook_cell_migration.json).
 
@@ -45,3 +45,7 @@ Raw reconstruction is **not** newly tested: `data/raw/` is absent. Original clea
 4. Open the single HTML, check names, references, figure/table readability and source inclusion; submit it through the course’s required channel. No upload is performed here.
 
 The report remains clearly marked draft while names are missing. Other analytical gaps have executed evidence, but **DFBETAS remains a required missing component by user request**, so 4(d) is Partial. A 100% grade or completed submission is not claimed. The professor retains judgment about economic reasoning, presentation and course policies.
+
+## Notebook 2 submission edit
+
+Notebook 2 now contains only Section 2(a)–2(h), concise student-facing interpretation and straightforward EDA code. Audit/status notes and the historical appendix are removed from its submission copy. The entire pre-edit notebook is preserved unchanged in docs/archive/02_data_description_eda_before_submission_edit.ipynb; provenance and validation read that archive. Regression setup and unused imports are removed from EDA; no data, sample rule or model specification changes.

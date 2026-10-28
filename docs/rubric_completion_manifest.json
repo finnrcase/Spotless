@@ -18,7 +18,7 @@
       ]
     },
     "02_data_description_eda.ipynb": {
-      "current_cells": 30,
+      "current_cells": 29,
       "historical_offset": 31,
       "preserved_cells": 58,
       "preserved_sha256": [
@@ -80,7 +80,13 @@
         "cd7b0b819106cb494063f8c6a941c116b85476fc79f85406f11e38dc46acd19c",
         "d97bfdd0ff931dee7daded3bf0397e6990422a704b210829b8ca14fad60329f8",
         "d2800b99346c24013fbf193fb25bf073416afcb57ff1085d8315c057c3f8fb0b"
-      ]
+      ],
+      "historical_path": "docs/archive/02_data_description_eda_before_submission_edit.ipynb",
+      "submission_edit": {
+        "baseline_commit": "8f9c8d7",
+        "archive_sha256": "a02a0e22087d9fff45b787cf5502c06e6080a61e05e4730247081df3ae67b3f5",
+        "scope": "Presentation, simpler EDA setup and removal of non-submission commentary; data and econometric specifications unchanged."
+      }
     },
     "03_variable_selection_models.ipynb": {
       "current_cells": 34,

@@ -35,7 +35,7 @@
     },
     {
       "item": "2(a)",
-      "heading": "Dataset Source, Time Period, Sample Selection, and Variable Definitions",
+      "heading": "Dataset Description",
       "notebook": "02_data_description_eda.ipynb",
       "cell": 1,
       "status": "Complete",
@@ -43,7 +43,7 @@
     },
     {
       "item": "2(b)",
-      "heading": "Comprehensive Descriptive Statistics",
+      "heading": "Descriptive Statistics",
       "notebook": "02_data_description_eda.ipynb",
       "cell": 5,
       "status": "Complete",
@@ -51,7 +51,7 @@
     },
     {
       "item": "2(c)",
-      "heading": "Histograms, Boxplots, Correlation Heatmap, and Scatterplots",
+      "heading": "Histograms, Boxplots, Correlations and Scatterplots",
       "notebook": "02_data_description_eda.ipynb",
       "cell": 8,
       "status": "Complete",
@@ -67,7 +67,7 @@
     },
     {
       "item": "2(e)",
-      "heading": "Nonlinearities and Potential Transformations",
+      "heading": "Nonlinearities and Possible Transformations",
       "notebook": "02_data_description_eda.ipynb",
       "cell": 16,
       "status": "Complete",
@@ -75,7 +75,7 @@
     },
     {
       "item": "2(f)",
-      "heading": "Outlier Detection and Discussion",
+      "heading": "Outliers",
       "notebook": "02_data_description_eda.ipynb",
       "cell": 18,
       "status": "Complete",
@@ -83,7 +83,7 @@
     },
     {
       "item": "2(g)",
-      "heading": "Missing Values, Imputation Decisions, and Sensitivity Analysis",
+      "heading": "Missing Values and Sensitivity Analysis",
       "notebook": "02_data_description_eda.ipynb",
       "cell": 23,
       "status": "Complete",
@@ -91,7 +91,7 @@
     },
     {
       "item": "2(h)",
-      "heading": "Pandas Profiling Analysis and Findings",
+      "heading": "Pandas Profiling",
       "notebook": "02_data_description_eda.ipynb",
       "cell": 26,
       "status": "Complete",

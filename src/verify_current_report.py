@@ -21,7 +21,11 @@ def verify():
     original_count=0
     for name,info in manifest['notebooks'].items():
         nb=json.loads((ROOT/'notebooks'/name).read_text(encoding='utf-8'))
-        old=nb['cells'][info['historical_offset']:]
+        history=(json.loads((ROOT/info['historical_path']).read_text(encoding='utf-8'))
+                 if info.get('historical_path') else nb)
+        old=history['cells'][info['historical_offset']:]
+        if info.get('submission_edit'):
+            assert hashlib.sha256((ROOT/info['historical_path']).read_bytes()).hexdigest()==info['submission_edit']['archive_sha256']
         assert [digest(c) for c in old]==info['preserved_sha256'],name
         original_count+=len(old)
         current=nb['cells'][:info['current_cells']]

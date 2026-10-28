@@ -24,8 +24,8 @@
     {
       "notebook": "02_data_description_eda.ipynb",
       "status": "PASS",
-      "code_cells": 12,
-      "seconds": 28.9
+      "code_cells": 11,
+      "seconds": 33.5
     },
     {
       "notebook": "03_variable_selection_models.ipynb",

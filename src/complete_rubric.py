@@ -204,6 +204,9 @@ def normalize_cleaning(mapping):
 
 def build():
     import nbformat as nbf
+    polished=ROOT/'notebooks/02_data_description_eda.ipynb'
+    if polished.exists() and json.loads(polished.read_text(encoding='utf-8'))['metadata'].get('spotless_history_path'):
+        raise SystemExit('Notebook 2 has a submission edit. Use run/export; baseline build would overwrite that edit.')
     books = {}
     def md(i,text):
         text=currency(text)
@@ -616,8 +619,9 @@ def run(only=None):
         raw['metadata']['language_info']=copy.deepcopy(current.metadata.get('language_info',{'name':'python'}))
         # Keep progress-stream CR characters and every other historical payload
         # exactly as Git recorded them; notebook readers may normalize CR to CRLF.
-        preserved=json.loads(saved(f'notebooks/{name}.ipynb'))['cells']
-        raw['cells'][count+1:]=preserved
+        if not raw['metadata'].get('spotless_history_path'):
+            preserved=json.loads(saved(f'notebooks/{name}.ipynb'))['cells']
+            raw['cells'][count+1:]=preserved
         path.write_text(json.dumps(raw,indent=1,ensure_ascii=False)+'\n',encoding='utf-8')
         results.append({"notebook":path.name,"status":"PASS","code_cells":sum(c.cell_type=='code' for c in current.cells),"seconds":round(time.time()-start,1)})
         results.sort(key=lambda r:r['notebook'])
