@@ -664,122 +664,92 @@ table_dir=root/"reports/tables";table_dir.mkdir(parents=True,exist_ok=True)
 
 
 # 05_results_interpretation
-from pathlib import Path
-import json
-import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import statsmodels.api as sm
-from IPython.display import display, Markdown
 
+parking = pd.read_csv(
+    "../data/processed/parking_cross_section.csv",
+    dtype={"SpaceID": str, "GEOID": str}
+)
+parking = parking[parking["RateType"].isin(["FLAT", "TOD"])].copy()
+parking["RateType_TOD"] = (parking["RateType"] == "TOD").astype(int)
 
-
-root = Path.cwd().parent
-parking_full = pd.read_csv(root / "data/processed/parking_cross_section.csv",
-                          dtype={"SpaceID": str, "GEOID": str})
-parking = parking_full.loc[parking_full["RateType"].isin(["FLAT", "TOD"])].copy()
-dependent_variable = "occupancy_rate"
-candidate_variables = [
-    "price_midpoint", "time_limit_hours", "population_density", "median_income",
-    "nearby_restaurant_retail_count", "drive_alone_share", "RateType", "MeterType",
-    "housing_density", "transit_share", "walk_share", "nearby_business_count"
+predictors = [
+    "price_midpoint", "population_density", "nearby_restaurant_retail_count",
+    "transit_share", "walk_share", "nearby_business_count", "RateType_TOD"
 ]
-encoded = pd.get_dummies(parking[candidate_variables], drop_first=True, dtype=int)
-data = pd.concat([parking[["occupancy_rate"]], encoded], axis=1).dropna().copy()
+data = parking[["occupancy_rate"] + predictors + ["median_income"]].dropna()
+X = sm.add_constant(data[predictors])
 y = data["occupancy_rate"]
-X = data.drop(columns="occupancy_rate")
-assert parking_full["SpaceID"].is_unique
-assert parking.loc[data.index, "SpaceID"].is_unique
-print("Original / FLAT+TOD / common:", len(parking_full), len(parking), len(data))
-print("Candidates / common-sample tracts:", X.shape[1], parking.loc[data.index, "GEOID"].nunique())
-# Fixed rule: retain EVERY slope with conventional p < 0.05 in the
-# original 12-candidate full OLS model, on the same complete-case sample.
-# This is one screen, not repeated p-value deletion or hold-out tuning.
-full_model = sm.OLS(y, sm.add_constant(X)).fit()
-alpha = 0.05
-predictors = [v for v in X.columns if full_model.pvalues[v] < alpha]
-legacy_predictors = ["price_midpoint", "time_limit_hours", "population_density",
-                     "nearby_restaurant_retail_count", "drive_alone_share",
-                     "transit_share", "RateType_TOD"]
-X1 = sm.add_constant(data[["price_midpoint"]])
-X2 = sm.add_constant(data[["price_midpoint", "population_density", "nearby_restaurant_retail_count"]])
-X3 = sm.add_constant(data[predictors])
-model1 = sm.OLS(y, X1).fit()
-model2 = sm.OLS(y, X2).fit()
-model3 = sm.OLS(y, X3).fit()
-hc1 = sm.OLS(y, X3).fit(cov_type="HC1")
-legacy_model = sm.OLS(y, sm.add_constant(data[legacy_predictors])).fit()
-assert set(predictors) == set(full_model.pvalues.drop("const").loc[lambda p: p < alpha].index)
+
+model = sm.OLS(y, X).fit()
+robust = sm.OLS(y, X).fit(cov_type="HC1")
 
 
 # 05_results_interpretation
-regression_table=pd.DataFrame({"OLS coefficient":model3.params,"Conventional SE":model3.bse,
- "HC1 SE":hc1.bse,"Conventional p":model3.pvalues,"HC1 p":hc1.pvalues,
- "HC1 95% lower":hc1.conf_int()[0],"HC1 95% upper":hc1.conf_int()[1]})
-regression_table.index.name="Parameter"
-display(regression_table.style.format("{:.6g}"))
-display(Markdown(f"**Outcome:** monthly occupancy fraction. **N:** {int(model3.nobs):,}; **slopes:** {len(predictors)}; **R²:** {model3.rsquared:.5f}; **adjusted R²:** {model3.rsquared_adj:.5f}. HC1 uses statsmodels' default normal-reference inference; conventional and robust intervals should not be mixed."))
+regression_table = pd.DataFrame({
+    "Coefficient": model.params,
+    "HC1 standard error": robust.bse,
+    "p-value": robust.pvalues,
+    "95% lower": robust.conf_int()[0],
+    "95% upper": robust.conf_int()[1]
+})
+regression_table.index = [
+    "Intercept", "Price (dollars/hour)", "Population density (people/sq mile)",
+    "Food-service/retail registrations", "Transit share", "Walk share",
+    "All business registrations", "TOD (FLAT reference)"
+]
+
+print("Observations:", int(model.nobs))
+regression_table.style.format({
+    "Coefficient": "{:.6g}", "HC1 standard error": "{:.6g}",
+    "p-value": "{:.2e}", "95% lower": "{:.6g}", "95% upper": "{:.6g}"
+})
 
 
 # 05_results_interpretation
-changes=pd.Series({"price_midpoint":1,"population_density":1000,
- "nearby_restaurant_retail_count":100,"transit_share":.1,"walk_share":.1,
- "nearby_business_count":100,"RateType_TOD":1})
-labels={"price_midpoint":"$1 higher stated hourly proxy",
- "population_density":"1,000 more people per sq mile",
- "nearby_restaurant_retail_count":"100 more food/retail registrations, total fixed",
- "transit_share":"10-pp higher resident transit share",
- "walk_share":"10-pp higher resident walk share",
- "nearby_business_count":"100 more total registrations, food/retail fixed",
- "RateType_TOD":"TOD versus FLAT"}
-effects=pd.DataFrame({"Comparison":[labels[v] for v in predictors],
- "Occupancy difference (pp)":100*hc1.params[predictors]*changes[predictors],
- "HC1 lower (pp)":100*hc1.conf_int().loc[predictors,0]*changes[predictors],
- "HC1 upper (pp)":100*hc1.conf_int().loc[predictors,1]*changes[predictors],
- "HC1 p":hc1.pvalues[predictors]})
-display(effects.style.format({c:"{:.4g}" for c in effects if c!="Comparison"}))
-for v in predictors:
-    effect=effects.loc[v,"Occupancy difference (pp)"]
-    lo,hi=effects.loc[v,["HC1 lower (pp)","HC1 upper (pp)"]]
-    display(Markdown(f"- **{labels[v]}:** associated with **{abs(effect):.3f} percentage points {'higher' if effect>=0 else 'lower'} occupancy**, holding other included covariates fixed; HC1 95% CI **[{lo:.3f}, {hi:.3f}] pp**."))
-display(Markdown(f"**Intercept:** {model3.params['const']:.5f} occupancy, or {100*model3.params['const']:.2f}%, for a FLAT space with zero values for all numeric covariates. This joint zero-covariate profile is outside observed support, so it is an algebraic baseline, not an estimate for a typical parking space."))
+changes = pd.Series({
+    "price_midpoint": 1,
+    "population_density": 1000,
+    "nearby_restaurant_retail_count": 100,
+    "transit_share": 0.10,
+    "walk_share": 0.10,
+    "nearby_business_count": 100,
+    "RateType_TOD": 1
+})
 
-
-# 05_results_interpretation
-display(pd.DataFrame({"HC1 p":hc1.pvalues[predictors],"Significant at 5%":hc1.pvalues[predictors]<.05,
-                      "Scaled occupancy pp":effects["Occupancy difference (pp)"]}))
-display(Markdown(f"A $1 price comparison is {effects.loc['price_midpoint','Occupancy difference (pp)']:.2f} occupancy pp, against a common-sample mean of {100*y.mean():.2f}%. Economic relevance depends on the realistic price change and local support, not just the p-value. Statistical significance is conditional on selection and the covariance assumptions and does not establish causality."))
+economic_intervals = pd.DataFrame({
+    "Comparison": [
+        "One-dollar higher price", "1,000 more people/sq mile",
+        "100 more food/retail registrations, total fixed", "10-pp higher transit share",
+        "10-pp higher walk share", "100 more total registrations, food/retail fixed",
+        "TOD versus FLAT"
+    ],
+    "Occupancy difference (pp)": robust.params[predictors] * changes * 100,
+    "95% lower (pp)": robust.conf_int().loc[predictors, 0] * changes * 100,
+    "95% upper (pp)": robust.conf_int().loc[predictors, 1] * changes * 100
+})
+economic_intervals.style.format({
+    "Occupancy difference (pp)": "{:.3f}",
+    "95% lower (pp)": "{:.3f}", "95% upper (pp)": "{:.3f}"
+})
 
 
 # 05_results_interpretation
 from sklearn.model_selection import KFold, cross_val_score
 from sklearn.linear_model import LinearRegression
+
 folds = KFold(n_splits=5, shuffle=True, random_state=10)
-fits = {"Model 1": model1, "Model 2": model2, "Model 3 (rubric)": model3,
-        "Prior seven (supporting)": legacy_model}
-fold_errors = {}
-for label, fit in fits.items():
-    columns = [v for v in fit.model.exog_names if v != "const"]
-    fold_errors[label] = -cross_val_score(LinearRegression(), data[columns], y,
-                                        cv=folds, scoring="neg_root_mean_squared_error")
-cv_results = pd.DataFrame(fold_errors, index=pd.Index(range(1, 6), name="Held-out fold"))
-comparison = pd.DataFrame({
-    label: {"Slopes": len(fit.params)-1, "N": int(fit.nobs), "R2": fit.rsquared,
-            "Adjusted R2": fit.rsquared_adj, "AIC": fit.aic, "BIC": fit.bic,
-            "In-sample RMSE": np.sqrt(np.mean(fit.resid**2)),
-            "Mean 5-fold RMSE": fold_errors[label].mean(),
-            "SD across folds": fold_errors[label].std(ddof=1)}
-    for label, fit in fits.items()
-}).T
-display(cv_results.round(6))
-display(comparison.round(6))
-display(Markdown(f"Current Model 3 explains **{100*model3.rsquared:.2f}%** of sample occupancy variation; **{100*(1-model3.rsquared):.2f}%** remains unexplained. Its mean five-fold RMSE is **{100*fold_errors['Model 3 (rubric)'].mean():.2f} occupancy pp**. This monthly cross-sectional error is not an instantaneous availability probability or out-of-city validation."))
+cv_rmse = -cross_val_score(
+    LinearRegression(), data[predictors], y,
+    cv=folds, scoring="neg_root_mean_squared_error"
+)
 
-
-# 05_results_interpretation
-table_dir=root/"reports/tables";table_dir.mkdir(parents=True,exist_ok=True)
-(table_dir/"current_final_results.json").write_text(json.dumps({
- "n":len(data),"predictors":predictors,"selection_rule":"all conventional p<.05 slopes in original 12-candidate full OLS",
- "coefficients":json.loads(regression_table.to_json(orient="index")),
- "economic_effects":json.loads(effects.to_json(orient="index")),
- "model_comparison":json.loads(comparison.to_json(orient="index"))},indent=2))
+pd.Series({
+    "Observations": int(model.nobs),
+    "R-squared": model.rsquared,
+    "Adjusted R-squared": model.rsquared_adj,
+    "AIC": model.aic,
+    "BIC": model.bic,
+    "Mean five-fold RMSE": cv_rmse.mean()
+}).round(5)

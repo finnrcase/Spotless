@@ -234,7 +234,7 @@
       ]
     },
     "05_results_interpretation.ipynb": {
-      "current_cells": 16,
+      "current_cells": 19,
       "historical_offset": 17,
       "preserved_cells": 30,
       "preserved_sha256": [
@@ -268,7 +268,13 @@
         "b480379dc4fdbe2ad5fd6060729cbc7e74a634b6289cb435c4216a51a86737c1",
         "490dec1e8b2d174d8d80f0d180e4eb908a32c61b4842b01f8888aec618db4005",
         "4f29aeecb24b7978f2adc90e2c20bd40804fa700d6a5faf0f0f701f15d2fdecd"
-      ]
+      ],
+      "historical_path": "docs/archive/05_results_interpretation_before_submission_edit.ipynb",
+      "submission_edit": {
+        "baseline_commit": "e9e9fce",
+        "archive_sha256": "19d68a6d652a9cc380b61b9ee1abe01882ac68df7aee9c8160a1536a7da8c54a",
+        "scope": "Student-facing results and simpler code; final predictors, sample, OLS/HC1 methods and numerical estimates unchanged."
+      }
     },
     "06_limitations_extensions.ipynb": {
       "current_cells": 13,

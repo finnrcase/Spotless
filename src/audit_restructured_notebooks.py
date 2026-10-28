@@ -65,7 +65,7 @@ def verify():
         headings = [f'## {number}({x}) ' for x in letters]
         positions = [sources.index(h) for h in headings]
         assert positions == sorted(positions)
-        if number!=2:
+        if number not in (2,5):
             assert '## Section Summary and Rubric Coverage' in sources
     # Cleaning paths resolve to the same original absolute targets.
     for m in mapping:

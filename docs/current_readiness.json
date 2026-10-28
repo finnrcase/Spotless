@@ -203,7 +203,7 @@
     },
     {
       "item": "5(a)",
-      "heading": "Professional Final Regression Table",
+      "heading": "Final Regression Results",
       "notebook": "05_results_interpretation.ipynb",
       "cell": 1,
       "status": "Complete",
@@ -211,33 +211,33 @@
     },
     {
       "item": "5(b)",
-      "heading": "Economic Interpretation of All Coefficients",
+      "heading": "Economic Interpretation of the Coefficients",
       "notebook": "05_results_interpretation.ipynb",
-      "cell": 4,
+      "cell": 5,
       "status": "Complete",
       "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
     },
     {
       "item": "5(c)",
-      "heading": "Statistical vs. Economic Significance",
-      "notebook": "05_results_interpretation.ipynb",
-      "cell": 7,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
-    },
-    {
-      "item": "5(d)",
-      "heading": "Confidence Intervals for Key Parameters",
+      "heading": "Statistical and Economic Significance",
       "notebook": "05_results_interpretation.ipynb",
       "cell": 9,
       "status": "Complete",
       "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
     },
     {
-      "item": "5(e)",
-      "heading": "R² and Model Fit in Economic Context",
+      "item": "5(d)",
+      "heading": "Confidence Intervals",
       "notebook": "05_results_interpretation.ipynb",
       "cell": 11,
+      "status": "Complete",
+      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+    },
+    {
+      "item": "5(e)",
+      "heading": "Model Fit and Economic Context",
+      "notebook": "05_results_interpretation.ipynb",
+      "cell": 14,
       "status": "Complete",
       "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
     },
