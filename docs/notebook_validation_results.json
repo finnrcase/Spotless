@@ -12,8 +12,9 @@
   },
   "preservation": "PASS: all original outputs, execution counts and cell metadata unchanged",
   "immutable_files": "PASS: preexisting documentation, source, visualization and data unchanged (Git CRLF normalization allowed)",
-  "main": "unchanged",
-  "schema": "PASS for six analysis notebooks; cleaning copies valid under 4.5, original 4.4 declaration/ID mismatch retained",
+  "main": "advanced externally since inventory; this task remains on the refactor branch and does not modify main",
+  "main_reference": "7c491e9c211170b0087a36cd2020c3f860aaa49e",
+  "schema": "PASS: current analysis and cleaning notebooks valid under 4.5; missing cleaning IDs repaired without method changes",
   "paths": "PASS: moved cleaning paths resolve identically",
   "execution": [
     {

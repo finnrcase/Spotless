@@ -1,0 +1,46 @@
+{
+  "Model 1":{
+    "Slopes":1.0,
+    "N":4016.0,
+    "R2":0.1567753867,
+    "Adjusted R2":0.1565653158,
+    "AIC":-2483.6705134405,
+    "BIC":-2471.0744301178,
+    "In-sample RMSE":0.1775224023,
+    "Mean 5-fold RMSE":0.1775636802,
+    "SD across folds":0.0018068365
+  },
+  "Model 2":{
+    "Slopes":3.0,
+    "N":4016.0,
+    "R2":0.243497535,
+    "Adjusted R2":0.2429318552,
+    "AIC":-2915.5172588423,
+    "BIC":-2890.3250921968,
+    "In-sample RMSE":0.1681460628,
+    "Mean 5-fold RMSE":0.1682078252,
+    "SD across folds":0.0026258924
+  },
+  "Model 3 (rubric)":{
+    "Slopes":7.0,
+    "N":4016.0,
+    "R2":0.2941379992,
+    "Adjusted R2":0.2929052063,
+    "AIC":-3185.769993805,
+    "BIC":-3135.3856605141,
+    "In-sample RMSE":0.1624207196,
+    "Mean 5-fold RMSE":0.1627955747,
+    "SD across folds":0.0013485398
+  },
+  "Prior seven (supporting)":{
+    "Slopes":7.0,
+    "N":4016.0,
+    "R2":0.2736227204,
+    "Adjusted R2":0.2723540974,
+    "AIC":-3070.712410426,
+    "BIC":-3020.328077135,
+    "In-sample RMSE":0.1647641244,
+    "Mean 5-fold RMSE":0.1653151741,
+    "SD across folds":0.0017323366
+  }
+}

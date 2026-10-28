@@ -1,5 +1,38 @@
 # Spotless — ECON 430 Parking Occupancy Project
 
+## Current rubric completion and report
+
+The current six main notebook sections address expected magnitudes, full distribution panels, actual Profiling, an explicitly selected all-significant full-candidate Model 3, updated diagnostics/interpretation and literature comparison. **DFBETAS was cancelled by the user and remains a required Missing component; 4(d) is Partial. All 42 remaining current code cells pass fresh kernels.** Prior main notebook cells/outputs remain preserved; Notebook 2’s previous version is archived separately under docs/archive, while the other notebooks retain historical appendices; cleaning source/outputs are unchanged with schema/missing-ID format repairs. Historical model numbers, status labels and statistics below those boundaries are supporting history.
+
+**Report:** [single HTML with executed outputs, references and Python source](reports/Spotless_ECON430_Project1.html) · [main Python export](reports/Spotless_ECON430_source.py) · [original cleaning Python export](reports/Spotless_cleaning_source.py).
+
+**Evidence:** [current rubric audit](docs/rubric_compliance_audit.md) · [what changed and why](docs/rubric_completion_changes.md) · [fresh execution](docs/current_execution_results.json) · [preservation/readiness checks](docs/current_readiness.json).
+
+**Final packaging, deferred by the group:** add verified names and complete the syllabus policy check in [submission metadata](reports/submission_metadata.json), then regenerate the report. It stays marked draft until names are supplied. No course upload or guaranteed grade is claimed.
+
+### Current execution workflow
+
+Use Python **3.12** in a fresh environment. Install `requirements.txt`; its NumPy/pandas/matplotlib bounds are compatible with pinned Profiling. `requirements-lock.txt` records the exact tested dependency closure (Windows reference; Windows-only packages have platform markers). The three tracked processed CSVs suffice for current main notebooks 01–06; raw reconstruction remains a separate source-dependent workflow.
+
+```bash
+python -m pip install -r requirements-lock.txt
+python src/complete_rubric.py run
+python src/complete_rubric.py export
+python src/verify_current_report.py
+```
+
+The runner uses a fresh kernel for each current section, working directory `notebooks/`, and **does not execute historical appendices**. Alternatively run each notebook’s cells above the historical boundary. Running every historical cell afterward revisits prior specifications and is unnecessary. Narrative 01/06 have no code. The generated main `.py` source uses working directory `notebooks/`; original cleaning source uses `notebooks/cleaning/` and requires raw inputs.
+
+Current final Model 3 uses all conventional p<0.05 slopes from the original 12-candidate full OLS regression on the unchanged common sample. This deliberate rubric-completion change replaces the prior final specification; its old estimates are preserved, not overwritten. Current coefficients, fit, diagnostics, uncertainty and five-fold scores are regenerated from code in Sections 3–5. Interpret both business-count slopes conditionally, in light of their overlapping definitions.
+
+`src/complete_rubric.py build` is a baseline-based authoring tool and clears current executed outputs when rebuilding; use **run/export** for ordinary reproduction. It never changes raw/processed data. The older `src/restructure_notebooks.py` describes the original migration; do not run it over a completed analysis to undo the current additions.
+
+---
+
+## Detailed project documentation and pre-completion history
+
+The detailed original documentation below is preserved for definitions, provenance and historical decisions. Its earlier completion labels and model results are superseded by the current evidence above; raw-source limitations still apply.
+
 UCLA ECON 430 Applied Econometric Analysis. **Current stage:** The existing executed analysis is preserved in six rubric-aligned main notebooks and three cleaning notebooks. Current execution evidence and outstanding requirements are documented in the linked audits. The original saved cross-section remains **4,139 parking spaces and 36 columns**. Notebook 04 retains **4,060 FLAT + TOD spaces**, with **4,016 complete cases for the outcome and primary candidate list**. The primary seven-variable model uses 4,016 spaces in 45 tracts; HC1 inference, a log-density check and feasible sample sensitivities are complete. DFBETAS, remaining raw-sensor sensitivities and final submission packaging are outstanding. See the [final audit](docs/final_audit.md).
 
 This README records the current design and workflow. Implemented details come from the notebook code, saved outputs, and local processed files; hypotheses and future work are labeled separately. The earlier [raw-data audit](docs/design_validation_audit.md) and [acquisition catalog](docs/data_sources.md) describe earlier phases, so statements there that no cleaning has occurred are historical, not the project's current status.

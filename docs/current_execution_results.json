@@ -1,0 +1,55 @@
+{
+  "python": "3.12.12 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 20:05:38) [MSC v.1929 64 bit (AMD64)]",
+  "versions": {
+    "pandas": "2.3.3",
+    "numpy": "2.3.5",
+    "scipy": "1.16.3",
+    "statsmodels": "0.14.6",
+    "scikit-learn": "1.7.1",
+    "matplotlib": "3.10.0",
+    "boruta": "0.4.3",
+    "ydata-profiling": "4.18.4",
+    "geopandas": "1.2.0",
+    "nbclient": "0.10.2",
+    "nbconvert": "7.16.6",
+    "ipykernel": "6.31.0"
+  },
+  "runs": [
+    {
+      "notebook": "01_economic_theory.ipynb",
+      "status": "PASS",
+      "code_cells": 0,
+      "seconds": 0.0
+    },
+    {
+      "notebook": "02_data_description_eda.ipynb",
+      "status": "PASS",
+      "code_cells": 11,
+      "seconds": 33.5
+    },
+    {
+      "notebook": "03_variable_selection_models.ipynb",
+      "status": "PASS",
+      "code_cells": 17,
+      "seconds": 90.5
+    },
+    {
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "status": "PASS",
+      "code_cells": 8,
+      "seconds": 47.6
+    },
+    {
+      "notebook": "05_results_interpretation.ipynb",
+      "status": "PASS",
+      "code_cells": 6,
+      "seconds": 10.7
+    },
+    {
+      "notebook": "06_limitations_extensions.ipynb",
+      "status": "PASS",
+      "code_cells": 0,
+      "seconds": 0.0
+    }
+  ]
+}

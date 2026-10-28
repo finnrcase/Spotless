@@ -1,0 +1,143 @@
+{
+  "predictors": [
+    "price_midpoint",
+    "population_density",
+    "nearby_restaurant_retail_count",
+    "transit_share",
+    "walk_share",
+    "nearby_business_count",
+    "RateType_TOD"
+  ],
+  "n": 4016,
+  "tests": {
+    "BP LM": {
+      "Statistic": 167.0200748496,
+      "p": 1.066253668e-32
+    },
+    "White LM": {
+      "Statistic": 374.9942315108,
+      "p": 4.537698641e-59
+    },
+    "RESET F": {
+      "Statistic": 171.6286299583,
+      "p": 1.988910534e-38
+    },
+    "Jarque\u2013Bera": {
+      "Statistic": 8.0755583992,
+      "p": 0.0176365963
+    }
+  },
+  "dfbetas_status": "Missing: addition cancelled by user",
+  "bootstrap_draws": 1000,
+  "bootstrap": {
+    "const": {
+      "OLS estimate": 0.3195173853,
+      "OLS SE": 0.0093856604,
+      "HC1 SE": 0.0105497077,
+      "Bootstrap mean": 0.3193546017,
+      "Bootstrap SE": 0.0105967238,
+      "Bootstrap 95% lower": 0.2981552252,
+      "Bootstrap 95% upper": 0.3400402844
+    },
+    "price_midpoint": {
+      "OLS estimate": 0.0515431942,
+      "OLS SE": 0.0023150929,
+      "HC1 SE": 0.002249493,
+      "Bootstrap mean": 0.0514486697,
+      "Bootstrap SE": 0.0022805071,
+      "Bootstrap 95% lower": 0.0471643203,
+      "Bootstrap 95% upper": 0.0558574901
+    },
+    "population_density": {
+      "OLS estimate": 3.9611e-06,
+      "OLS SE": 2.161e-07,
+      "HC1 SE": 2.273e-07,
+      "Bootstrap mean": 3.9712e-06,
+      "Bootstrap SE": 2.268e-07,
+      "Bootstrap 95% lower": 3.5296e-06,
+      "Bootstrap 95% upper": 4.4262e-06
+    },
+    "nearby_restaurant_retail_count": {
+      "OLS estimate": -0.0005343657,
+      "OLS SE": 4.21681e-05,
+      "HC1 SE": 3.8711e-05,
+      "Bootstrap mean": -0.0005338661,
+      "Bootstrap SE": 3.82456e-05,
+      "Bootstrap 95% lower": -0.0006137257,
+      "Bootstrap 95% upper": -0.0004577512
+    },
+    "transit_share": {
+      "OLS estimate": 0.1004612463,
+      "OLS SE": 0.0449134094,
+      "HC1 SE": 0.0459653097,
+      "Bootstrap mean": 0.1004146336,
+      "Bootstrap SE": 0.0453936786,
+      "Bootstrap 95% lower": 0.0105158065,
+      "Bootstrap 95% upper": 0.1862029103
+    },
+    "walk_share": {
+      "OLS estimate": 0.2823329843,
+      "OLS SE": 0.0286379071,
+      "HC1 SE": 0.026737245,
+      "Bootstrap mean": 0.282506788,
+      "Bootstrap SE": 0.0254708635,
+      "Bootstrap 95% lower": 0.2340799833,
+      "Bootstrap 95% upper": 0.3333980028
+    },
+    "nearby_business_count": {
+      "OLS estimate": 6.66312e-05,
+      "OLS SE": 9.2718e-06,
+      "HC1 SE": 8.8858e-06,
+      "Bootstrap mean": 6.66684e-05,
+      "Bootstrap SE": 8.7526e-06,
+      "Bootstrap 95% lower": 4.85844e-05,
+      "Bootstrap 95% upper": 8.37852e-05
+    },
+    "RateType_TOD": {
+      "OLS estimate": 0.0435671151,
+      "OLS SE": 0.0070520405,
+      "HC1 SE": 0.0080994654,
+      "Bootstrap mean": 0.0434664187,
+      "Bootstrap SE": 0.0080909682,
+      "Bootstrap 95% lower": 0.0265512324,
+      "Bootstrap 95% upper": 0.0592041901
+    }
+  },
+  "robustness": {
+    "Current primary": {
+      "N": 4016.0,
+      "Price": 0.0515431942,
+      "HC1 lower": 0.047134269,
+      "HC1 upper": 0.0559521194,
+      "Adjusted R2": 0.2929052063
+    },
+    "Cook <=4/n": {
+      "N": 3801.0,
+      "Price": 0.0532969595,
+      "HC1 lower": 0.0495001793,
+      "HC1 upper": 0.0570937396,
+      "Adjusted R2": 0.3690934751
+    },
+    "Log density": {
+      "N": 4016.0,
+      "Price": 0.0521881953,
+      "HC1 lower": 0.0478252287,
+      "HC1 upper": 0.0565511619,
+      "Adjusted R2": 0.285780924
+    },
+    "At least 28 active days": {
+      "N": 1609.0,
+      "Price": 0.0500409876,
+      "HC1 lower": 0.0423436014,
+      "HC1 upper": 0.0577383738,
+      "Adjusted R2": 0.2616329409
+    },
+    "Restore missing-income spaces": {
+      "N": 4060.0,
+      "Price": 0.0533350551,
+      "HC1 lower": 0.0488327851,
+      "HC1 upper": 0.0578373251,
+      "Adjusted R2": 0.289731615
+    }
+  }
+}
