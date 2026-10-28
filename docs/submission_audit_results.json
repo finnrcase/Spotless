@@ -17,13 +17,13 @@
       "item": "1(c)",
       "heading": "Specific, Testable Economic Hypothesis",
       "notebook": "01_economic_theory.ipynb",
-      "cell": 6
+      "cell": 9
     },
     {
       "item": "1(d)",
       "heading": "Expected Coefficient Signs and Magnitudes",
       "notebook": "01_economic_theory.ipynb",
-      "cell": 8
+      "cell": 12
     },
     {
       "item": "2(a)",
@@ -223,6 +223,7 @@
     "RateType_TOD"
   ],
   "literature_paragraphs_unchanged": true,
+  "section1_wording_source": "Author literature-review PDF",
   "processed_data_unchanged_from_git": true,
   "processed_data_sha256": {
     "meter_inventory_clean.csv": "05e064d52fafffd00a6539e1bca53359060eb2e9906670908fe6204b773e0600",

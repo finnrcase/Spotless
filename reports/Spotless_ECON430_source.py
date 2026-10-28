@@ -7,8 +7,16 @@ os.chdir(Path(__file__).resolve().parents[1] / 'notebooks')
 # Section 1: Economic Theory and Hypothesis
 # 1(a) Economic Research Question
 # 1(b) Relevant Economic Theory and Academic Literature
+# Literature Review
+# Parking scarcity, search costs, and occupancy
+# Parking prices and occupancy
+# Local demand conditions and parking outcomes
+# Prediction research and the present study
 # 1(c) Specific, Testable Economic Hypothesis
+# Hypothesis and model specification
 # 1(d) Expected Coefficient Signs and Magnitudes
+# Variables and expected signs
+# References
 # 02_data_description_eda
 # Section 2: Data Description and Exploratory Analysis
 # 2(a) Dataset Description

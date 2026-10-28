@@ -55,11 +55,19 @@ def build():
     combined.cells.append(nbformat.v4.new_markdown_cell(
         '# Parking Occupancy in Los Angeles\n\nECON 430: Project 1' + byline))
     books = []
+    author_references = []
     for name in REPORT_NAMES:
         book = nbformat.read(ROOT / 'notebooks' / (name + '.ipynb'), as_version=4)
         books.append((name, book))
         for source_cell in book.cells:
+            if name == '01_economic_theory' and source_cell.id == 'section1-author-references':
+                author_references = source_cell.source.split('### References', 1)[1].strip().split('\n\n')
+                continue
             cell = copy.deepcopy(source_cell)
+            if name == '06_limitations_extensions' and cell.cell_type == 'markdown' and cell.source.startswith('### References') and author_references:
+                data_references = [line for line in cell.source.splitlines()
+                                   if line.startswith('- ') and not line.startswith(('- Shoup,', '- Pierce,'))]
+                cell.source = '# References\n\n' + '\n\n'.join(author_references + data_references)
             if cell.cell_type == 'markdown':
                 # A single document uses internal links rather than notebook-file links.
                 cell.source = re.sub(r'\([^()\s]+\.ipynb#(section-[^)]+)\)', r'(#\1)', cell.source)
@@ -86,7 +94,7 @@ def build():
         '## Section 7: Code Quality and Reproducibility\n\n'
         'The analysis uses a fixed space-level dataset, explicit variable units and a common '
         'complete-case sample. Random seeds are 10 for Boruta and five-fold validation and '
-        '90095 for the 1,000-replication bootstrap. Tables, figures and coefficient interpretations '
+        '90095 for the 1,000-replication bootstrap. Data-based tables, figures and coefficient interpretations '
         'are generated programmatically. The accompanying Python source contains the analysis and '
         'original data-construction steps.\n\n'
         '| Package | Version |\n|---|---|\n' + versions_table + input_reference))
@@ -115,6 +123,7 @@ body { max-width: 1200px; margin: auto; }
 .jp-RenderedHTMLCommon th, .jp-RenderedHTMLCommon td {
  white-space:normal; overflow-wrap:anywhere; text-align:left;
 }
+.jp-RenderedHTMLCommon td code {white-space:normal; overflow-wrap:anywhere;}
 .jp-OutputArea-output { overflow:visible; }
 .jp-RenderedHTMLCommon p { line-height:1.6; }
 .source-appendix { margin:2em; }

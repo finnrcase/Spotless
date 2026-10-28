@@ -51,7 +51,7 @@ The original raw inputs are required only to reconstruct the data using `noteboo
 
 ## Submission details
 
-The assignment accepts one PDF or HTML report per group. Add the verified group-member names to `reports/submission_metadata.json`, complete the syllabus Assignment Policies review, and regenerate the HTML. The literature-review paragraphs remain unchanged for the authors' final review. Nothing has been submitted or pushed.
+The assignment accepts one PDF or HTML report per group. Add the verified group-member names to `reports/submission_metadata.json`, complete the syllabus Assignment Policies review, and regenerate the HTML. Section 1 now preserves the supplied author literature-review PDF wording, with its table and equations typeset under 1(a)–1(d). Nothing has been submitted or pushed.
 
 ## Verification and provenance
 

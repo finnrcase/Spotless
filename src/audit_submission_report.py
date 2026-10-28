@@ -70,11 +70,16 @@ def verify():
     comparison=json.loads(prior.read_text())
     assert comparison['Model 1']['Slopes']==1 and comparison['Model 2']['Slopes']==3
     assert comparison['Model 3']['Slopes']==len(final['predictors'])
+    author_manifest = ROOT/'docs/section1_author_pdf_manifest.json'
+    if author_manifest.exists():
+        from verify_section1_pdf import verify_author_section1
+        verify_author_section1()
     backup=Path('/tmp/spotless-before-full-audit')
     if backup.exists():
-        original=nbformat.read(backup/'01_economic_theory.ipynb',as_version=4)
-        lit=original.cells[4].source
-        assert any(c.source==lit for c in books['01_economic_theory'].cells)
+        if not author_manifest.exists():
+            original=nbformat.read(backup/'01_economic_theory.ipynb',as_version=4)
+            lit=original.cells[4].source
+            assert any(c.source==lit for c in books['01_economic_theory'].cells)
         original=nbformat.read(backup/'05_results_interpretation.ipynb',as_version=4)
         lit_comparison=original.cells[13].source.split('### Conclusion')[0]
         assert any(c.source.startswith(lit_comparison) for c in books['05_results_interpretation'].cells)
@@ -109,6 +114,7 @@ def verify():
     result={'analytical_checks':'PASS','rubric_evidence':evidence,
             'final_n':final['n'],'final_predictors':final['predictors'],
             'literature_paragraphs_unchanged':True,
+            'section1_wording_source': 'Author literature-review PDF' if (ROOT/'docs/section1_author_pdf_manifest.json').exists() else 'Prior reviewed notebook',
             'processed_data_unchanged_from_git': True, 'processed_data_sha256':data_hashes,
             'saved_images_embedded':len(soup.select('img[src^="data:image/png;base64,"]')),
             'raw_pipeline_reexecuted':False,
@@ -124,7 +130,7 @@ def verify():
         readiness['remaining_packaging_items'].append('Add all verified group-member names.')
     if not result['syllabus_policies_confirmed']:
         readiness['remaining_packaging_items'].append('Confirm review of syllabus Assignment Policies.')
-    readiness['author_review'] = 'Literature paragraphs remain unchanged for the authors.'
+    readiness['author_review'] = 'Section 1 preserves the supplied author PDF wording.' if (ROOT/'docs/section1_author_pdf_manifest.json').exists() else 'Literature paragraphs remain unchanged for the authors.'
     (ROOT/'docs/current_readiness.json').write_text(json.dumps(readiness,indent=2))
     print(json.dumps({k:v for k,v in result.items() if k!='rubric_evidence'},indent=2))
     return result

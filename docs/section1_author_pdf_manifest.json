@@ -1,0 +1,111 @@
+{
+  "source_filename": "Econ_430 Literature Review.pdf",
+  "source_sha256": "646978b063c99784ce35e866f8eba8ead656c34e279efcb7e2e97f3d68e82e2f",
+  "source_pages": 5,
+  "blocks": {
+    "scarcity": "Limited curb space and changing demand create an economic problem in urban parking. Shoup (2006) explains that drivers weigh the cost of paying for parking against the time and effort spent searching for a free space. His review of earlier studies in congested downtowns finds that drivers spent between 3.5 and 14 minutes searching for curbside parking, while vehicles cruising for parking accounted for 8% to 74% of traffic across the locations examined. This shows that parking scarcity creates costs beyond the meter price, including factors such as wasted time, fuel, and added congestion. Additionally, Queueing models further show that as occupancy rises, search times and distances can increase nonlinearly (Ogulenko et al., 2022). Therefore, occupancy not only reflects more than the number of spaces available, but it also captures how demand pressures drivers and the surrounding transport network.",
+    "prices": "Parking prices influence occupancy, but occupancy also influences prices. Meters may be raised or lowered in response to changes in demand, while drivers will alter their demand and parking choices based on prices. This creates a demand versus supply relationship for price and meter occupancy. The observed association between the two shows both the drivers responses and the agency / LA County pricing decision. Pierce and Shoup (2013) examine San Francisco’s SFpark program, which adjusted meter prices to keep block-level occupancy around 60% to 80%. Across the 5,294 observed price and occupancy changes, they estimate an average price elasticity of −0.4. Their examples show the variation between locations. For example, on Beach Street, occupancy increased from 27% to 56% when the price fell from $3.00 to $1.75. On Drumm Street, occupancy decreased from 98% to 86% when the price rose from $3.50 to $4.50. These examples clearly show the correlation between occupancy and price and how it alters supply and demand. The evidence from Seattle demonstrates the importance of local variation. By looking at meter transaction data before and after rate changes, Ottosson et al. (2013) find that block-level responses differ by neighborhood along with time of day. Lehner and Peer’s (2019) meta-analysis of 50 studies also shows that parking price elasticities vary across studies and trip types. These studies support the expectation that higher prices are associated with lower parking demand which we hypothesised prior, while showing that the size of the response varies by place and time. Their elasticity estimates use percentage changes, making them not directly comparable with an OLS coefficient measured in occupancy-rate units per dollar, yet still something that should be examined. Since prices may also respond to occupancy, this demonstrates association rather than causation.",
+    "local": "Parking demand also reflects the characteristics of the surrounding area where population, land use, transport options and the timing of local activity all influence the demand of drivers seeking a space. McCahill (2017) uses cross-sectional OLS to examine occupancy at 80 multifamily residential sites in Madison, Wisconsin. Although residential parking differs from metered curb parking, the study demonstrates how occupancy can be analyzed alongside price and neighborhood characteristics. Research on on-street parking further highlights the role of nearby activity. Kimpton et al. (2023) show that land-use mix is related to the timing of parking use. Lyu et al. (2024) use nearby points of interest, including restaurants, to improve short-term occupancy prediction, while Liu and Chen (2025) combine built-environment measures with time-series methods to model changes in demand. These findings show the importance of including nearby restaurants and retail activity in this analysis, showing how land use is influential in explaining and predicting the parking patterns. It is worth noting however, that their estimated relationship in this study should be interpreted as associations. Additionally, Los Angeles’ Express Park program provides a local example of these parking-management mechanisms. The program used occupancy sensors alongside changes to prices, time limits, and operating hours. The U.S. Department of Transportation (2024) reports shorter parking durations in downtown LA, Venice, and Hollywood, as well as increased availability in downtown LA. Because several management tools changed at once, the results reflect the combined use of pricing and other parking policies. Recognising this provides a useful local example of how cities manage occupancy in practice.",
+    "prediction": "Looking at the recent research that looked at how parking data can be used to predict if a parking spot will be available or its proportion of occupancy. Channamallu et al. (2023) review 108 covers a wide range of potential prediction methods. Ma et al. (2024) review urban parking prediction more broadly, while Xiao et al. (2018) develop a framework for predicting availability from historical occupancy. These research studies mainly focus on ways to forecast and predict parking availability and how accurate the estimates can be. These help identify potential variables to predict parking in our model, and complements our research by focusing on how meter prices and local conditions are associated with occupancy.",
+    "research_summary": "The literature we reviewed shows how parking occupancy is the result of an economic balance of limited supply, local demand, and policy. Across all the sources, they agree that price, nearby activity, and the transport conditions are explanations for differences amongst parking meter locations, with strengths of the variables varying based on where they are located.The study brings these ideas together by examining how a price proxy along with local demand measurements are associated with the fraction of metered occupancy throughout Los Angeles county. Using OLS gives us a way to interpret and compare relationships in order to determine associations.",
+    "model_intro": "The relationship is estimated for metered space 𝑖 using the following OLS specification:",
+    "hypothesis": "Our hypothesis is that higher meter prices are associated with lower occupancy, assuming we hold the other included characteristics constant. This prediction follows the economic expectation that some drivers respond to higher parking costs by reducing their demand for metered spaces. Because agencies / LA County may set prices in response to occupancy demand, the estimated relationship may not necessarily follow this expected direction. The hypotheses are:",
+    "hypothesis_caveat": "The expected negative sign is our theoretical prediction, not implying there is causation. Prices may respond to occupancy, meaning the estimated coefficient can differ from the predicted sign.",
+    "magnitudes": "The theory provides clearer predictions about the direction of some coefficients than their exact size. In particular, the expected effects of time limits, population density, transit share, and rate type are ambiguous because each variable captures several conditions at once. Coefficients should therefore be interpreted in their original units and in terms of meaningful changes, such as one additional hour in the time limit or a 10-percentage-point increase in a travel share. Pierce and Shoup’s (2013) elasticity of −0.4 describes a percentage response and cannot be compared directly with the OLS price coefficient, which measures the change in occupancy rate associated with a one-dollar difference in the price proxy."
+  },
+  "table_headers": [
+    "Variable",
+    "Role",
+    "Expected sign",
+    "Economic rationale"
+  ],
+  "table_rows": [
+    [
+      "occupancy_rate",
+      "Outcome",
+      "Not applicable",
+      "The share of observed time that a metered space is occupied."
+    ],
+    [
+      "price_midpoint",
+      "Key predictor",
+      "Negative",
+      "A higher price should reduce demand when other factors are held constant. Demand-responsive pricing can still produce a positive observed association."
+    ],
+    [
+      "time_limit_hours",
+      "Policy control",
+      "Positive, uncertain",
+      "Longer limits may make parking more attractive, but they can also reduce turnover and availability."
+    ],
+    [
+      "population_density",
+      "Local demand measure",
+      "Positive, uncertain",
+      "Greater density may mean more potential parkers, but it also captures conditions such as transit access and local activity."
+    ],
+    [
+      "nearby_restaurant_retail_count",
+      "Local demand measure",
+      "Positive",
+      "More destinations attract customers, workers, and deliveries, which can raise parking demand."
+    ],
+    [
+      "drive_alone_share",
+      "Local demand measure",
+      "Positive",
+      "A larger share of commuters driving alone can mean greater demand for parking."
+    ],
+    [
+      "transit_share",
+      "Local demand measure",
+      "Negative, uncertain",
+      "Transit can substitute for driving, although transit use also tends to occur in dense, high-activity areas."
+    ],
+    [
+      "RateType_TOD",
+      "Rate-type control",
+      "Ambiguous",
+      "The expected sign depends on how time-of-day meters differ from the flat-rate reference group and where each rate type is used."
+    ]
+  ],
+  "equations": {
+    "model": "\\begin{aligned}\n\\mathrm{OccupancyRate}_i\n&= \\beta_0 + \\beta_1\\,\\mathrm{PriceMidpoint}_i \\\\\n&\\quad + \\beta_2\\,\\mathrm{TimeLimitHours}_i + \\beta_3\\,\\mathrm{PopulationDensity}_i \\\\\n&\\quad + \\beta_4\\,\\mathrm{RestaurantRetailCount}_i + \\beta_5\\,\\mathrm{DriveAloneShare}_i \\\\\n&\\quad + \\beta_6\\,\\mathrm{TransitShare}_i + \\beta_7\\,\\mathrm{RateTypeTOD}_i + \\varepsilon_i .\n\\end{aligned}",
+    "hypotheses": "\\begin{aligned}\nH_a &: \\beta_1 < 0 \\\\\nH_0 &: \\beta_1 = 0\n\\end{aligned}"
+  },
+  "references": [
+    "Channamallu, S. S., Kermanshachi, S., Rosenberger, J. M., & Pamidimukkala, A. (2023). Parking occupancy prediction and analysis: A comprehensive study. Transportation Research Procedia, 73, 297-304. https://doi.org/10.1016/j.trpro.2023.11.921",
+    "Kimpton, A., Stead, D., & Corcoran, J. (2023). The temporality of on-street parking: Exploring the role of land-use mix and change on parking dynamics. Environment and Planning B: Urban Analytics and City Science, 50(2), 370-385. https://doi.org/10.1177/23998083221112957",
+    "Lehner, S., & Peer, S. (2019). The price elasticity of parking: A meta-analysis. Transportation Research Part A: Policy and Practice, 121, 177-191. https://doi.org/10.1016/j.tra.2019.01.014",
+    "Liu, K., & Chen, J. (2025). Dynamic parking demand patterns modeling with PSO-XGBoost: Implications for parking management. Transportation Research Part A: Policy and Practice, 202, 104711. https://doi.org/10.1016/j.tra.2025.104711",
+    "Lyu, M., Ji, Y., Kuai, C., & Zhang, S. (2024). Short-term prediction of on-street parking occupancy using multivariate variable based on deep learning. Journal of Traffic and Transportation Engineering (English Edition), 11(1), 28-40. https://doi.org/10.1016/j.jtte.2022.05.004",
+    "Ma, C., Huang, X., & Li, J. (2024). A review of research on urban parking prediction. Journal of Traffic and Transportation Engineering (English Edition), 11(4), 700-720. https://doi.org/10.1016/j.jtte.2023.11.004",
+    "McCahill, C. (2017). Factors affecting residential parking occupancy in Madison, Wisconsin. Transportation Research Record, 2651(1), 71-79. https://doi.org/10.3141/2651-08",
+    "Ogulenko, A., Benenson, I., & Fulman, N. (2022). The nature of the on-street parking search. Transportation Research Part B: Methodological, 166, 48-68. https://doi.org/10.1016/j.trb.2022.10.007",
+    "Ottosson, D. B., Chen, C., Wang, T., & Lin, H. (2013). The sensitivity of on-street parking demand in response to price changes: A case study in Seattle, WA. Transport Policy, 25, 222-232. https://doi.org/10.1016/j.tranpol.2012.11.013",
+    "Pierce, G., & Shoup, D. (2013). Getting the prices right: An evaluation of pricing parking by demand in San Francisco. Journal of the American Planning Association, 79(1), 67-81. https://doi.org/10.1080/01944363.2013.787307",
+    "Shoup, D. C. (2006). Cruising for parking. Transport Policy, 13(6), 479-486. https://doi.org/10.1016/j.tranpol.2006.05.005",
+    "U.S. Department of Transportation. (2024). Demand-based pricing strategy in Los Angeles parking management system led to a 37 percent reduction in parking duration for downtown LA. ITS Deployment Evaluation. https://www.itskrs.its.dot.gov/2024-b01821",
+    "Xiao, J., Lou, Y., & Frisby, J. (2018). How likely am I to find parking? A practical model-based framework for predicting parking availability. Transportation Research Part B: Methodological, 112, 19-39. https://doi.org/10.1016/j.trb.2018.04.001"
+  ],
+  "retained_research_question": "How do stated parking prices, parking rules and neighborhood characteristics relate to differences in August 2025 monthly occupancy across Los Angeles sensor-equipped metered spaces? One observation is one parking space; this is an associational cross-sectional study, not a price experiment or real-time availability model.",
+  "literature_body_paragraphs": 8,
+  "formatting_only_changes": [
+    "Removed PDF line wrapping and joined the split table field name.",
+    "Reorganized unchanged source blocks under 1(a)–1(d).",
+    "Restored the original PDF paragraph breaks without rewriting.",
+    "Typeset the model and hypotheses in display LaTeX; escaped currency dollar signs.",
+    "Stored the eight-row theoretical table as native Markdown; no formatting code is required."
+  ],
+  "model_scope_note": "The supplied equation matches the seven-predictor sensitivity specification; it does not redefine the selected final Model 3.",
+  "literature_original_paragraphs": [
+    "Limited curb space and changing demand create an economic problem in urban parking. Shoup (2006) explains that drivers weigh the cost of paying for parking against the time and effort spent searching for a free space. His review of earlier studies in congested downtowns finds that drivers spent between 3.5 and 14 minutes searching for curbside parking, while vehicles cruising for parking accounted for 8% to 74% of traffic across the locations examined. This shows that parking scarcity creates costs beyond the meter price, including factors such as wasted time, fuel, and added congestion. Additionally, Queueing models further show that as occupancy rises, search times and distances can increase nonlinearly (Ogulenko et al., 2022). Therefore, occupancy not only reflects more than the number of spaces available, but it also captures how demand pressures drivers and the surrounding transport network.",
+    "Parking prices influence occupancy, but occupancy also influences prices. Meters may be raised or lowered in response to changes in demand, while drivers will alter their demand and parking choices based on prices. This creates a demand versus supply relationship for price and meter occupancy. The observed association between the two shows both the drivers responses and the agency / LA County pricing decision.",
+    "Pierce and Shoup (2013) examine San Francisco’s SFpark program, which adjusted meter prices to keep block-level occupancy around 60% to 80%. Across the 5,294 observed price and occupancy changes, they estimate an average price elasticity of −0.4. Their examples show the variation between locations. For example, on Beach Street, occupancy increased from 27% to 56% when the price fell from $3.00 to $1.75. On Drumm Street, occupancy decreased from 98% to 86% when the price rose from $3.50 to $4.50. These examples clearly show the correlation between occupancy and price and how it alters supply and demand.",
+    "The evidence from Seattle demonstrates the importance of local variation. By looking at meter transaction data before and after rate changes, Ottosson et al. (2013) find that block-level responses differ by neighborhood along with time of day. Lehner and Peer’s (2019) meta-analysis of 50 studies also shows that parking price elasticities vary across studies and trip types. These studies support the expectation that higher prices are associated with lower parking demand which we hypothesised prior, while showing that the size of the response varies by place and time. Their elasticity estimates use percentage changes, making them not directly comparable with an OLS coefficient measured in occupancy-rate units per dollar, yet still something that should be examined. Since prices may also respond to occupancy, this demonstrates association rather than causation.",
+    "Parking demand also reflects the characteristics of the surrounding area where population, land use, transport options and the timing of local activity all influence the demand of drivers seeking a space. McCahill (2017) uses cross-sectional OLS to examine occupancy at 80 multifamily residential sites in Madison, Wisconsin. Although residential parking differs from metered curb parking, the study demonstrates how occupancy can be analyzed alongside price and neighborhood characteristics.",
+    "Research on on-street parking further highlights the role of nearby activity. Kimpton et al. (2023) show that land-use mix is related to the timing of parking use. Lyu et al. (2024) use nearby points of interest, including restaurants, to improve short-term occupancy prediction, while Liu and Chen (2025) combine built-environment measures with time-series methods to model changes in demand. These findings show the importance of including nearby restaurants and retail activity in this analysis, showing how land use is influential in explaining and predicting the parking patterns. It is worth noting however, that their estimated relationship in this study should be interpreted as associations.",
+    "Additionally, Los Angeles’ Express Park program provides a local example of these parking-management mechanisms. The program used occupancy sensors alongside changes to prices, time limits, and operating hours. The U.S. Department of Transportation (2024) reports shorter parking durations in downtown LA, Venice, and Hollywood, as well as increased availability in downtown LA. Because several management tools changed at once, the results reflect the combined use of pricing and other parking policies. Recognising this provides a useful local example of how cities manage occupancy in practice.",
+    "Looking at the recent research that looked at how parking data can be used to predict if a parking spot will be available or its proportion of occupancy. Channamallu et al. (2023) review 108 covers a wide range of potential prediction methods. Ma et al. (2024) review urban parking prediction more broadly, while Xiao et al. (2018) develop a framework for predicting availability from historical occupancy. These research studies mainly focus on ways to forecast and predict parking availability and how accurate the estimates can be. These help identify potential variables to predict parking in our model, and complements our research by focusing on how meter prices and local conditions are associated with occupancy."
+  ]
+}

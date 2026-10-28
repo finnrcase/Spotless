@@ -1,5 +1,5 @@
 {
-  "scope": "Sections 2\u20137; Section 1 preserved and excluded from revision",
+  "scope": "Sections 2\u20137; Section 1 matches its current authorized source",
   "status": "All listed analysis/implementation checks verified",
   "evidence": [
     {
@@ -488,7 +488,7 @@
       "status": "VERIFIED"
     }
   ],
-  "section1_byte_for_byte_unchanged": true,
+  "section1_matches_authorized_source": true,
   "missing_author_names": true,
   "syllabus_review_confirmed": false
 }

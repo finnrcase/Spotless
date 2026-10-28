@@ -7799,6 +7799,7 @@ body { max-width: 1200px; margin: auto; }
 .jp-RenderedHTMLCommon th, .jp-RenderedHTMLCommon td {
  white-space:normal; overflow-wrap:anywhere; text-align:left;
 }
+.jp-RenderedHTMLCommon td code {white-space:normal; overflow-wrap:anywhere;}
 .jp-OutputArea-output { overflow:visible; }
 .jp-RenderedHTMLCommon p { line-height:1.6; }
 .source-appendix { margin:2em; }
@@ -7807,7 +7808,7 @@ body { max-width: 1200px; margin: auto; }
 </style></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f6b0c63b">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c26c5c3d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7844,6 +7845,7 @@ body { max-width: 1200px; margin: auto; }
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>How do stated parking prices, parking rules and neighborhood characteristics relate to differences in August 2025 monthly occupancy across Los Angeles sensor-equipped metered spaces? One observation is one parking space; this is an associational cross-sectional study, not a price experiment or real-time availability model.</p>
+<p>The literature we reviewed shows how parking occupancy is the result of an economic balance of limited supply, local demand, and policy. Across all the sources, they agree that price, nearby activity, and the transport conditions are explanations for differences amongst parking meter locations, with strengths of the variables varying based on where they are located.The study brings these ideas together by examining how a price proxy along with local demand measurements are associated with the fraction of metered occupancy throughout Los Angeles county. Using OLS gives us a way to interpret and compare relationships in order to determine associations.</p>
 </div>
 </div>
 </div>
@@ -7854,7 +7856,7 @@ body { max-width: 1200px; margin: auto; }
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><a id="section-1b"></a></p>
-<h3 id="1(b)-Relevant-Economic-Theory-and-Academic-Literature">1(b) Relevant Economic Theory and Academic Literature<a class="anchor-link" href="#1(b)-Relevant-Economic-Theory-and-Academic-Literature">¶</a></h3>
+<h3 id="1(b)-Relevant-Economic-Theory-and-Academic-Literature">1(b) Relevant Economic Theory and Academic Literature<a class="anchor-link" href="#1(b)-Relevant-Economic-Theory-and-Academic-Literature">¶</a></h3><h4 id="Literature-Review">Literature Review<a class="anchor-link" href="#Literature-Review">¶</a></h4>
 </div>
 </div>
 </div>
@@ -7864,9 +7866,7 @@ body { max-width: 1200px; margin: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Shoup (2006) models the choice between searching for a cheaper curb space and paying for immediately available off-street parking. The relative monetary and time costs explain why scarce curb space can produce cruising. This motivates occupancy as an economically relevant outcome and a downward demand response to price, holding other demand conditions constant. We do not measure cruising directly. <a href="https://escholarship.org/content/qt55s7079f/qt55s7079f.pdf">Shoup, <em>Transport Policy</em> 13(6), 479–486</a>.</p>
-<p>Pierce and Shoup (2013) study SFpark price/occupancy adjustments and report average price elasticity about −0.4, with substantial heterogeneity. Their setting illustrates why tariff changes and location differences answer different questions: administrators can set higher tariffs where demand is stronger. <a href="https://www.its.ucla.edu/wp-content/uploads/sites/10/2017/06/Getting-the-Prices-Right-An-Evaluation-of-Pricing-Parking-by-Demand-in-San-Francisco.pdf">Pierce and Shoup, <em>JAPA</em> 79(1), 67–81, doi:10.1080/01944363.2013.787307</a>.</p>
-<p>In our cross-section, nearby activity and residential density can shift parking demand, while walking/transit alternatives and local parking supply can offset it. Resident commuting shares are contextual proxies, not the modes of the actual parkers. Therefore price endogeneity, destination sorting and omitted supply prevent interpreting an OLS coefficient as a structural demand response. We estimate conditional associations, and compare them with the demand hypothesis without claiming causal identification.</p>
+<h5 id="Parking-scarcity,-search-costs,-and-occupancy">Parking scarcity, search costs, and occupancy<a class="anchor-link" href="#Parking-scarcity,-search-costs,-and-occupancy">¶</a></h5><p>Limited curb space and changing demand create an economic problem in urban parking. Shoup (2006) explains that drivers weigh the cost of paying for parking against the time and effort spent searching for a free space. His review of earlier studies in congested downtowns finds that drivers spent between 3.5 and 14 minutes searching for curbside parking, while vehicles cruising for parking accounted for 8% to 74% of traffic across the locations examined. This shows that parking scarcity creates costs beyond the meter price, including factors such as wasted time, fuel, and added congestion. Additionally, Queueing models further show that as occupancy rises, search times and distances can increase nonlinearly (Ogulenko et al., 2022). Therefore, occupancy not only reflects more than the number of spaces available, but it also captures how demand pressures drivers and the surrounding transport network.</p>
 </div>
 </div>
 </div>
@@ -7876,8 +7876,9 @@ body { max-width: 1200px; margin: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="section-1c"></a></p>
-<h3 id="1(c)-Specific,-Testable-Economic-Hypothesis">1(c) Specific, Testable Economic Hypothesis<a class="anchor-link" href="#1(c)-Specific,-Testable-Economic-Hypothesis">¶</a></h3>
+<h5 id="Parking-prices-and-occupancy">Parking prices and occupancy<a class="anchor-link" href="#Parking-prices-and-occupancy">¶</a></h5><p>Parking prices influence occupancy, but occupancy also influences prices. Meters may be raised or lowered in response to changes in demand, while drivers will alter their demand and parking choices based on prices. This creates a demand versus supply relationship for price and meter occupancy. The observed association between the two shows both the drivers responses and the agency / LA County pricing decision.</p>
+<p>Pierce and Shoup (2013) examine San Francisco’s SFpark program, which adjusted meter prices to keep block-level occupancy around 60% to 80%. Across the 5,294 observed price and occupancy changes, they estimate an average price elasticity of −0.4. Their examples show the variation between locations. For example, on Beach Street, occupancy increased from 27% to 56% when the price fell from $3.00 to $1.75. On Drumm Street, occupancy decreased from 98% to 86% when the price rose from $3.50 to $4.50. These examples clearly show the correlation between occupancy and price and how it alters supply and demand.</p>
+<p>The evidence from Seattle demonstrates the importance of local variation. By looking at meter transaction data before and after rate changes, Ottosson et al. (2013) find that block-level responses differ by neighborhood along with time of day. Lehner and Peer’s (2019) meta-analysis of 50 studies also shows that parking price elasticities vary across studies and trip types. These studies support the expectation that higher prices are associated with lower parking demand which we hypothesised prior, while showing that the size of the response varies by place and time. Their elasticity estimates use percentage changes, making them not directly comparable with an OLS coefficient measured in occupancy-rate units per dollar, yet still something that should be examined. Since prices may also respond to occupancy, this demonstrates association rather than causation.</p>
 </div>
 </div>
 </div>
@@ -7887,7 +7888,9 @@ body { max-width: 1200px; margin: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The economic demand prediction is β_price &lt; 0 holding other demand determinants fixed. For the observed linear conditional association we inspect the estimated slope, its conventional/HC1 95% interval and sign relative to zero; the reported intervals use two-sided inference. A positive estimate contradicts the negative <em>association</em> prediction, but cannot reject the law of demand because the regressions do not identify an exogenous price response. Density and business activity are contextual demand hypotheses; commuting-share and tariff-structure signs are ambiguous.</p>
+<h5 id="Local-demand-conditions-and-parking-outcomes">Local demand conditions and parking outcomes<a class="anchor-link" href="#Local-demand-conditions-and-parking-outcomes">¶</a></h5><p>Parking demand also reflects the characteristics of the surrounding area where population, land use, transport options and the timing of local activity all influence the demand of drivers seeking a space. McCahill (2017) uses cross-sectional OLS to examine occupancy at 80 multifamily residential sites in Madison, Wisconsin. Although residential parking differs from metered curb parking, the study demonstrates how occupancy can be analyzed alongside price and neighborhood characteristics.</p>
+<p>Research on on-street parking further highlights the role of nearby activity. Kimpton et al. (2023) show that land-use mix is related to the timing of parking use. Lyu et al. (2024) use nearby points of interest, including restaurants, to improve short-term occupancy prediction, while Liu and Chen (2025) combine built-environment measures with time-series methods to model changes in demand. These findings show the importance of including nearby restaurants and retail activity in this analysis, showing how land use is influential in explaining and predicting the parking patterns. It is worth noting however, that their estimated relationship in this study should be interpreted as associations.</p>
+<p>Additionally, Los Angeles’ Express Park program provides a local example of these parking-management mechanisms. The program used occupancy sensors alongside changes to prices, time limits, and operating hours. The U.S. Department of Transportation (2024) reports shorter parking durations in downtown LA, Venice, and Hollywood, as well as increased availability in downtown LA. Because several management tools changed at once, the results reflect the combined use of pricing and other parking policies. Recognising this provides a useful local example of how cities manage occupancy in practice.</p>
 </div>
 </div>
 </div>
@@ -7897,8 +7900,7 @@ body { max-width: 1200px; margin: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><a id="section-1d"></a></p>
-<h3 id="1(d)-Expected-Coefficient-Signs-and-Magnitudes">1(d) Expected Coefficient Signs and Magnitudes<a class="anchor-link" href="#1(d)-Expected-Coefficient-Signs-and-Magnitudes">¶</a></h3>
+<h5 id="Prediction-research-and-the-present-study">Prediction research and the present study<a class="anchor-link" href="#Prediction-research-and-the-present-study">¶</a></h5><p>Looking at the recent research that looked at how parking data can be used to predict if a parking spot will be available or its proportion of occupancy. Channamallu et al. (2023) review 108 covers a wide range of potential prediction methods. Ma et al. (2024) review urban parking prediction more broadly, while Xiao et al. (2018) develop a framework for predicting availability from historical occupancy. These research studies mainly focus on ways to forecast and predict parking availability and how accurate the estimates can be. These help identify potential variables to predict parking in our model, and complements our research by focusing on how meter prices and local conditions are associated with occupancy.</p>
 </div>
 </div>
 </div>
@@ -7908,55 +7910,8 @@ body { max-width: 1200px; margin: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The demand hypothesis predicts a negative <strong>causal</strong> price response conditional on demand; observed cross-location price associations can have either sign when prices respond to demand. A useful magnitude benchmark is elasticity ε≈−0.4 from <a href="https://www.its.ucla.edu/wp-content/uploads/sites/10/2017/06/Getting-the-Prices-Right-An-Evaluation-of-Pricing-Parking-by-Demand-in-San-Francisco.pdf">Pierce and Shoup (2013)</a>. At an <strong>illustrative</strong> 50% occupancy and $2/hour price, a 10% price rise ($0.20) implies approximately a 4% relative occupancy decline, or <strong>2 occupancy percentage points</strong>. Locally, β≈εq/p≈−0.10 occupancy-fraction units per dollar. This is a transportability benchmark, not an imposed coefficient, a preregistered prior, or a causal estimate for Los Angeles. Large $1 changes need not follow the local approximation.</p>
-<p>The other slopes have no calibrated structural magnitudes in these two sources. Discussing size therefore requires units, scale and the occupancy bound rather than invented numerical priors:</p>
-<table>
-<thead>
-<tr>
-<th>Candidate</th>
-<th>Demand-based sign expectation / qualification</th>
-<th>Magnitude scale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Price midpoint</td>
-<td>Negative holding demand fixed; cross-location sign can reverse</td>
-<td>$0.20 and $1 changes; benchmark above; not an elasticity coefficient</td>
-</tr>
-<tr>
-<td>Time limit</td>
-<td>Longer stays can raise occupancy; turnover response makes sign ambiguous</td>
-<td>1 additional hour implies 100β percentage points</td>
-</tr>
-<tr>
-<td>Population/housing density</td>
-<td>Positive demand pressure, offset by local supply/mode choice</td>
-<td>1,000 people or housing units per square mile implies 100,000β pp</td>
-</tr>
-<tr>
-<td>Median income</td>
-<td>Ambiguous: car demand versus price/time sensitivity</td>
-<td>$10,000 implies 1,000,000β pp; no calibrated prior</td>
-</tr>
-<tr>
-<td>Food-service/retail and all-business counts</td>
-<td>Positive demand pressure in isolation; conditional composition effects can reverse signs</td>
-<td>100 registrations implies 10,000β pp; not 100 distinct new storefronts</td>
-</tr>
-<tr>
-<td>Drive-alone / transit / walk shares</td>
-<td>Ambiguous resident demand, substitution and centrality mechanisms</td>
-<td>A 10-pp share change implies 10β occupancy pp; shares are fractions</td>
-</tr>
-<tr>
-<td>TOD / meter technology indicators</td>
-<td>Ambiguous assignment and location differences</td>
-<td>Indicator switch implies 100β pp relative to reference</td>
-</tr>
-</tbody>
-</table>
-<p>Effects are local comparisons within observed support, not unlimited linear extrapolations. Occupancy is between zero and one: a 5-pp change is meaningful against 50% occupancy, but is a 10% <strong>relative</strong> change, not 5%. Boundedness, saturation and overlapping covariates limit plausible effect sizes. These expectations are stated explicitly for interpretation; estimates below are not modified to match them.</p>
+<p><a id="section-1c"></a></p>
+<h3 id="1(c)-Specific,-Testable-Economic-Hypothesis">1(c) Specific, Testable Economic Hypothesis<a class="anchor-link" href="#1(c)-Specific,-Testable-Economic-Hypothesis">¶</a></h3><h4 id="Hypothesis-and-model-specification">Hypothesis and model specification<a class="anchor-link" href="#Hypothesis-and-model-specification">¶</a></h4>
 </div>
 </div>
 </div>
@@ -7966,12 +7921,138 @@ body { max-width: 1200px; margin: auto; }
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Section-2:-Data-Description-and-Exploratory-Analysis">Section 2: Data Description and Exploratory Analysis<a class="anchor-link" href="#Section-2:-Data-Description-and-Exploratory-Analysis">¶</a></h2><p>We examine parking occupancy and its potential predictors before developing the regression models.</p>
+<p>The relationship is estimated for metered space $i$ using the following OLS specification:</p>
+<p>$$
+\begin{aligned}
+\mathrm{OccupancyRate}_i
+&amp;= \beta_0 + \beta_1\,\mathrm{PriceMidpoint}_i \\
+&amp;\quad + \beta_2\,\mathrm{TimeLimitHours}_i + \beta_3\,\mathrm{PopulationDensity}_i \\
+&amp;\quad + \beta_4\,\mathrm{RestaurantRetailCount}_i + \beta_5\,\mathrm{DriveAloneShare}_i \\
+&amp;\quad + \beta_6\,\mathrm{TransitShare}_i + \beta_7\,\mathrm{RateTypeTOD}_i + \varepsilon_i .
+\end{aligned}
+$$</p>
 </div>
 </div>
 </div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-011">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Our hypothesis is that higher meter prices are associated with lower occupancy, assuming we hold the other included characteristics constant. This prediction follows the economic expectation that some drivers respond to higher parking costs by reducing their demand for metered spaces. Because agencies / LA County may set prices in response to occupancy demand, the estimated relationship may not necessarily follow this expected direction. The hypotheses are:</p>
+<p>$$
+\begin{aligned}
+H_a &amp;: \beta_1 &lt; 0 \\
+H_0 &amp;: \beta_1 = 0
+\end{aligned}
+$$</p>
+<p>The expected negative sign is our theoretical prediction, not implying there is causation. Prices may respond to occupancy, meaning the estimated coefficient can differ from the predicted sign.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-012">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><a id="section-1d"></a></p>
+<h3 id="1(d)-Expected-Coefficient-Signs-and-Magnitudes">1(d) Expected Coefficient Signs and Magnitudes<a class="anchor-link" href="#1(d)-Expected-Coefficient-Signs-and-Magnitudes">¶</a></h3><h4 id="Variables-and-expected-signs">Variables and expected signs<a class="anchor-link" href="#Variables-and-expected-signs">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-013">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Role</th>
+<th>Expected sign</th>
+<th>Economic rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>occupancy_rate</code></td>
+<td>Outcome</td>
+<td>Not applicable</td>
+<td>The share of observed time that a metered space is occupied.</td>
+</tr>
+<tr>
+<td><code>price_midpoint</code></td>
+<td>Key predictor</td>
+<td>Negative</td>
+<td>A higher price should reduce demand when other factors are held constant. Demand-responsive pricing can still produce a positive observed association.</td>
+</tr>
+<tr>
+<td><code>time_limit_hours</code></td>
+<td>Policy control</td>
+<td>Positive, uncertain</td>
+<td>Longer limits may make parking more attractive, but they can also reduce turnover and availability.</td>
+</tr>
+<tr>
+<td><code>population_density</code></td>
+<td>Local demand measure</td>
+<td>Positive, uncertain</td>
+<td>Greater density may mean more potential parkers, but it also captures conditions such as transit access and local activity.</td>
+</tr>
+<tr>
+<td><code>nearby_restaurant_retail_count</code></td>
+<td>Local demand measure</td>
+<td>Positive</td>
+<td>More destinations attract customers, workers, and deliveries, which can raise parking demand.</td>
+</tr>
+<tr>
+<td><code>drive_alone_share</code></td>
+<td>Local demand measure</td>
+<td>Positive</td>
+<td>A larger share of commuters driving alone can mean greater demand for parking.</td>
+</tr>
+<tr>
+<td><code>transit_share</code></td>
+<td>Local demand measure</td>
+<td>Negative, uncertain</td>
+<td>Transit can substitute for driving, although transit use also tends to occur in dense, high-activity areas.</td>
+</tr>
+<tr>
+<td><code>RateType_TOD</code></td>
+<td>Rate-type control</td>
+<td>Ambiguous</td>
+<td>The expected sign depends on how time-of-day meters differ from the flat-rate reference group and where each rate type is used.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-014">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>The theory provides clearer predictions about the direction of some coefficients than their exact size. In particular, the expected effects of time limits, population density, transit share, and rate type are ambiguous because each variable captures several conditions at once. Coefficients should therefore be interpreted in their original units and in terms of meaningful changes, such as one additional hour in the time limit or a 10-percentage-point increase in a travel share. Pierce and Shoup’s (2013) elasticity of −0.4 describes a percentage response and cannot be compared directly with the OLS price coefficient, which measures the change in occupancy rate associated with a one-dollar difference in the price proxy.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-015">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Section-2:-Data-Description-and-Exploratory-Analysis">Section 2: Data Description and Exploratory Analysis<a class="anchor-link" href="#Section-2:-Data-Description-and-Exploratory-Analysis">¶</a></h2><p>We examine parking occupancy and its potential predictors before developing the regression models.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-016">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7982,7 +8063,7 @@ body { max-width: 1200px; margin: auto; }
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-012">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-017">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7993,7 +8074,7 @@ body { max-width: 1200px; margin: auto; }
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-013">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-018">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8008,7 +8089,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-014">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-019">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8046,7 +8127,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-015">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-020">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8055,7 +8136,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-016">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-021">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8121,7 +8202,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-017">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-022">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8131,7 +8212,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-018">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-023">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8193,7 +8274,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-019">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-024">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8203,7 +8284,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-020">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-025">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8403,7 +8484,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-021">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-026">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8464,7 +8545,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-022">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-027">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8474,7 +8555,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-023">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-028">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8484,7 +8565,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-024">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-029">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8496,7 +8577,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-025">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-030">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8508,7 +8589,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-026">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-031">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8521,7 +8602,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-027">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-032">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8532,7 +8613,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-028">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-033">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8542,7 +8623,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-029">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-034">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8555,7 +8636,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-030">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-035">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8566,7 +8647,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-031">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-036">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8577,7 +8658,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-032">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-037">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8587,7 +8668,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-033">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-038">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8600,7 +8681,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-034">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-039">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8611,7 +8692,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-035">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-040">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8621,7 +8702,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-036">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-041">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8749,7 +8830,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-037">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-042">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8830,7 +8911,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-038">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-043">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -8911,7 +8992,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-039">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-044">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8922,7 +9003,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-040">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-045">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -8932,7 +9013,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-041">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-046">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9129,7 +9210,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-042">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-047">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9141,7 +9222,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-043">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-048">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9152,7 +9233,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-044">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-049">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9230,7 +9311,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-045">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-050">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9240,7 +9321,7 @@ Spaces with observed income: 4016
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-046">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-051">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9308,7 +9389,7 @@ Missing cells: 44
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-047">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-052">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9318,7 +9399,7 @@ Missing cells: 44
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-048">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-053">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9328,7 +9409,7 @@ Missing cells: 44
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-049">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-054">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9338,7 +9419,7 @@ Missing cells: 44
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-050">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-055">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9353,7 +9434,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-051">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-056">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9362,7 +9443,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-052">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-057">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9376,7 +9457,7 @@ Confirmed: ['price_midpoint', 'time_limit_hours', 'population_density', 'nearby_
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-053">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-058">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9400,7 +9481,7 @@ Feature: MeterType_Single-Space              Rank: 3, Keep: Reject
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-054">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-059">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9413,7 +9494,7 @@ Feature: MeterType_Single-Space              Rank: 3, Keep: Reject
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-055">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-060">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9423,7 +9504,7 @@ Feature: MeterType_Single-Space              Rank: 3, Keep: Reject
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-056">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-061">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9473,7 +9554,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-057">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-062">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9582,7 +9663,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-058">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-063">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9692,7 +9773,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-059">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-064">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9704,7 +9785,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-060">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-065">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9729,7 +9810,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-061">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-066">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9738,7 +9819,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-062">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-067">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9751,7 +9832,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-063">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-068">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9761,7 +9842,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-064">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-069">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9863,7 +9944,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-065">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-070">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -9956,7 +10037,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-066">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-071">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9966,7 +10047,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-067">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-072">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9977,7 +10058,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-068">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-073">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -9987,7 +10068,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-069">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-074">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10104,7 +10185,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-070">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-075">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10113,7 +10194,7 @@ Adjusted R2: 0.294
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-071">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-076">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10151,7 +10232,7 @@ Notes:
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-072">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-077">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10160,7 +10241,7 @@ Notes:
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-073">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-078">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10202,7 +10283,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-074">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-079">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10211,7 +10292,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-075">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-080">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10256,7 +10337,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-076">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-081">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10339,7 +10420,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-077">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-082">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10357,7 +10438,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-078">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-083">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10367,7 +10448,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-079">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-084">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10539,7 +10620,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-080">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-085">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10549,7 +10630,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-081">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-086">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10559,7 +10640,7 @@ strong multicollinearity or other numerical problems.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-082">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-087">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10580,7 +10661,7 @@ dtype: object</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-083">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-088">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10593,7 +10674,7 @@ dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-084">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-089">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10603,7 +10684,7 @@ dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-085">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-090">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10613,7 +10694,7 @@ dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-086">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-091">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10623,7 +10704,7 @@ dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-087">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-092">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10633,7 +10714,7 @@ dtype: object</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-088">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-093">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10642,7 +10723,7 @@ dtype: object</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-089">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-094">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10656,7 +10737,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-090">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-095">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10671,8 +10752,8 @@ Census tracts: 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=report-091">
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-092">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=report-096">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-097">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10742,7 +10823,7 @@ Census tracts: 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-093">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-098">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10815,7 +10896,7 @@ Census tracts: 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-094">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-099">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10828,7 +10909,7 @@ Census tracts: 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-095">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-100">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10839,7 +10920,7 @@ Census tracts: 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-096">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-101">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10848,7 +10929,7 @@ Census tracts: 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-097">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-102">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10874,7 +10955,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-098">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-103">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10886,7 +10967,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-099">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-104">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10899,7 +10980,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-100">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-105">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10908,7 +10989,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-101">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-106">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10921,7 +11002,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-102">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-107">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -10934,7 +11015,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-103">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-108">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10944,7 +11025,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-104">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-109">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -10954,7 +11035,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-105">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-110">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11006,7 +11087,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-106">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-111">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11019,7 +11100,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-107">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-112">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11030,7 +11111,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-108">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-113">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11039,7 +11120,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-109">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-114">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11087,7 +11168,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-110">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-115">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11099,7 +11180,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-111">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-116">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11214,7 +11295,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-112">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-117">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11227,7 +11308,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-113">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-118">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11238,7 +11319,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-114">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-119">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11247,7 +11328,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-115">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-120">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11268,7 +11349,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-116">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-121">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11281,7 +11362,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-117">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-122">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11292,7 +11373,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-118">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-123">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11301,7 +11382,7 @@ dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-119">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-124">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11326,7 +11407,7 @@ dtype: int64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-120">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-125">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11490,7 +11571,7 @@ dtype: int64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-121">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-126">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11502,7 +11583,7 @@ dtype: int64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-122">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-127">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11515,7 +11596,7 @@ dtype: int64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-123">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-128">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11525,7 +11606,7 @@ dtype: int64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-124">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-129">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11631,7 +11712,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-125">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-130">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11643,7 +11724,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-126">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-131">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11656,7 +11737,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-127">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-132">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11665,7 +11746,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-128">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-133">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11708,7 +11789,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-129">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-134">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11781,7 +11862,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-130">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-135">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11794,7 +11875,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-131">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-136">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11805,7 +11886,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-132">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-137">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11814,7 +11895,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-133">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-138">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11911,7 +11992,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-134">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-139">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11923,7 +12004,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-135">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-140">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -11936,7 +12017,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-136">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-141">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11947,7 +12028,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-137">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-142">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -11956,7 +12037,7 @@ Screening rule only: |DFBETAS| &gt; 2/sqrt(n) = 0.03156
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-138">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-143">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12178,7 +12259,7 @@ Model 3 mean fold RMSE: 0.16280 (16.28 occupancy percentage points).
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-139">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-144">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12191,7 +12272,7 @@ Model 3 mean fold RMSE: 0.16280 (16.28 occupancy percentage points).
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-140">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-145">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12201,7 +12282,7 @@ Model 3 mean fold RMSE: 0.16280 (16.28 occupancy percentage points).
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-141">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-146">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12338,7 +12419,7 @@ Model 3 mean fold RMSE: 0.16280 (16.28 occupancy percentage points).
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-142">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-147">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12349,7 +12430,7 @@ Model 3 mean fold RMSE: 0.16280 (16.28 occupancy percentage points).
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-143">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-148">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12358,7 +12439,7 @@ Model 3 mean fold RMSE: 0.16280 (16.28 occupancy percentage points).
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-144">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-149">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12394,7 +12475,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-145">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-150">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12403,7 +12484,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-146">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-151">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12471,7 +12552,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-147">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-152">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12484,7 +12565,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-148">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-153">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12494,7 +12575,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-149">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-154">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12503,7 +12584,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-150">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-155">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12654,7 +12735,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-151">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-156">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12666,9 +12747,9 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=report-152">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=report-157">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-153">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-158">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12678,7 +12759,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-154">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-159">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12688,7 +12769,7 @@ Name: total_minutes, dtype: float64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-155">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-160">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12702,7 +12783,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-156">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-161">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12827,7 +12908,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-157">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-162">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12837,7 +12918,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-158">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-163">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -12975,7 +13056,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-159">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-164">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12985,7 +13066,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-160">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-165">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -12995,7 +13076,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-161">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-166">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -13081,7 +13162,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-162">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-167">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13092,7 +13173,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-163">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-168">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13101,7 +13182,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-164">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-169">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -13114,7 +13195,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-165">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-170">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13124,7 +13205,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-166">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=report-171">
 <div class="jp-Cell-outputWrapper">
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
@@ -13296,7 +13377,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-167">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-172">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13306,7 +13387,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-168">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-173">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13318,9 +13399,9 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=report-169">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput" id="cell-id=report-174">
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-170">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-175">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13330,7 +13411,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-171">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-176">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13341,7 +13422,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-172">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-177">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13353,7 +13434,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-173">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-178">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13364,7 +13445,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-174">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-179">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13374,7 +13455,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-175">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-180">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13385,7 +13466,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-176">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-181">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13395,7 +13476,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-177">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-182">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13406,7 +13487,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-178">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-183">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13416,7 +13497,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-179">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-184">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13427,7 +13508,7 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-180">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-185">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -13437,28 +13518,55 @@ Candidates / common-sample tracts: 12 45
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-181">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-186">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="References">References<a class="anchor-link" href="#References">¶</a></h4><ul>
-<li>Shoup, D. C. (2006). Cruising for parking. <em>Transport Policy</em>, 13(6), 479–486. doi:10.1016/j.tranpol.2006.05.005. <a href="https://escholarship.org/content/qt55s7079f/qt55s7079f.pdf">Paper</a>.</li>
-<li>Pierce, G., &amp; Shoup, D. (2013). Getting the prices right: An evaluation of pricing parking by demand in San Francisco. <em>Journal of the American Planning Association</em>, 79(1), 67–81. doi:10.1080/01944363.2013.787307. <a href="https://www.its.ucla.edu/wp-content/uploads/sites/10/2017/06/Getting-the-Prices-Right-An-Evaluation-of-Pricing-Parking-by-Demand-in-San-Francisco.pdf">Paper</a>. <a href="https://escholarship.org/uc/item/2h76j73j">Open-access repository copy</a>.</li>
-<li>Los Angeles Department of Transportation. August 2025 Sensor Transactions archive and October 2026 Metered Parking Inventory &amp; Policies snapshot. <a href="https://data.lacity.org/api/views/cj8s-ivry.json">Sensor archive metadata</a>; <a href="https://data.lacity.org/api/views/s49e-q6j2.json">meter inventory metadata</a>.</li>
-<li>U.S. Census Bureau. 2024 ACS five-year estimates (B01003, B19013, B25001 and B08301), covering 2020–2024; 2024 TIGER/Line tract boundaries and Gazetteer land areas. <a href="https://api.census.gov/data/2024/acs/acs5.html">ACS release</a>; <a href="https://www2.census.gov/geo/tiger/TIGER2024/TRACT/">tract boundaries</a>; <a href="https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_gaz_tracts_06.txt">California tract land areas</a>.</li>
-<li>City of Los Angeles Office of Finance. <em>Listing of Active Businesses</em>, October 2026 snapshot. The food-service/retail subset uses NAICS prefixes 722, 44 and 45. <a href="https://data.lacity.org/api/views/6rrh-rzua.json">Dataset metadata</a>.</li>
+<h2 id="References">References<a class="anchor-link" href="#References">¶</a></h2><ul>
+<li><p>Channamallu, S. S., Kermanshachi, S., Rosenberger, J. M., &amp; Pamidimukkala, A. (2023). Parking occupancy prediction and analysis: A comprehensive study. Transportation Research Procedia, 73, 297-304. <a href="https://doi.org/10.1016/j.trpro.2023.11.921">https://doi.org/10.1016/j.trpro.2023.11.921</a></p>
+</li>
+<li><p>Kimpton, A., Stead, D., &amp; Corcoran, J. (2023). The temporality of on-street parking: Exploring the role of land-use mix and change on parking dynamics. Environment and Planning B: Urban Analytics and City Science, 50(2), 370-385. <a href="https://doi.org/10.1177/23998083221112957">https://doi.org/10.1177/23998083221112957</a></p>
+</li>
+<li><p>Lehner, S., &amp; Peer, S. (2019). The price elasticity of parking: A meta-analysis. Transportation Research Part A: Policy and Practice, 121, 177-191. <a href="https://doi.org/10.1016/j.tra.2019.01.014">https://doi.org/10.1016/j.tra.2019.01.014</a></p>
+</li>
+<li><p>Liu, K., &amp; Chen, J. (2025). Dynamic parking demand patterns modeling with PSO-XGBoost: Implications for parking management. Transportation Research Part A: Policy and Practice, 202, 104711. <a href="https://doi.org/10.1016/j.tra.2025.104711">https://doi.org/10.1016/j.tra.2025.104711</a></p>
+</li>
+<li><p>Lyu, M., Ji, Y., Kuai, C., &amp; Zhang, S. (2024). Short-term prediction of on-street parking occupancy using multivariate variable based on deep learning. Journal of Traffic and Transportation Engineering (English Edition), 11(1), 28-40. <a href="https://doi.org/10.1016/j.jtte.2022.05.004">https://doi.org/10.1016/j.jtte.2022.05.004</a></p>
+</li>
+<li><p>Ma, C., Huang, X., &amp; Li, J. (2024). A review of research on urban parking prediction. Journal of Traffic and Transportation Engineering (English Edition), 11(4), 700-720. <a href="https://doi.org/10.1016/j.jtte.2023.11.004">https://doi.org/10.1016/j.jtte.2023.11.004</a></p>
+</li>
+<li><p>McCahill, C. (2017). Factors affecting residential parking occupancy in Madison, Wisconsin. Transportation Research Record, 2651(1), 71-79. <a href="https://doi.org/10.3141/2651-08">https://doi.org/10.3141/2651-08</a></p>
+</li>
+<li><p>Ogulenko, A., Benenson, I., &amp; Fulman, N. (2022). The nature of the on-street parking search. Transportation Research Part B: Methodological, 166, 48-68. <a href="https://doi.org/10.1016/j.trb.2022.10.007">https://doi.org/10.1016/j.trb.2022.10.007</a></p>
+</li>
+<li><p>Ottosson, D. B., Chen, C., Wang, T., &amp; Lin, H. (2013). The sensitivity of on-street parking demand in response to price changes: A case study in Seattle, WA. Transport Policy, 25, 222-232. <a href="https://doi.org/10.1016/j.tranpol.2012.11.013">https://doi.org/10.1016/j.tranpol.2012.11.013</a></p>
+</li>
+<li><p>Pierce, G., &amp; Shoup, D. (2013). Getting the prices right: An evaluation of pricing parking by demand in San Francisco. Journal of the American Planning Association, 79(1), 67-81. <a href="https://doi.org/10.1080/01944363.2013.787307">https://doi.org/10.1080/01944363.2013.787307</a></p>
+</li>
+<li><p>Shoup, D. C. (2006). Cruising for parking. Transport Policy, 13(6), 479-486. <a href="https://doi.org/10.1016/j.tranpol.2006.05.005">https://doi.org/10.1016/j.tranpol.2006.05.005</a></p>
+</li>
+<li><p>U.S. Department of Transportation. (2024). Demand-based pricing strategy in Los Angeles parking management system led to a 37 percent reduction in parking duration for downtown LA. ITS Deployment Evaluation. <a href="https://www.itskrs.its.dot.gov/2024-b01821">https://www.itskrs.its.dot.gov/2024-b01821</a></p>
+</li>
+<li><p>Xiao, J., Lou, Y., &amp; Frisby, J. (2018). How likely am I to find parking? A practical model-based framework for predicting parking availability. Transportation Research Part B: Methodological, 112, 19-39. <a href="https://doi.org/10.1016/j.trb.2018.04.001">https://doi.org/10.1016/j.trb.2018.04.001</a></p>
+</li>
+<li><p>Los Angeles Department of Transportation. August 2025 Sensor Transactions archive and October 2026 Metered Parking Inventory &amp; Policies snapshot. <a href="https://data.lacity.org/api/views/cj8s-ivry.json">Sensor archive metadata</a>; <a href="https://data.lacity.org/api/views/s49e-q6j2.json">meter inventory metadata</a>.</p>
+</li>
+<li><p>U.S. Census Bureau. 2024 ACS five-year estimates (B01003, B19013, B25001 and B08301), covering 2020–2024; 2024 TIGER/Line tract boundaries and Gazetteer land areas. <a href="https://api.census.gov/data/2024/acs/acs5.html">ACS release</a>; <a href="https://www2.census.gov/geo/tiger/TIGER2024/TRACT/">tract boundaries</a>; <a href="https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2024_Gazetteer/2024_gaz_tracts_06.txt">California tract land areas</a>.</p>
+</li>
+<li><p>City of Los Angeles Office of Finance. <em>Listing of Active Businesses</em>, October 2026 snapshot. The food-service/retail subset uses NAICS prefixes 722, 44 and 45. <a href="https://data.lacity.org/api/views/6rrh-rzua.json">Dataset metadata</a>.</p>
+</li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-182">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=report-187">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Section-7:-Code-Quality-and-Reproducibility">Section 7: Code Quality and Reproducibility<a class="anchor-link" href="#Section-7:-Code-Quality-and-Reproducibility">¶</a></h2><p>The analysis uses a fixed space-level dataset, explicit variable units and a common complete-case sample. Random seeds are 10 for Boruta and five-fold validation and 90095 for the 1,000-replication bootstrap. Tables, figures and coefficient interpretations are generated programmatically. The accompanying Python source contains the analysis and original data-construction steps.</p>
+<h2 id="Section-7:-Code-Quality-and-Reproducibility">Section 7: Code Quality and Reproducibility<a class="anchor-link" href="#Section-7:-Code-Quality-and-Reproducibility">¶</a></h2><p>The analysis uses a fixed space-level dataset, explicit variable units and a common complete-case sample. Random seeds are 10 for Boruta and five-fold validation and 90095 for the 1,000-replication bootstrap. Data-based tables, figures and coefficient interpretations are generated programmatically. The accompanying Python source contains the analysis and original data-construction steps.</p>
 <table>
 <thead>
 <tr>
@@ -13501,7 +13609,7 @@ Candidates / common-sample tracts: 12 45
 </tr>
 </tbody>
 </table>
-<p>The analysis starts from the fixed <a href="https://github.com/finnrcase/Spotless/blob/6a24b830a457b1ff60e585786eeea5afc3981ef7/data/processed/parking_cross_section.csv">space-level cross-section</a> (4,139 matched spaces before the report restrictions). Its SHA-256 is <code>644615c218966773b367f902dd9e559f081dfe78023374f0fbc9aa6a1dafbb70</code>. The report uses the 4,016 common complete cases after the stated restrictions. The executed environment uses Python 3.12; the accompanying requirements lock records dependencies.</p>
+<p>The analysis starts from the fixed <a href="https://github.com/finnrcase/Spotless/blob/d774d4231cd1bfbc8bf5ac2dc8d20d26ea3863c8/data/processed/parking_cross_section.csv">space-level cross-section</a> (4,139 matched spaces before the report restrictions). Its SHA-256 is <code>644615c218966773b367f902dd9e559f081dfe78023374f0fbc9aa6a1dafbb70</code>. The report uses the 4,016 common complete cases after the stated restrictions. The executed environment uses Python 3.12; the accompanying requirements lock records dependencies.</p>
 </div>
 </div>
 </div>
@@ -13516,8 +13624,16 @@ os.chdir(Path(__file__).resolve().parents[1] / &#x27;notebooks&#x27;)
 # Section 1: Economic Theory and Hypothesis
 # 1(a) Economic Research Question
 # 1(b) Relevant Economic Theory and Academic Literature
+# Literature Review
+# Parking scarcity, search costs, and occupancy
+# Parking prices and occupancy
+# Local demand conditions and parking outcomes
+# Prediction research and the present study
 # 1(c) Specific, Testable Economic Hypothesis
+# Hypothesis and model specification
 # 1(d) Expected Coefficient Signs and Magnitudes
+# Variables and expected signs
+# References
 # 02_data_description_eda
 # Section 2: Data Description and Exploratory Analysis
 # 2(a) Dataset Description

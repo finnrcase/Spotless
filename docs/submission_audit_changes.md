@@ -63,3 +63,13 @@ Detailed machine-readable evidence: `submission_audit_results.json`, `submission
 A second full audit and its additional presentation/verification fixes are documented in [submission_second_audit.md](submission_second_audit.md). Numerical model results and data remain unchanged.
 
 The final strict Sections 2–7 pass, including added imputation sensitivity and training-only selection validation, is documented in [requirements_2_to_7_verified.md](requirements_2_to_7_verified.md). Section 1 was excluded and preserved byte-for-byte.
+
+## Author-supplied Section 1 integration
+
+At the author's subsequent request, Section 1 was replaced with the wording from `Econ_430 Literature Review.pdf`, organized under 1(a)–1(d). The existing research question was retained. The supplied literature was grouped into three paragraphs without rewriting; the research-summary paragraph was placed under 1(a), the model/hypotheses under 1(c), and the eight-row expected-sign table and magnitude discussion under 1(d). All 13 references were retained and consolidated with the data references in the combined report. Native LaTeX preserves the two equation blocks. The table renders from the supplied text with wrapping cells and no ellipses.
+
+`verify_section1_pdf.py` checks source wording, reference entries, equation terms and rendered table values. The new Section 1 and combined notebook passed clean-kernel execution. Section 2–6 files, model definitions and data remain unchanged by this integration. The author equation is the seven-predictor sensitivity specification; the selected final Model 3 was not altered. Earlier Section 1 preservation checks now refer to the authorized author-PDF version.
+
+At the author’s follow-up request, the expected-signs table was converted to native Markdown and its Python formatting cell removed. All eight rows and their exact wording remain unchanged. The combined report and exported source were refreshed.
+
+At the author’s next formatting correction, the PDF’s original literature paragraph breaks were restored: one scarcity paragraph, three pricing paragraphs, three local-demand paragraphs and one prediction paragraph. Wording, equations, table and analysis are unchanged. This restores eight literature paragraphs rather than the previously merged three blocks; the assignment’s 2–3-paragraph limit would require author-approved condensation.

@@ -4,8 +4,11 @@
     "status": "PASS",
     "seconds": 0.4,
     "code_cells": 0,
-    "source_sha256": "8f0da1ea7a3ab6cf983c704f7abd1d41cc045ad21a40adb8e14a3d7bad2ccf03",
-    "executed_code_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    "kernel_working_directory": ".",
+    "source_sha256": "50bc7f162d2c1ca45107fc2a68be139a271000cddf67fca86604dfe1dea28464",
+    "executed_code_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "current_source_sha256": "2075ffd764217b244aa04d95278e672e85146b6423be632bdf6d6748d6cd7f1e",
+    "post_execution_edits": "Restored the original PDF paragraph breaks; all code unchanged."
   },
   {
     "notebook": "02_data_description_eda.ipynb",

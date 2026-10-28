@@ -1,11 +1,11 @@
 {
   "notebook": "Spotless_complete.ipynb",
   "status": "PASS",
-  "seconds": 28.1,
+  "seconds": 28.7,
   "code_cells": 86,
   "kernel_working_directory": ".",
-  "source_sha256": "28702215dd70e5be07c99a0b87795d2c7e5589a9cfff2ee3c4f651805966c7b8",
+  "source_sha256": "996025806181fe90612f758bd6ca2b85bcd367ac0432d96abbc890083fcf374b",
   "executed_code_sha256": "e1e241192ce8cd301c67bda61a92af641fd97ba15a1612db44e0c9a0a15df64a",
-  "current_source_sha256": "50d5915ca04d62917204e0ab6cabdfe263288b4c05f4e83850f78a73cff78c3e",
-  "post_execution_edits": "Markdown refinements only; all combined analysis code is unchanged from the fresh-kernel run."
+  "current_source_sha256": "502c42b85fc77c6d69fc64a52a0f3a50c509cb196ba65735c47e7b6b9e29ad70",
+  "post_execution_edits": "Original author-PDF paragraph breaks restored; all executed analysis code is unchanged."
 }
