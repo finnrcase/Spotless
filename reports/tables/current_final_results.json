@@ -33,8 +33,8 @@
       "OLS coefficient": 3.9611e-06,
       "Conventional SE": 2.161e-07,
       "HC1 SE": 2.273e-07,
-      "Conventional p": 3.645246997e-72,
-      "HC1 p": 5.18242141e-68,
+      "Conventional p": 3.645246994e-72,
+      "HC1 p": 5.182421407e-68,
       "HC1 95% lower": 3.5156e-06,
       "HC1 95% upper": 4.4067e-06
     },
@@ -97,7 +97,7 @@
       "Occupancy difference (pp)": 0.3961146118,
       "HC1 lower (pp)": 0.3515637701,
       "HC1 upper (pp)": 0.4406654535,
-      "HC1 p": 5.18242141e-68
+      "HC1 p": 5.182421407e-68
     },
     "nearby_restaurant_retail_count": {
       "Comparison": "100 more food/retail registrations, total fixed",
@@ -158,7 +158,7 @@
       "Mean 5-fold RMSE": 0.1682078252,
       "SD across folds": 0.0026258924
     },
-    "Model 3 (rubric)": {
+    "Model 3": {
       "Slopes": 7.0,
       "N": 4016.0,
       "R2": 0.2941379992,
@@ -169,7 +169,7 @@
       "Mean 5-fold RMSE": 0.1627955747,
       "SD across folds": 0.0013485398
     },
-    "Prior seven (supporting)": {
+    "Seven-predictor sensitivity": {
       "Slopes": 7.0,
       "N": 4016.0,
       "R2": 0.2736227204,

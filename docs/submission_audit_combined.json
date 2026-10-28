@@ -1,0 +1,11 @@
+{
+  "notebook": "Spotless_complete.ipynb",
+  "status": "PASS",
+  "seconds": 28.1,
+  "code_cells": 86,
+  "kernel_working_directory": ".",
+  "source_sha256": "28702215dd70e5be07c99a0b87795d2c7e5589a9cfff2ee3c4f651805966c7b8",
+  "executed_code_sha256": "e1e241192ce8cd301c67bda61a92af641fd97ba15a1612db44e0c9a0a15df64a",
+  "current_source_sha256": "50d5915ca04d62917204e0ab6cabdfe263288b4c05f4e83850f78a73cff78c3e",
+  "post_execution_edits": "Markdown refinements only; all combined analysis code is unchanged from the fresh-kernel run."
+}

@@ -1,0 +1,25 @@
+[
+  {
+    "notebook": "Visualization/Dip_analysis_3_25_to_4_25.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "Visualization/01_cumprice.ipynb",
+    "status": "PASS"
+  },
+  {
+    "notebook": "notebooks/cleaning/03_build_cross_section.ipynb",
+    "status": "STATIC PASS",
+    "note": "Raw inputs absent; existing outputs reviewed; raw pipeline not reexecuted."
+  },
+  {
+    "notebook": "notebooks/cleaning/02_clean_meter_inventory.ipynb",
+    "status": "STATIC PASS",
+    "note": "Raw inputs absent; existing outputs reviewed; raw pipeline not reexecuted."
+  },
+  {
+    "notebook": "notebooks/cleaning/01_clean_occupancy.ipynb",
+    "status": "STATIC PASS",
+    "note": "Raw inputs absent; existing outputs reviewed; raw pipeline not reexecuted."
+  }
+]

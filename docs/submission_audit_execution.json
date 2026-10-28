@@ -1,0 +1,57 @@
+[
+  {
+    "notebook": "01_economic_theory.ipynb",
+    "status": "PASS",
+    "seconds": 0.4,
+    "code_cells": 0,
+    "source_sha256": "8f0da1ea7a3ab6cf983c704f7abd1d41cc045ad21a40adb8e14a3d7bad2ccf03",
+    "executed_code_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "notebook": "02_data_description_eda.ipynb",
+    "status": "PASS",
+    "seconds": 3.7,
+    "code_cells": 17,
+    "kernel_working_directory": ".",
+    "source_sha256": "b3810e04476ebe61c04f15b7a44f7ef304d67a04e21669194695115dd792a463",
+    "executed_code_sha256": "c9c4d872f0fe4f02b51322e4f443c6e501a14edd783e3034449e07f296822b5d",
+    "current_source_sha256": "ab3c0a91363d227c4ef007d6e6ad0e1cdddfc29c7769c5debc747a14af35377d",
+    "post_execution_edits": "Markdown wording/reference links only; code verified against the clean-kernel combined run."
+  },
+  {
+    "notebook": "03_variable_selection_models.ipynb",
+    "status": "PASS",
+    "seconds": 20.6,
+    "code_cells": 21,
+    "kernel_working_directory": ".",
+    "source_sha256": "77660fd4ea0bd5c8a9cc5bd0bc433523e01c08ee08f3b44cb847278cff9ef4a9",
+    "executed_code_sha256": "48da521388470e363d3a4fd3ad98ee8f4f7b91400c96f9951afa3dc10fe0521f"
+  },
+  {
+    "notebook": "04_diagnostics_robustness.ipynb",
+    "status": "PASS",
+    "seconds": 6.8,
+    "code_cells": 41,
+    "kernel_working_directory": ".",
+    "source_sha256": "e9035cae4245a51bb2f4f0474229b334f468467b31221710559f5fd9cac675da",
+    "executed_code_sha256": "634d60367c62c65d5553b9fc28e444c1f3e4bdb6868265ddaa50e38844715375"
+  },
+  {
+    "notebook": "05_results_interpretation.ipynb",
+    "status": "PASS",
+    "seconds": 1.5,
+    "code_cells": 7,
+    "kernel_working_directory": ".",
+    "source_sha256": "f29898de1a04392ca29740a4f4a415ae1c8f49c6169ed9cc0b6ddc241d048dc6",
+    "executed_code_sha256": "4f59f6d96ac259717d409b3d9d33e36c7dabccb21ec3d75401497cc50ebc2349"
+  },
+  {
+    "notebook": "06_limitations_extensions.ipynb",
+    "status": "PASS",
+    "seconds": 0.4,
+    "code_cells": 0,
+    "kernel_working_directory": ".",
+    "source_sha256": "e83560f31744a3c1bb3625d26c3b8253589e3485cb03e93bee0c4b58ba219ccf",
+    "executed_code_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  }
+]

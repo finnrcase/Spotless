@@ -1,0 +1,237 @@
+{
+  "analytical_checks": "PASS",
+  "rubric_evidence": [
+    {
+      "item": "1(a)",
+      "heading": "Economic Research Question",
+      "notebook": "01_economic_theory.ipynb",
+      "cell": 2
+    },
+    {
+      "item": "1(b)",
+      "heading": "Relevant Economic Theory and Academic Literature",
+      "notebook": "01_economic_theory.ipynb",
+      "cell": 4
+    },
+    {
+      "item": "1(c)",
+      "heading": "Specific, Testable Economic Hypothesis",
+      "notebook": "01_economic_theory.ipynb",
+      "cell": 6
+    },
+    {
+      "item": "1(d)",
+      "heading": "Expected Coefficient Signs and Magnitudes",
+      "notebook": "01_economic_theory.ipynb",
+      "cell": 8
+    },
+    {
+      "item": "2(a)",
+      "heading": "Dataset Description",
+      "notebook": "02_data_description_eda.ipynb",
+      "cell": 2
+    },
+    {
+      "item": "2(b)",
+      "heading": "Descriptive Statistics",
+      "notebook": "02_data_description_eda.ipynb",
+      "cell": 10
+    },
+    {
+      "item": "2(c)",
+      "heading": "Histograms, Boxplots, Correlations and Scatterplots",
+      "notebook": "02_data_description_eda.ipynb",
+      "cell": 14
+    },
+    {
+      "item": "2(d)",
+      "heading": "Q-Q Plots and Density Plots",
+      "notebook": "02_data_description_eda.ipynb",
+      "cell": 19
+    },
+    {
+      "item": "2(e)",
+      "heading": "Nonlinearities and Possible Transformations",
+      "notebook": "02_data_description_eda.ipynb",
+      "cell": 22
+    },
+    {
+      "item": "2(f)",
+      "heading": "Outliers",
+      "notebook": "02_data_description_eda.ipynb",
+      "cell": 26
+    },
+    {
+      "item": "2(g)",
+      "heading": "Missing Values and Sensitivity Analysis",
+      "notebook": "02_data_description_eda.ipynb",
+      "cell": 31
+    },
+    {
+      "item": "2(h)",
+      "heading": "Pandas Profiling",
+      "notebook": "02_data_description_eda.ipynb",
+      "cell": 36
+    },
+    {
+      "item": "3(a)",
+      "heading": "Boruta Algorithm",
+      "notebook": "03_variable_selection_models.ipynb",
+      "cell": 2
+    },
+    {
+      "item": "3(b)",
+      "heading": "Mallows Cp Criterion",
+      "notebook": "03_variable_selection_models.ipynb",
+      "cell": 8
+    },
+    {
+      "item": "3(c)",
+      "heading": "Variance Inflation Factors",
+      "notebook": "03_variable_selection_models.ipynb",
+      "cell": 16
+    },
+    {
+      "item": "3(d)",
+      "heading": "Three Competing Regression Models",
+      "notebook": "03_variable_selection_models.ipynb",
+      "cell": 20
+    },
+    {
+      "item": "3(e)",
+      "heading": "AIC, BIC, Adjusted R\u00b2, and Cross-Validation Comparison",
+      "notebook": "03_variable_selection_models.ipynb",
+      "cell": 31
+    },
+    {
+      "item": "3(f)",
+      "heading": "Final Model Selection and Justification",
+      "notebook": "03_variable_selection_models.ipynb",
+      "cell": 34
+    },
+    {
+      "item": "4(a)",
+      "heading": "Linearity",
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "cell": 11
+    },
+    {
+      "item": "4(b)",
+      "heading": "Homoskedasticity",
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "cell": 23
+    },
+    {
+      "item": "4(c)",
+      "heading": "Residual Normality",
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "cell": 29
+    },
+    {
+      "item": "4(d)",
+      "heading": "Outliers and Influence",
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "cell": 33
+    },
+    {
+      "item": "4(e)",
+      "heading": "Bootstrap",
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "cell": 47
+    },
+    {
+      "item": "4(f)",
+      "heading": "Cross-Validation",
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "cell": 52
+    },
+    {
+      "item": "4(g)",
+      "heading": "OLS Violations and Implications",
+      "notebook": "04_diagnostics_robustness.ipynb",
+      "cell": 58
+    },
+    {
+      "item": "5(a)",
+      "heading": "Professional Final Regression Table",
+      "notebook": "05_results_interpretation.ipynb",
+      "cell": 2
+    },
+    {
+      "item": "5(b)",
+      "heading": "Economic Interpretation of All Coefficients",
+      "notebook": "05_results_interpretation.ipynb",
+      "cell": 5
+    },
+    {
+      "item": "5(c)",
+      "heading": "Statistical vs. Economic Significance",
+      "notebook": "05_results_interpretation.ipynb",
+      "cell": 8
+    },
+    {
+      "item": "5(d)",
+      "heading": "Confidence Intervals for Key Parameters",
+      "notebook": "05_results_interpretation.ipynb",
+      "cell": 10
+    },
+    {
+      "item": "5(e)",
+      "heading": "R\u00b2 and Model Fit in Economic Context",
+      "notebook": "05_results_interpretation.ipynb",
+      "cell": 13
+    },
+    {
+      "item": "6(a)",
+      "heading": "Key Data, Methodological, and Scope Limitations",
+      "notebook": "06_limitations_extensions.ipynb",
+      "cell": 2
+    },
+    {
+      "item": "6(b)",
+      "heading": "Potential Sources of Bias",
+      "notebook": "06_limitations_extensions.ipynb",
+      "cell": 4
+    },
+    {
+      "item": "6(c)",
+      "heading": "Policy Implications",
+      "notebook": "06_limitations_extensions.ipynb",
+      "cell": 6
+    },
+    {
+      "item": "6(d)",
+      "heading": "Concrete Future Research Extensions",
+      "notebook": "06_limitations_extensions.ipynb",
+      "cell": 8
+    },
+    {
+      "item": "6(e)",
+      "heading": "External Validity",
+      "notebook": "06_limitations_extensions.ipynb",
+      "cell": 10
+    }
+  ],
+  "final_n": 4016,
+  "final_predictors": [
+    "price_midpoint",
+    "population_density",
+    "nearby_restaurant_retail_count",
+    "transit_share",
+    "walk_share",
+    "nearby_business_count",
+    "RateType_TOD"
+  ],
+  "literature_paragraphs_unchanged": true,
+  "processed_data_unchanged_from_git": true,
+  "processed_data_sha256": {
+    "meter_inventory_clean.csv": "05e064d52fafffd00a6539e1bca53359060eb2e9906670908fe6204b773e0600",
+    "space_occupancy_aug2025.csv": "3c87ee97018004f15edb49050f60c57afcd2c0b1044335170e49074365e925a1",
+    "parking_cross_section.csv": "644615c218966773b367f902dd9e559f081dfe78023374f0fbc9aa6a1dafbb70"
+  },
+  "saved_images_embedded": 13,
+  "raw_pipeline_reexecuted": false,
+  "raw_pipeline_limitation": "Raw transaction and spatial inputs are absent; cleaning notebooks passed schema/syntax/saved-output checks.",
+  "group_names_present": false,
+  "syllabus_policies_confirmed": false
+}

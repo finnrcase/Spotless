@@ -1,3 +1,5 @@
+> Historical audit: this document describes an earlier version. Use [the final report audit](submission_audit_changes.md) and [current verification](submission_audit_results.json) for the saved report.
+
 > **Historical estimate assessed the pre-completion version.** See [current coverage](rubric_compliance_audit.md), [changes](rubric_completion_changes.md), and [verified current execution](current_execution_results.json). Other analytical gaps have current evidence, but DFBETAS remains required and Missing because the user cancelled its addition. Group names and syllabus review remain deferred. No guaranteed full-credit grade is asserted.
 
 # ECON 430 full-credit readiness audit and estimated grade

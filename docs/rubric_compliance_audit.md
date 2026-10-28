@@ -1,3 +1,5 @@
+> Historical audit: this document describes an earlier version. Use [the final report audit](submission_audit_changes.md) and [current verification](submission_audit_results.json) for the saved report.
+
 # Current rubric compliance audit
 
 Authority: [professor’s assignment PDF](../project1-1%20%281%29.pdf), 130 points, including the page-4 literature-comparison criterion. Updated after the user authorized completing the identified gaps. The current six sections precede preserved historical appendices in each notebook. Section 4 letters organize its unlettered diagnostic list.

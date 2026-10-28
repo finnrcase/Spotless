@@ -1,0 +1,494 @@
+{
+  "scope": "Sections 2\u20137; Section 1 preserved and excluded from revision",
+  "status": "All listed analysis/implementation checks verified",
+  "evidence": [
+    {
+      "requirement": "2(a): sources, periods, selection and variable definitions",
+      "notebook": "02",
+      "cells": [
+        3,
+        5,
+        7,
+        9
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "2(b): mean, median, SD, min, max, skewness and kurtosis",
+      "notebook": "02",
+      "cells": [
+        11
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "2(c): histograms/boxplots",
+      "notebook": "02",
+      "cells": [
+        15
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "2(c): scatterplots",
+      "notebook": "02",
+      "cells": [
+        16
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "2(c): correlation heatmap",
+      "notebook": "02",
+      "cells": [
+        17
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "2(d): continuous-variable Q-Q and density plots",
+      "notebook": "02",
+      "cells": [
+        20
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "2(e): nonlinearities and transformations",
+      "notebook": "02",
+      "cells": [
+        23,
+        24
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "2(f): IQR outliers and interpretation",
+      "notebook": "02",
+      "cells": [
+        27
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "2(f): standardized residuals",
+      "notebook": "04",
+      "cells": [
+        35
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/plain"
+      ]
+    },
+    {
+      "requirement": "2(g): missingness patterns",
+      "notebook": "02",
+      "cells": [
+        32
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "2(g): justified treatment, explicit imputation and sensitivity",
+      "notebook": "02",
+      "cells": [
+        34,
+        35
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "2(h): actual Pandas Profiling findings",
+      "notebook": "02",
+      "cells": [
+        37
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "3(a): Boruta fitting and findings",
+      "notebook": "03",
+      "cells": [
+        5,
+        7
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "3(b): exhaustive Cp calculation and interpretation",
+      "notebook": "03",
+      "cells": [
+        10,
+        15
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "3(c): VIFs and selected-model interpretation",
+      "notebook": "03",
+      "cells": [
+        29,
+        30
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "3(d): three fitted models and significance rule",
+      "notebook": "03",
+      "cells": [
+        22,
+        24,
+        26,
+        28
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "3(e): AIC/BIC/adjusted R2 and actual CV",
+      "notebook": "03",
+      "cells": [
+        32
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "3(f): economic and statistical final-model justification",
+      "notebook": "03",
+      "cells": [
+        36
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "4(a): residual vs fitted",
+      "notebook": "04",
+      "cells": [
+        14
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "4(a): RESET",
+      "notebook": "04",
+      "cells": [
+        17,
+        21
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/plain"
+      ]
+    },
+    {
+      "requirement": "4(b): BP, White and scale-location",
+      "notebook": "04",
+      "cells": [
+        25
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "4(c): residual Q-Q and Jarque-Bera",
+      "notebook": "04",
+      "cells": [
+        31
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/plain",
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "4(c): residual histogram",
+      "notebook": "04",
+      "cells": [
+        14
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "4(d): Cook and leverage vs residual plots",
+      "notebook": "04",
+      "cells": [
+        37
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "4(d): coefficient-labeled, row-aligned DFBETAS",
+      "notebook": "04",
+      "cells": [
+        40
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "4(e): 1,000 bootstrap estimates compared with OLS",
+      "notebook": "04",
+      "cells": [
+        49
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "4(d): DFBETAS plot",
+      "notebook": "04",
+      "cells": [
+        41
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "image/png"
+      ]
+    },
+    {
+      "requirement": "4(d): DFBETAS interpretation and screening caveat",
+      "notebook": "04",
+      "cells": [
+        42
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "4(f): fixed-model five-fold held-out accuracy",
+      "notebook": "04",
+      "cells": [
+        54
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "4(f): training-only selection validation",
+      "notebook": "04",
+      "cells": [
+        57
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "4(g): OLS violations and implications",
+      "notebook": "04",
+      "cells": [
+        66,
+        67
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "5(a): final regression table",
+      "notebook": "05",
+      "cells": [
+        4
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html"
+      ]
+    },
+    {
+      "requirement": "5(b): every coefficient and intercept in economic units",
+      "notebook": "05",
+      "cells": [
+        6
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "5(c): statistical versus economic significance",
+      "notebook": "05",
+      "cells": [
+        9
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "5(d): calculated key-parameter intervals and interpretation",
+      "notebook": "05",
+      "cells": [
+        12
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "5(e): model fit in economic context",
+      "notebook": "05",
+      "cells": [
+        14
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": [
+        "text/html",
+        "text/markdown"
+      ]
+    },
+    {
+      "requirement": "6(a): limitations",
+      "notebook": "06",
+      "cells": [
+        3
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": []
+    },
+    {
+      "requirement": "6(b): bias",
+      "notebook": "06",
+      "cells": [
+        5
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": []
+    },
+    {
+      "requirement": "6(c): policy",
+      "notebook": "06",
+      "cells": [
+        7
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": []
+    },
+    {
+      "requirement": "6(d): extensions",
+      "notebook": "06",
+      "cells": [
+        9
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": []
+    },
+    {
+      "requirement": "6(e): external validity",
+      "notebook": "06",
+      "cells": [
+        11
+      ],
+      "status": "VERIFIED",
+      "saved_output_types": []
+    },
+    {
+      "requirement": "7: clear section headers and documented methods",
+      "notebook": "combined and source",
+      "status": "VERIFIED"
+    },
+    {
+      "requirement": "7: seeded reproducibility and pinned input/version information",
+      "notebook": "combined and source",
+      "status": "VERIFIED"
+    },
+    {
+      "requirement": "7: readable and bounded computation",
+      "notebook": "combined and source",
+      "status": "VERIFIED"
+    },
+    {
+      "requirement": "7: programmatically generated figures and analytical/definition tables",
+      "notebook": "combined and source",
+      "status": "VERIFIED"
+    }
+  ],
+  "section1_byte_for_byte_unchanged": true,
+  "missing_author_names": true,
+  "syllabus_review_confirmed": false
+}

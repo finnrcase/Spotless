@@ -21,7 +21,7 @@
     "Mean 5-fold RMSE":0.1682078252,
     "SD across folds":0.0026258924
   },
-  "Model 3 (rubric)":{
+  "Model 3":{
     "Slopes":7.0,
     "N":4016.0,
     "R2":0.2941379992,
@@ -32,7 +32,7 @@
     "Mean 5-fold RMSE":0.1627955747,
     "SD across folds":0.0013485398
   },
-  "Prior seven (supporting)":{
+  "Seven-predictor sensitivity":{
     "Slopes":7.0,
     "N":4016.0,
     "R2":0.2736227204,

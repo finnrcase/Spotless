@@ -1,306 +1,244 @@
 {
-  "status": "Current code executes; required DFBETAS is missing by user request; final packaging remains",
-  "current_rubric_items": [
+  "analytical_checks": "PASS",
+  "rubric_evidence": [
     {
       "item": "1(a)",
       "heading": "Economic Research Question",
       "notebook": "01_economic_theory.ipynb",
-      "cell": 1,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 2
     },
     {
       "item": "1(b)",
       "heading": "Relevant Economic Theory and Academic Literature",
       "notebook": "01_economic_theory.ipynb",
-      "cell": 3,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 4
     },
     {
       "item": "1(c)",
       "heading": "Specific, Testable Economic Hypothesis",
       "notebook": "01_economic_theory.ipynb",
-      "cell": 5,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 6
     },
     {
       "item": "1(d)",
       "heading": "Expected Coefficient Signs and Magnitudes",
       "notebook": "01_economic_theory.ipynb",
-      "cell": 7,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 8
     },
     {
       "item": "2(a)",
       "heading": "Dataset Description",
       "notebook": "02_data_description_eda.ipynb",
-      "cell": 1,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 2
     },
     {
       "item": "2(b)",
       "heading": "Descriptive Statistics",
       "notebook": "02_data_description_eda.ipynb",
-      "cell": 5,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 10
     },
     {
       "item": "2(c)",
       "heading": "Histograms, Boxplots, Correlations and Scatterplots",
       "notebook": "02_data_description_eda.ipynb",
-      "cell": 8,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 14
     },
     {
       "item": "2(d)",
       "heading": "Q-Q Plots and Density Plots",
       "notebook": "02_data_description_eda.ipynb",
-      "cell": 13,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 19
     },
     {
       "item": "2(e)",
       "heading": "Nonlinearities and Possible Transformations",
       "notebook": "02_data_description_eda.ipynb",
-      "cell": 16,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 22
     },
     {
       "item": "2(f)",
       "heading": "Outliers",
       "notebook": "02_data_description_eda.ipynb",
-      "cell": 18,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 26
     },
     {
       "item": "2(g)",
       "heading": "Missing Values and Sensitivity Analysis",
       "notebook": "02_data_description_eda.ipynb",
-      "cell": 23,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 31
     },
     {
       "item": "2(h)",
       "heading": "Pandas Profiling",
       "notebook": "02_data_description_eda.ipynb",
-      "cell": 26,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 36
     },
     {
       "item": "3(a)",
       "heading": "Boruta Algorithm",
       "notebook": "03_variable_selection_models.ipynb",
-      "cell": 1,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 2
     },
     {
       "item": "3(b)",
       "heading": "Mallows Cp Criterion",
       "notebook": "03_variable_selection_models.ipynb",
-      "cell": 6,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 8
     },
     {
       "item": "3(c)",
       "heading": "Variance Inflation Factors",
       "notebook": "03_variable_selection_models.ipynb",
-      "cell": 13,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 16
     },
     {
       "item": "3(d)",
       "heading": "Three Competing Regression Models",
       "notebook": "03_variable_selection_models.ipynb",
-      "cell": 17,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 20
     },
     {
       "item": "3(e)",
-      "heading": "AIC, BIC, Adjusted R², and Cross-Validation Comparison",
+      "heading": "AIC, BIC, Adjusted R\u00b2, and Cross-Validation Comparison",
       "notebook": "03_variable_selection_models.ipynb",
-      "cell": 27,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 31
     },
     {
       "item": "3(f)",
       "heading": "Final Model Selection and Justification",
       "notebook": "03_variable_selection_models.ipynb",
-      "cell": 30,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 34
     },
     {
       "item": "4(a)",
-      "heading": "Linearity: Residuals vs. Fitted and RESET",
+      "heading": "Linearity",
       "notebook": "04_diagnostics_robustness.ipynb",
-      "cell": 1,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 11
     },
     {
       "item": "4(b)",
-      "heading": "Homoskedasticity: Breusch–Pagan, White, and Scale-Location",
+      "heading": "Homoskedasticity",
       "notebook": "04_diagnostics_robustness.ipynb",
-      "cell": 5,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 23
     },
     {
       "item": "4(c)",
-      "heading": "Residual Normality: Q-Q, Jarque–Bera, and Histograms",
+      "heading": "Residual Normality",
       "notebook": "04_diagnostics_robustness.ipynb",
-      "cell": 8,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 29
     },
     {
       "item": "4(d)",
-      "heading": "Outliers and Influence: Cook's Distance, Leverage, and DFBETAS",
+      "heading": "Outliers and Influence",
       "notebook": "04_diagnostics_robustness.ipynb",
-      "cell": 10,
-      "status": "Partial",
-      "evidence": "Cook/leverage implemented; required DFBETAS addition cancelled by user."
+      "cell": 33
     },
     {
       "item": "4(e)",
-      "heading": "Robustness: 1,000-Replication Bootstrap vs. OLS",
+      "heading": "Bootstrap",
       "notebook": "04_diagnostics_robustness.ipynb",
-      "cell": 13,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 47
     },
     {
       "item": "4(f)",
-      "heading": "Validation: 5-Fold or 10-Fold Cross-Validation and Out-of-Sample Accuracy",
+      "heading": "Cross-Validation",
       "notebook": "04_diagnostics_robustness.ipynb",
-      "cell": 16,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 52
     },
     {
       "item": "4(g)",
-      "heading": "OLS Assumption Violations and Implications",
+      "heading": "OLS Violations and Implications",
       "notebook": "04_diagnostics_robustness.ipynb",
-      "cell": 19,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 58
     },
     {
       "item": "5(a)",
       "heading": "Professional Final Regression Table",
       "notebook": "05_results_interpretation.ipynb",
-      "cell": 1,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 2
     },
     {
       "item": "5(b)",
       "heading": "Economic Interpretation of All Coefficients",
       "notebook": "05_results_interpretation.ipynb",
-      "cell": 4,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 5
     },
     {
       "item": "5(c)",
       "heading": "Statistical vs. Economic Significance",
       "notebook": "05_results_interpretation.ipynb",
-      "cell": 7,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 8
     },
     {
       "item": "5(d)",
       "heading": "Confidence Intervals for Key Parameters",
       "notebook": "05_results_interpretation.ipynb",
-      "cell": 9,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 10
     },
     {
       "item": "5(e)",
-      "heading": "R² and Model Fit in Economic Context",
+      "heading": "R\u00b2 and Model Fit in Economic Context",
       "notebook": "05_results_interpretation.ipynb",
-      "cell": 11,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 13
     },
     {
       "item": "6(a)",
       "heading": "Key Data, Methodological, and Scope Limitations",
       "notebook": "06_limitations_extensions.ipynb",
-      "cell": 1,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 2
     },
     {
       "item": "6(b)",
       "heading": "Potential Sources of Bias",
       "notebook": "06_limitations_extensions.ipynb",
-      "cell": 3,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 4
     },
     {
       "item": "6(c)",
       "heading": "Policy Implications",
       "notebook": "06_limitations_extensions.ipynb",
-      "cell": 5,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 6
     },
     {
       "item": "6(d)",
       "heading": "Concrete Future Research Extensions",
       "notebook": "06_limitations_extensions.ipynb",
-      "cell": 7,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 8
     },
     {
       "item": "6(e)",
       "heading": "External Validity",
       "notebook": "06_limitations_extensions.ipynb",
-      "cell": 9,
-      "status": "Complete",
-      "evidence": "Current executed code/output and interpretation within this subsection; narrative-only sections reviewed as text."
+      "cell": 10
     }
   ],
-  "historical_cells_preserved": 239,
-  "data_hashes_unchanged": true,
-  "new_model_and_diagnostics_consistent": true,
-  "prior_model_metrics_reproduced": true,
-  "html_embedded_images": true,
-  "python_source_syntax_valid": true,
-  "main_unchanged_since_initial_inventory": false,
-  "main_modified_by_this_task": false,
-  "main_reference": "7c491e9c211170b0087a36cd2020c3f860aaa49e",
-  "main_initial_reference": "e480f468a9366603f908f4a7c72ab6c4b5999925",
-  "main_note": "An external pull advanced main to the merge of PR #2 during this task; no main mutation is performed by these tools.",
-  "cleaning_schema_valid_without_method_changes": true,
-  "raw_pipeline_reexecuted": false,
-  "raw_pipeline_note": "Raw files are absent; current main workflow is reproducible from the unchanged tracked processed CSVs.",
-  "remaining_analytical_items": [
-    "4(d)-DFBETAS is required by the PDF but its addition was cancelled by the user."
+  "final_n": 4016,
+  "final_predictors": [
+    "price_midpoint",
+    "population_density",
+    "nearby_restaurant_retail_count",
+    "transit_share",
+    "walk_share",
+    "nearby_business_count",
+    "RateType_TOD"
   ],
+  "literature_paragraphs_unchanged": true,
+  "processed_data_unchanged_from_git": true,
+  "processed_data_sha256": {
+    "meter_inventory_clean.csv": "05e064d52fafffd00a6539e1bca53359060eb2e9906670908fe6204b773e0600",
+    "space_occupancy_aug2025.csv": "3c87ee97018004f15edb49050f60c57afcd2c0b1044335170e49074365e925a1",
+    "parking_cross_section.csv": "644615c218966773b367f902dd9e559f081dfe78023374f0fbc9aa6a1dafbb70"
+  },
+  "saved_images_embedded": 13,
+  "raw_pipeline_reexecuted": false,
+  "raw_pipeline_limitation": "Raw transaction and spatial inputs are absent; cleaning notebooks passed schema/syntax/saved-output checks.",
+  "group_names_present": false,
+  "syllabus_policies_confirmed": false,
+  "status": "Analytical verification passed; author and submission details remain.",
+  "remaining_analytical_items": [],
   "remaining_packaging_items": [
-    "All group members’ verified names are deferred to final packaging by the user.",
-    "Syllabus Assignment Policies review is deferred to final packaging by the user."
-  ]
+    "Add all verified group-member names.",
+    "Confirm review of syllabus Assignment Policies."
+  ],
+  "author_review": "Literature paragraphs remain unchanged for the authors."
 }

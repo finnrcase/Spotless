@@ -203,6 +203,8 @@ def normalize_cleaning(mapping):
     return changes
 
 def build():
+    if (ROOT/'docs/submission_audit_results.json').exists():
+        raise SystemExit('Reviewed submission notebooks already exist. Use src/build_submission_report.py to export them; the baseline generator would restore superseded report content.')
     import nbformat as nbf
     polished=ROOT/'notebooks/02_data_description_eda.ipynb'
     if polished.exists() and json.loads(polished.read_text(encoding='utf-8'))['metadata'].get('spotless_history_path'):
@@ -692,5 +694,11 @@ Each section reinitializes its own inputs, so source may also be run sectionwise
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('action',choices=['build','run','export']);parser.add_argument('--only')
     args=parser.parse_args()
+    if (ROOT/'docs/submission_audit_results.json').exists():
+        if args.action == 'export':
+            from build_submission_report import build as export_reviewed_report
+            export_reviewed_report()
+            raise SystemExit(0)
+        raise SystemExit('Use the reviewed report notebooks for execution and src/build_submission_report.py for export. The old baseline runner is disabled to protect the final report.')
     if args.action=='run':run(args.only)
     else:{'build':build,'export':export}[args.action]()

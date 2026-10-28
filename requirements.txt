@@ -3,10 +3,11 @@ pandas>=2,<3
 numpy>=1.26,<2.4
 matplotlib>=3.5,<=3.10.0
 scipy
-statsmodels
-scikit-learn
+statsmodels==0.14.6
+scikit-learn==1.7.1
 geopandas
 jupyterlab
 ipykernel
 boruta==0.4.3
 ydata-profiling==4.18.4
+setuptools<81

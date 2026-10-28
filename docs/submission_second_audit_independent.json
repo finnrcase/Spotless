@@ -1,0 +1,36 @@
+{
+  "rubric_dataset_minimums": true,
+  "independent_final_model_refit": true,
+  "full_candidate_significance_screen": true,
+  "independent_BP_White_RESET_JB": true,
+  "coefficient_labeled_DFBETAS_alignment_values_and_counts": true,
+  "explicit_standardized_residual_counts": true,
+  "independent_1000_draw_bootstrap": true,
+  "independent_fivefold_training_predictions": true,
+  "cross_validation": {
+    "Model 1": 0.17756368017838292,
+    "Model 2": 0.16820782518066513,
+    "Model 3": 0.16279557468907685
+  },
+  "tests": {
+    "BP LM": {
+      "statistic": 167.02007484938213,
+      "p": 1.0662536678308114e-32
+    },
+    "White LM": {
+      "statistic": 374.99423151063263,
+      "p": 4.53769864104579e-59
+    },
+    "Jarque\u2013Bera": {
+      "statistic": 8.0755583992771,
+      "p": 0.017636596315830717
+    },
+    "RESET F": {
+      "statistic": 171.62862995813222,
+      "p": 1.9889105346205106e-38
+    }
+  },
+  "standardized_flags": 195,
+  "n": 4016,
+  "candidate_count": 12
+}

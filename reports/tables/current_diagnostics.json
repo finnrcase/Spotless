@@ -11,132 +11,253 @@
   "n": 4016,
   "tests": {
     "BP LM": {
-      "Statistic": 167.0200748496,
-      "p": 1.066253668e-32
+      "Statistic": 167.02007484938213,
+      "p": 1.0662536678308114e-32
     },
     "White LM": {
-      "Statistic": 374.9942315108,
-      "p": 4.537698641e-59
+      "Statistic": 374.99423151063263,
+      "p": 4.53769864104579e-59
     },
     "RESET F": {
-      "Statistic": 171.6286299583,
-      "p": 1.988910534e-38
+      "Statistic": 171.62862995813222,
+      "p": 1.9889105346205106e-38
     },
     "Jarque\u2013Bera": {
-      "Statistic": 8.0755583992,
-      "p": 0.0176365963
+      "Statistic": 8.0755583992771,
+      "p": 0.017636596315830717
     }
   },
-  "dfbetas_status": "Missing: addition cancelled by user",
   "bootstrap_draws": 1000,
   "bootstrap": {
     "const": {
-      "OLS estimate": 0.3195173853,
-      "OLS SE": 0.0093856604,
-      "HC1 SE": 0.0105497077,
+      "Original OLS": 0.3195173853,
       "Bootstrap mean": 0.3193546017,
       "Bootstrap SE": 0.0105967238,
-      "Bootstrap 95% lower": 0.2981552252,
-      "Bootstrap 95% upper": 0.3400402844
+      "Percentile 95% lower": 0.2981552252,
+      "Percentile 95% upper": 0.3400402844
     },
     "price_midpoint": {
-      "OLS estimate": 0.0515431942,
-      "OLS SE": 0.0023150929,
-      "HC1 SE": 0.002249493,
+      "Original OLS": 0.0515431942,
       "Bootstrap mean": 0.0514486697,
       "Bootstrap SE": 0.0022805071,
-      "Bootstrap 95% lower": 0.0471643203,
-      "Bootstrap 95% upper": 0.0558574901
+      "Percentile 95% lower": 0.0471643203,
+      "Percentile 95% upper": 0.0558574901
     },
     "population_density": {
-      "OLS estimate": 3.9611e-06,
-      "OLS SE": 2.161e-07,
-      "HC1 SE": 2.273e-07,
+      "Original OLS": 3.9611e-06,
       "Bootstrap mean": 3.9712e-06,
       "Bootstrap SE": 2.268e-07,
-      "Bootstrap 95% lower": 3.5296e-06,
-      "Bootstrap 95% upper": 4.4262e-06
+      "Percentile 95% lower": 3.5296e-06,
+      "Percentile 95% upper": 4.4262e-06
     },
     "nearby_restaurant_retail_count": {
-      "OLS estimate": -0.0005343657,
-      "OLS SE": 4.21681e-05,
-      "HC1 SE": 3.8711e-05,
+      "Original OLS": -0.0005343657,
       "Bootstrap mean": -0.0005338661,
       "Bootstrap SE": 3.82456e-05,
-      "Bootstrap 95% lower": -0.0006137257,
-      "Bootstrap 95% upper": -0.0004577512
+      "Percentile 95% lower": -0.0006137257,
+      "Percentile 95% upper": -0.0004577512
     },
     "transit_share": {
-      "OLS estimate": 0.1004612463,
-      "OLS SE": 0.0449134094,
-      "HC1 SE": 0.0459653097,
+      "Original OLS": 0.1004612463,
       "Bootstrap mean": 0.1004146336,
       "Bootstrap SE": 0.0453936786,
-      "Bootstrap 95% lower": 0.0105158065,
-      "Bootstrap 95% upper": 0.1862029103
+      "Percentile 95% lower": 0.0105158065,
+      "Percentile 95% upper": 0.1862029103
     },
     "walk_share": {
-      "OLS estimate": 0.2823329843,
-      "OLS SE": 0.0286379071,
-      "HC1 SE": 0.026737245,
+      "Original OLS": 0.2823329843,
       "Bootstrap mean": 0.282506788,
       "Bootstrap SE": 0.0254708635,
-      "Bootstrap 95% lower": 0.2340799833,
-      "Bootstrap 95% upper": 0.3333980028
+      "Percentile 95% lower": 0.2340799833,
+      "Percentile 95% upper": 0.3333980028
     },
     "nearby_business_count": {
-      "OLS estimate": 6.66312e-05,
-      "OLS SE": 9.2718e-06,
-      "HC1 SE": 8.8858e-06,
+      "Original OLS": 6.66312e-05,
       "Bootstrap mean": 6.66684e-05,
       "Bootstrap SE": 8.7526e-06,
-      "Bootstrap 95% lower": 4.85844e-05,
-      "Bootstrap 95% upper": 8.37852e-05
+      "Percentile 95% lower": 4.85844e-05,
+      "Percentile 95% upper": 8.37852e-05
     },
     "RateType_TOD": {
-      "OLS estimate": 0.0435671151,
-      "OLS SE": 0.0070520405,
-      "HC1 SE": 0.0080994654,
+      "Original OLS": 0.0435671151,
       "Bootstrap mean": 0.0434664187,
       "Bootstrap SE": 0.0080909682,
-      "Bootstrap 95% lower": 0.0265512324,
-      "Bootstrap 95% upper": 0.0592041901
+      "Percentile 95% lower": 0.0265512324,
+      "Percentile 95% upper": 0.0592041901
     }
   },
+  "dfbetas": {
+    "const": {
+      "Max absolute DFBETAS": 0.1227225942,
+      "Signed DFBETAS at maximum": 0.1227225942,
+      "Source row at maximum": 1464,
+      "SpaceID at maximum": "CB3647",
+      "Count above screening rule": 356
+    },
+    "price_midpoint": {
+      "Max absolute DFBETAS": 0.1872450005,
+      "Signed DFBETAS at maximum": 0.1872450005,
+      "Source row at maximum": 1487,
+      "SpaceID at maximum": "CB3699",
+      "Count above screening rule": 194
+    },
+    "population_density": {
+      "Max absolute DFBETAS": 0.2382628414,
+      "Signed DFBETAS at maximum": -0.2382628414,
+      "Source row at maximum": 1464,
+      "SpaceID at maximum": "CB3647",
+      "Count above screening rule": 197
+    },
+    "nearby_restaurant_retail_count": {
+      "Max absolute DFBETAS": 0.1272895615,
+      "Signed DFBETAS at maximum": 0.1272895615,
+      "Source row at maximum": 1429,
+      "SpaceID at maximum": "CB3568",
+      "Count above screening rule": 192
+    },
+    "transit_share": {
+      "Max absolute DFBETAS": 0.0981437788,
+      "Signed DFBETAS at maximum": 0.0981437788,
+      "Source row at maximum": 73,
+      "SpaceID at maximum": "66183",
+      "Count above screening rule": 260
+    },
+    "walk_share": {
+      "Max absolute DFBETAS": 0.1217051635,
+      "Signed DFBETAS at maximum": -0.1217051635,
+      "Source row at maximum": 4043,
+      "SpaceID at maximum": "WV58",
+      "Count above screening rule": 202
+    },
+    "nearby_business_count": {
+      "Max absolute DFBETAS": 0.2174918497,
+      "Signed DFBETAS at maximum": -0.2174918497,
+      "Source row at maximum": 1429,
+      "SpaceID at maximum": "CB3568",
+      "Count above screening rule": 180
+    },
+    "RateType_TOD": {
+      "Max absolute DFBETAS": 0.1063042675,
+      "Signed DFBETAS at maximum": -0.1063042675,
+      "Source row at maximum": 2100,
+      "SpaceID at maximum": "CB619",
+      "Count above screening rule": 348
+    }
+  },
+  "any_dfbetas_flags": 912,
+  "dfbetas_cutoff": 0.031559720154890156,
+  "model_coefficients": {
+    "const": 0.31951738530697404,
+    "price_midpoint": 0.051543194153967214,
+    "population_density": 3.961146118212039e-06,
+    "nearby_restaurant_retail_count": -0.0005343656878147359,
+    "transit_share": 0.1004612462732595,
+    "walk_share": 0.2823329842755365,
+    "nearby_business_count": 6.66311710311653e-05,
+    "RateType_TOD": 0.04356711512399443
+  },
+  "influence_screens": {
+    "cook_flag": 215,
+    "leverage_flag": 273,
+    "residual_flag": 195,
+    "standardized_flag": 195
+  },
+  "dfbetas_rows": 4016,
+  "dfbetas_columns": [
+    "const",
+    "price_midpoint",
+    "population_density",
+    "nearby_restaurant_retail_count",
+    "transit_share",
+    "walk_share",
+    "nearby_business_count",
+    "RateType_TOD"
+  ],
+  "cross_validation": {
+    "Model 1": {
+      "Mean fold RMSE": 0.1775636802,
+      "Fold RMSE SD": 0.0018068365,
+      "Pooled out-of-fold RMSE": 0.1775704954
+    },
+    "Model 2": {
+      "Mean fold RMSE": 0.1682078252,
+      "Fold RMSE SD": 0.0026258924,
+      "Pooled out-of-fold RMSE": 0.1682236679
+    },
+    "Model 3": {
+      "Mean fold RMSE": 0.1627955747,
+      "Fold RMSE SD": 0.0013485398,
+      "Pooled out-of-fold RMSE": 0.1627999618
+    }
+  },
+  "selection_aware_cross_validation": {
+    "Folds": 5.0,
+    "Mean fold RMSE": 0.16333405619926297,
+    "Fold RMSE SD": 0.0009640103224378114,
+    "Pooled out-of-fold RMSE": 0.16333620008354408
+  },
+  "selection_aware_folds": [
+    {
+      "Fold": 1,
+      "Training N": 3212,
+      "Held-out N": 804,
+      "Selected slopes": 9,
+      "Held-out RMSE": 0.1628054963,
+      "Predictors selected on training rows": "price_midpoint, population_density, nearby_restaurant_retail_count, housing_density, transit_share, walk_share, nearby_business_count, RateType_TOD, MeterType_Single-Space"
+    },
+    {
+      "Fold": 2,
+      "Training N": 3213,
+      "Held-out N": 803,
+      "Selected slopes": 6,
+      "Held-out RMSE": 0.1641264658,
+      "Predictors selected on training rows": "price_midpoint, population_density, nearby_restaurant_retail_count, walk_share, nearby_business_count, RateType_TOD"
+    },
+    {
+      "Fold": 3,
+      "Training N": 3213,
+      "Held-out N": 803,
+      "Selected slopes": 8,
+      "Held-out RMSE": 0.1644918214,
+      "Predictors selected on training rows": "price_midpoint, population_density, nearby_restaurant_retail_count, housing_density, transit_share, walk_share, nearby_business_count, RateType_TOD"
+    },
+    {
+      "Fold": 4,
+      "Training N": 3213,
+      "Held-out N": 803,
+      "Selected slopes": 6,
+      "Held-out RMSE": 0.1631023418,
+      "Predictors selected on training rows": "price_midpoint, population_density, nearby_restaurant_retail_count, walk_share, nearby_business_count, RateType_TOD"
+    },
+    {
+      "Fold": 5,
+      "Training N": 3213,
+      "Held-out N": 803,
+      "Selected slopes": 9,
+      "Held-out RMSE": 0.1621441556,
+      "Predictors selected on training rows": "price_midpoint, time_limit_hours, population_density, nearby_restaurant_retail_count, drive_alone_share, walk_share, nearby_business_count, RateType_TOD, MeterType_Single-Space"
+    }
+  ],
   "robustness": {
-    "Current primary": {
-      "N": 4016.0,
-      "Price": 0.0515431942,
-      "HC1 lower": 0.047134269,
-      "HC1 upper": 0.0559521194,
+    "Primary common sample": {
+      "N": 4016,
+      "Price coefficient": 0.0515431942,
+      "HC1 95% lower": 0.047134269,
+      "HC1 95% upper": 0.0559521194,
       "Adjusted R2": 0.2929052063
     },
-    "Cook <=4/n": {
-      "N": 3801.0,
-      "Price": 0.0532969595,
-      "HC1 lower": 0.0495001793,
-      "HC1 upper": 0.0570937396,
-      "Adjusted R2": 0.3690934751
-    },
-    "Log density": {
-      "N": 4016.0,
-      "Price": 0.0521881953,
-      "HC1 lower": 0.0478252287,
-      "HC1 upper": 0.0565511619,
-      "Adjusted R2": 0.285780924
-    },
     "At least 28 active days": {
-      "N": 1609.0,
-      "Price": 0.0500409876,
-      "HC1 lower": 0.0423436014,
-      "HC1 upper": 0.0577383738,
+      "N": 1609,
+      "Price coefficient": 0.0500409876,
+      "HC1 95% lower": 0.0423436014,
+      "HC1 95% upper": 0.0577383738,
       "Adjusted R2": 0.2616329409
     },
-    "Restore missing-income spaces": {
-      "N": 4060.0,
-      "Price": 0.0533350551,
-      "HC1 lower": 0.0488327851,
-      "HC1 upper": 0.0578373251,
+    "Retain missing-income spaces": {
+      "N": 4060,
+      "Price coefficient": 0.0533350551,
+      "HC1 95% lower": 0.0488327851,
+      "HC1 95% upper": 0.0578373251,
       "Adjusted R2": 0.289731615
     }
   }

@@ -1,3 +1,5 @@
+> Historical audit: this document describes an earlier version. Use [the final report audit](submission_audit_changes.md) and [current verification](submission_audit_results.json) for the saved report.
+
 > **Current execution update:** current code, including Profiling, passes fresh kernels. The user cancelled DFBETAS, so that required diagnostic remains Missing and 4(d) is Partial. Current results intentionally use a new significance-based Model 3; see [changes](rubric_completion_changes.md), [execution](current_execution_results.json), and [verification](current_readiness.json). The summary below is the preserved pre-completion migration record. Raw reconstruction remains unverified.
 
 # Notebook migration validation
