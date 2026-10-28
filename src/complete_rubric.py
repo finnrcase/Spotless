@@ -204,9 +204,10 @@ def normalize_cleaning(mapping):
 
 def build():
     import nbformat as nbf
-    polished=ROOT/'notebooks/02_data_description_eda.ipynb'
-    if polished.exists() and json.loads(polished.read_text(encoding='utf-8'))['metadata'].get('spotless_history_path'):
-        raise SystemExit('Notebook 2 has a submission edit. Use run/export; baseline build would overwrite that edit.')
+    for name in NAMES:
+        polished=ROOT/f'notebooks/{name}.ipynb'
+        if polished.exists() and json.loads(polished.read_text(encoding='utf-8'))['metadata'].get('spotless_history_path'):
+            raise SystemExit(f'{name} has a submission edit. Use run/export; baseline build would overwrite that edit.')
     books = {}
     def md(i,text):
         text=currency(text)

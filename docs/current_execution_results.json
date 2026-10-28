@@ -42,8 +42,8 @@
     {
       "notebook": "05_results_interpretation.ipynb",
       "status": "PASS",
-      "code_cells": 6,
-      "seconds": 10.7
+      "code_cells": 4,
+      "seconds": 8.0
     },
     {
       "notebook": "06_limitations_extensions.ipynb",
